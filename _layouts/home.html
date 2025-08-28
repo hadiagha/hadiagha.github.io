@@ -1,0 +1,104 @@
+---
+layout: default
+---
+
+<div class="home-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-tagline">{{ site.tagline }}</p>
+    <p class="hero-description">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-primary">
+        <i class="fas fa-book-open"></i> Read My Blog
+      </a>
+      <a href="{{ '/about' | relative_url }}" class="btn btn-secondary">
+        <i class="fas fa-user"></i> About Me
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="recent-posts">
+  <div class="container">
+    <h2 class="section-title">Recent Posts</h2>
+    <div class="posts-grid">
+      {% for post in site.posts limit:6 %}
+      <article class="post-card">
+        <div class="post-card-header">
+          <div class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%B %d, %Y" }}
+            </time>
+            {% if post.reading_time %}
+            <span class="reading-time">
+              <i class="fas fa-clock"></i> {{ post.reading_time }} min read
+            </span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="post-card-body">
+          <h3 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+          <div class="post-tags">
+            {% for tag in post.tags %}
+            <a href="{{ '/tags#' | append: tag | relative_url }}" class="tag">
+              <i class="fas fa-tag"></i> {{ tag }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="post-card-footer">
+          <a href="{{ post.url | relative_url }}" class="read-more">
+            Read more <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% if site.posts.size > 6 %}
+    <div class="more-posts">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">
+        View all posts <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">What You'll Find Here</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-microscope"></i>
+        </div>
+        <h3>Scientific Insights</h3>
+        <p>Deep dives into scientific concepts, research findings, and theoretical explorations.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>Technical Writing</h3>
+        <p>Code examples, technical tutorials, and programming insights with proper syntax highlighting.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-square-root-alt"></i>
+        </div>
+        <h3>Mathematical Content</h3>
+        <p>Complex equations and mathematical proofs rendered beautifully with LaTeX support.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-quote-left"></i>
+        </div>
+        <h3>Citable Research</h3>
+        <p>All posts include proper citation formats for academic referencing.</p>
+      </div>
+    </div>
+  </div>
+</section>

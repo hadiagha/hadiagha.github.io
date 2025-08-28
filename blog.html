@@ -1,0 +1,199 @@
+---
+layout: page
+title: Blog
+description: All posts in chronological order
+permalink: /blog/
+---
+
+<div class="blog-page">
+  <div class="posts-list">
+    {% for post in site.posts %}
+      <article class="post-preview">
+        <header class="post-header">
+          <h2 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          <div class="post-meta">
+            <span class="post-date">
+              <i class="fas fa-calendar"></i>
+              <time datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date: "%B %d, %Y" }}
+              </time>
+            </span>
+            <span class="post-reading-time">
+              <i class="fas fa-clock"></i>
+              {% assign words = post.content | number_of_words %}
+              {% if words < 360 %}
+                1 min read
+              {% else %}
+                {{ words | divided_by: 180 }} min read
+              {% endif %}
+            </span>
+          </div>
+        </header>
+        
+        <div class="post-content">
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+        </div>
+        
+        <footer class="post-footer">
+          <div class="post-tags">
+            {% for tag in post.tags %}
+              <a href="{{ '/tags#' | append: tag | slugify | relative_url }}" class="tag">
+                <i class="fas fa-tag"></i> {{ tag }}
+              </a>
+            {% endfor %}
+          </div>
+          <a href="{{ post.url | relative_url }}" class="read-more">
+            Read more <i class="fas fa-arrow-right"></i>
+          </a>
+        </footer>
+      </article>
+    {% endfor %}
+  </div>
+  
+  {% if site.posts.size == 0 %}
+    <div class="no-posts">
+      <i class="fas fa-inbox"></i>
+      <h3>No posts yet</h3>
+      <p>Check back soon for new content!</p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+.blog-page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.posts-list {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.post-preview {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  
+  .post-header {
+    margin-bottom: var(--space-md);
+  }
+  
+  .post-title {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-sm);
+    
+    a {
+      color: var(--color-text);
+      text-decoration: none;
+      
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+  
+  .post-meta {
+    display: flex;
+    gap: var(--space-lg);
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    
+    span {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+  }
+  
+  .post-content {
+    margin-bottom: var(--space-lg);
+    
+    .post-excerpt {
+      color: var(--color-text-light);
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+  
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--color-primary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: gap var(--transition-fast);
+      
+      &:hover {
+        gap: var(--space-sm);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.no-posts {
+  text-align: center;
+  padding: var(--space-3xl);
+  color: var(--color-text-light);
+  
+  i {
+    font-size: 4rem;
+    margin-bottom: var(--space-lg);
+    opacity: 0.5;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  p {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .post-preview {
+    padding: var(--space-lg);
+    
+    .post-title {
+      font-size: 1.5rem;
+    }
+    
+    .post-meta {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .post-footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+</style>

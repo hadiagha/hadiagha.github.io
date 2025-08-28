@@ -1,0 +1,72 @@
+# Site settings
+title: Scientific Insights
+tagline: Exploring the frontiers of science and technology
+description: A personal blog for scientific writing, research insights, and technical explorations
+author:
+  name: Your Name
+  email: your-email@example.com
+  bio: "Researcher, Writer, and Science Enthusiast"
+  avatar: /assets/images/avatar.jpg
+  social:
+    twitter: your-twitter
+    github: your-github
+    linkedin: your-linkedin
+    orcid: your-orcid
+    google_scholar: your-google-scholar-id
+
+# URL settings
+url: "https://hadiagha.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  math_engine: mathjax
+  
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+  
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      share: true
+      
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# SEO
+twitter:
+  username: your-twitter
+  card: summary_large_image
+
+# Analytics (optional - add your Google Analytics ID)
+google_analytics: UA-XXXXXXXXX-X
+
+# Disqus Comments (optional)
+disqus:
+  shortname: your-disqus-shortname
+
+# Build exclusions
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

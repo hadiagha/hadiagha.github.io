@@ -1,0 +1,63 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>{{ site.title }}</h3>
+        <p>{{ site.description }}</p>
+        <div class="social-links">
+          {% if site.author.social.twitter %}
+          <a href="https://twitter.com/{{ site.author.social.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          {% endif %}
+          {% if site.author.social.github %}
+          <a href="https://github.com/{{ site.author.social.github }}" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          {% endif %}
+          {% if site.author.social.linkedin %}
+          <a href="https://linkedin.com/in/{{ site.author.social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          {% endif %}
+          {% if site.author.social.orcid %}
+          <a href="https://orcid.org/{{ site.author.social.orcid }}" target="_blank" rel="noopener" aria-label="ORCID">
+            <i class="fab fa-orcid"></i>
+          </a>
+          {% endif %}
+          {% if site.author.social.google_scholar %}
+          <a href="https://scholar.google.com/citations?user={{ site.author.social.google_scholar }}" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          {% endif %}
+          <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS Feed">
+            <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="{{ '/blog' | relative_url }}">Latest Posts</a></li>
+          <li><a href="{{ '/tags' | relative_url }}">Browse by Topic</a></li>
+          <li><a href="{{ '/about' | relative_url }}">About Me</a></li>
+          <li><a href="{{ '/contact' | relative_url }}">Get in Touch</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Subscribe</h3>
+        <p>Get notified of new posts via RSS</p>
+        <a href="{{ '/feed.xml' | relative_url }}" class="subscribe-button">
+          <i class="fas fa-rss"></i> Subscribe to RSS
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}. All rights reserved.</p>
+      <p>Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> & <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+    </div>
+  </div>
+</footer>

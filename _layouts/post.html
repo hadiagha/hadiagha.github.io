@@ -1,0 +1,162 @@
+---
+layout: default
+---
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+      <div class="post-meta">
+        <span class="post-author">
+          <i class="fas fa-user"></i>
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span itemprop="name">{{ page.author | default: site.author.name }}</span>
+          </span>
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar"></i>
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%B %d, %Y" }}
+          </time>
+        </span>
+        {% if page.last_modified_at %}
+        <span class="post-modified">
+          <i class="fas fa-edit"></i>
+          Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
+            {{ page.last_modified_at | date: "%B %d, %Y" }}
+          </time>
+        </span>
+        {% endif %}
+        <span class="post-reading-time">
+          <i class="fas fa-clock"></i>
+          {% assign words = content | number_of_words %}
+          {% if words < 360 %}
+            1 min read
+          {% else %}
+            {{ words | divided_by: 180 }} min read
+          {% endif %}
+        </span>
+      </div>
+      <div class="post-tags">
+        {% for tag in page.tags %}
+        <a href="{{ '/tags#' | append: tag | replace: ' ', '-' | downcase | relative_url }}" class="tag">
+          <i class="fas fa-tag"></i> {{ tag }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+
+  <div class="post-content container" itemprop="articleBody">
+    {% if page.toc %}
+    <aside class="toc">
+      <h3>Table of Contents</h3>
+      <nav id="toc"></nav>
+    </aside>
+    {% endif %}
+    
+    <div class="content">
+      {{ content }}
+    </div>
+  </div>
+
+  <footer class="post-footer container">
+    <div class="post-citation">
+      <h3>Cite this post</h3>
+      <div class="citation-formats">
+        <div class="citation-format">
+          <h4>APA</h4>
+          <code class="citation-text">
+            {{ page.author | default: site.author.name }} ({{ page.date | date: "%Y, %B %d" }}). {{ page.title }}. {{ site.title }}. {{ page.url | absolute_url }}
+          </code>
+          <button class="copy-btn" data-clipboard-text="{{ page.author | default: site.author.name }} ({{ page.date | date: '%Y, %B %d' }}). {{ page.title }}. {{ site.title }}. {{ page.url | absolute_url }}">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+        <div class="citation-format">
+          <h4>MLA</h4>
+          <code class="citation-text">
+            {{ page.author | default: site.author.name }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%d %b. %Y" }}, {{ page.url | absolute_url }}.
+          </code>
+          <button class="copy-btn" data-clipboard-text='{{ page.author | default: site.author.name }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%d %b. %Y" }}, {{ page.url | absolute_url }}.'>
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+        <div class="citation-format">
+          <h4>BibTeX</h4>
+          <pre class="citation-text">{% raw %}@misc{{% endraw %}{{ page.slug | default: page.title | slugify }}{% raw %},
+  author = {{% endraw %}{{ page.author | default: site.author.name }}{% raw %}},
+  title = {{% endraw %}{{ page.title }}{% raw %}},
+  howpublished = {\url{{% endraw %}{{ page.url | absolute_url }}{% raw %}}},
+  year = {{% endraw %}{{ page.date | date: "%Y" }}{% raw %}},
+  note = {[Online; accessed {% endraw %}{{ "now" | date: "%d-%B-%Y" }}{% raw %}]}
+}{% endraw %}</pre>
+          <button class="copy-btn" data-clipboard-text='@misc{% raw %}{{% endraw %}{{ page.slug | default: page.title | slugify }}{% raw %},
+  author = {{% endraw %}{{ page.author | default: site.author.name }}{% raw %}},
+  title = {{% endraw %}{{ page.title }}{% raw %}},
+  howpublished = {\url{{% endraw %}{{ page.url | absolute_url }}{% raw %}}},
+  year = {{% endraw %}{{ page.date | date: "%Y" }}{% raw %}},
+  note = {[Online; accessed {% endraw %}{{ "now" | date: "%d-%B-%Y" }}{% raw %}]}
+}{% endraw %}'>
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-share">
+      <h3>Share this post</h3>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn twitter">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn linkedin">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url }}" class="share-btn email">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+
+    <nav class="post-navigation">
+      {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}" class="nav-prev">
+        <i class="fas fa-chevron-left"></i>
+        <span>
+          <small>Previous</small>
+          <strong>{{ page.previous.title }}</strong>
+        </span>
+      </a>
+      {% endif %}
+      {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}" class="nav-next">
+        <span>
+          <small>Next</small>
+          <strong>{{ page.next.title }}</strong>
+        </span>
+        <i class="fas fa-chevron-right"></i>
+      </a>
+      {% endif %}
+    </nav>
+
+    {% if site.disqus.shortname and page.comments != false %}
+    <div class="post-comments">
+      <h3>Comments</h3>
+      <div id="disqus_thread"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = '{{ page.url | absolute_url }}';
+          this.page.identifier = '{{ page.id }}';
+        };
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    </div>
+    {% endif %}
+  </footer>
+</article>

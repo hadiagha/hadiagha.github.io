@@ -1,0 +1,58 @@
+<header class="site-header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="{{ '/' | relative_url }}" class="site-title">
+          <span class="title-main">{{ site.title }}</span>
+          <span class="title-tagline">{{ site.tagline }}</span>
+        </a>
+      </div>
+      
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}">
+              <i class="fas fa-pen-nib"></i> Blog
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/tags' | relative_url }}" class="nav-link {% if page.url contains '/tags' %}active{% endif %}">
+              <i class="fas fa-tags"></i> Topics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}">
+              <i class="fas fa-user"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/cv' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}">
+              <i class="fas fa-file-alt"></i> CV
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/contact' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+          <li class="nav-item">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

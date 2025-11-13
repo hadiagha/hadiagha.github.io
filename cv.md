@@ -1,146 +1,104 @@
 ---
 layout: page
 title: Curriculum Vitae
-description: My academic and professional experience
+description: Overview of my academic, professional, and research experience
 permalink: /cv/
 ---
 
 <div class="cv-download">
-  <a href="/assets/cv.pdf" class="btn btn-primary" download>
+  <a href="/assets/hadi_cv.pdf" class="btn btn-primary" download>
     <i class="fas fa-download"></i> Download PDF Version
   </a>
 </div>
 
+## Profile
+
+**Name:** Hadi Aghazadeh  
+**Current Role:** Machine Learning Engineer, Bits in Glass (Remote, Calgary)  
+**Focus:** Reinforcement Learning, Operations Research, ML Systems, and LLM-based applications  
+**Certification:** Databricks Certified Machine Learning Associate  
+**Book:** *Reinforcement Learning for Business* (Manning Publications)
+
+I design and deploy data-driven solutions for pricing, forecasting, and decision-making under uncertainty, with experience across fintech, mobility, and fuel/energy applications.
+
 ## Education
 
-### Ph.D. in [Your Field]
-**University Name** | *Year - Year*
-- Dissertation: "Your Dissertation Title"
-- Advisor: Prof. Name
-- GPA: X.XX/4.00
+### Ph.D. Candidate in Geomatics Engineering
+**University of Calgary** | *July 2022 – Expected Oct 2025*  
+- Research focus: **Reinforcement Learning for Vehicle Routing**  
+- GPA: **4.0/4.0**  
+- Awards: Alberta Innovates Scholarship, Open Doctoral Scholarship
 
-### M.S. in [Your Field]
-**University Name** | *Year - Year*
-- Thesis: "Your Thesis Title"
-- GPA: X.XX/4.00
+### M.Sc. in Industrial Engineering
+**Amirkabir University of Technology** | *2015 – 2018*
 
-### B.S. in [Your Field]
-**University Name** | *Year - Year*
-- Summa Cum Laude
-- GPA: X.XX/4.00
+### B.Sc. in Industrial Engineering
+**Iran University of Science and Technology** | *2011 – 2015*
 
 ## Professional Experience
 
-### Current Position
-**Your Title** | *Institution/Company*  
-*Start Date - Present*
-- Responsibility 1
-- Responsibility 2
-- Responsibility 3
+### Machine Learning Engineer
+**Bits in Glass** | *April 2024 – Present* | Calgary, Canada (Remote)
+- Build ML and LLM solutions on **Databricks (Mosaic AI, MLflow)** for production use.
+- Designed and deployed an **automated invoice text extraction** system using LLMs and LangGraph to process large batches of PDFs with structured outputs.
+- Developed a **dynamic fuel pricing optimization** pipeline combining reinforcement learning and linear programming for real-time pricing.
 
-### Previous Position
-**Your Title** | *Institution/Company*  
-*Start Date - End Date*
-- Achievement 1
-- Achievement 2
-- Achievement 3
+### Machine Learning Developer
+**AltaML** | *May 2023 – Sept 2023* | Calgary, Canada
+- Contributed to a **hybrid fuel demand forecasting** model for 100+ sites, enabling savings exceeding **$1M per year**.
 
-## Publications
+### Senior Data Scientist
+**Snapp (largest ride-hailing startup in the Middle East)** | *May 2021 – June 2022* | Tehran, Iran
+- Led **dynamic surge pricing** using reinforcement learning, improving order fulfillment by ~5% (~200K orders/day).
+- Developed an **unsupervised fraud detection** solution, saving ~300 labor hours per month with >90% recall.
 
-### Peer-Reviewed Journal Articles
+### Data Scientist
+**Fanap (PARSA)** | *Jan 2018 – April 2021* | Tehran, Iran
+- Built end-to-end **ATM cash demand forecasting** (MAPE ~17%) and optimization models, reducing operational costs by ~10%.
 
-1. **Your Name**, Co-author. (Year). "Paper Title." *Journal Name*, Volume(Issue), pages. DOI: xxx
-2. **Your Name**, Co-author. (Year). "Paper Title." *Journal Name*, Volume(Issue), pages. DOI: xxx
-3. **Your Name**, Co-author. (Year). "Paper Title." *Journal Name*, Volume(Issue), pages. DOI: xxx
+## Teaching & Courses
 
-### Conference Proceedings
+- **Instructor (Udemy)**  
+  - *Contextual Multi-Armed Bandit Problems in Python*  
+  - *Reinforcement Learning for Operations Research*  
+  Courses bridge RL theory with practical implementations.
 
-1. **Your Name**, Co-author. (Year). "Paper Title." In *Conference Name*, Location.
-2. **Your Name**, Co-author. (Year). "Paper Title." In *Conference Name*, Location.
+- **Teaching Assistant, University of Calgary**  
+  - *Data Mining and Databases*
 
-### Books and Book Chapters
+## Book
 
-1. **Your Name**. (Year). "Chapter Title." In *Book Title*, edited by Editor Name, pages. Publisher.
+- **Reinforcement Learning for Business**, Manning Publications  
+  - Practical RL techniques for pricing, logistics, and operations.  
+  - [Book page at Manning](https://www.manning.com/books/reinforcement-learning-for-business)
 
-## Awards and Honors
+## Honors and Awards (Selected)
 
-- **Award Name** - Awarding Institution (Year)
-- **Fellowship Name** - Funding Agency (Year)
-- **Honor Name** - Institution (Year)
+- **Alberta Innovates Scholarship** (2024) – one of Alberta's most prestigious academic awards.  
+- **Open Doctoral Scholarship**, University of Calgary (2024).  
+- **First Place – Amii Reinforcement Learning Competition**, Upper Bound 2024.  
+- **Schulich Leadership for Engineers Catalyst Program**, University of Calgary (2023).  
+- **First Place – AI Competition**, Amirkabir University of Technology (2018), demand forecasting (150+ teams).
 
-## Research Grants
+## Certificates
 
-### Active Grants
-
-- **Grant Title** (PI/Co-PI)  
-  Funding Agency | Amount: $XXX,XXX | Period: Year-Year
-
-### Completed Grants
-
-- **Grant Title** (PI/Co-PI)  
-  Funding Agency | Amount: $XXX,XXX | Period: Year-Year
-
-## Teaching Experience
-
-### Courses Taught
-
-- **Course Name** (Course Number) - Terms Taught
-- **Course Name** (Course Number) - Terms Taught
-- **Course Name** (Course Number) - Terms Taught
-
-### Teaching Awards
-
-- **Teaching Award Name** - Institution (Year)
-
-## Professional Service
-
-### Editorial Boards
-
-- **Journal Name** - Role (Year-Present)
-- **Journal Name** - Role (Year-Year)
-
-### Conference Organization
-
-- **Conference Name** - Role (Year)
-- **Conference Name** - Role (Year)
-
-### Peer Review
-
-- Regular reviewer for: Journal 1, Journal 2, Journal 3
-- Total papers reviewed: XX+
+- **Databricks Certified Machine Learning Associate** (2024)  
+- **Reinforcement Learning Specialization**, University of Alberta (Coursera, 2022)
 
 ## Technical Skills
 
-### Programming Languages
-Python, R, MATLAB, Julia, C++, JavaScript
-
-### Software & Tools
-- **Data Analysis**: pandas, NumPy, scikit-learn, TensorFlow
-- **Visualization**: matplotlib, ggplot2, D3.js
-- **Other**: LaTeX, Git, Docker, AWS
-
-### Research Methods
-- Method 1
-- Method 2
-- Method 3
-
-## Professional Memberships
-
-- Member, Professional Society 1 (Year-Present)
-- Member, Professional Society 2 (Year-Present)
-- Member, Professional Society 3 (Year-Present)
-
-## Selected Presentations
-
-1. **"Presentation Title"** - Conference/Institution, Location (Year)
-2. **"Presentation Title"** - Conference/Institution, Location (Year)
-3. **"Presentation Title"** - Conference/Institution, Location (Year)
+**Core:** Python, Databricks, PyTorch, LangChain, Git, AWS, MS Azure  
+**Domains:** Reinforcement Learning, Time Series Forecasting, Optimization, LLM/RAG systems
 
 ## Languages
 
-- **English**: Native/Fluent
-- **Language 2**: Level
-- **Language 3**: Level
+- **English:** Advanced  
+- **Persian:** Native
+
+## Status
+
+- Permanent Residency candidate in Canada (received ITA).  
+- Currently on Open Work Permit and Study Permit.
 
 ---
 

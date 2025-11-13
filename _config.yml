@@ -1,18 +1,18 @@
 # Site settings
-title: Scientific Insights
-tagline: Exploring the frontiers of science and technology
-description: A personal blog for scientific writing, research insights, and technical explorations
+title: Reinforcement Learning for Business
+tagline: Practical RL, ML systems, and decision-making for real-world operations
+description: Hadi Aghazadeh's blog on reinforcement learning for business, machine learning engineering, and data-driven decision-making.
 author:
-  name: Your Name
-  email: your-email@example.com
-  bio: "Researcher, Writer, and Science Enthusiast"
-  avatar: /assets/images/avatar.jpg
+  name: Hadi Aghazadeh
+  email: hadi.aghazadeh@ucalgary.ca
+  bio: "Databricks Certified Machine Learning Engineer, Ph.D. candidate at the University of Calgary, and author of 'Reinforcement Learning for Business' (Manning)."
+  avatar: /assets/images/hadi_pic.png
   social:
-    twitter: your-twitter
-    github: your-github
-    linkedin: your-linkedin
-    orcid: your-orcid
-    google_scholar: your-google-scholar-id
+    twitter: hadi_aghazadeh
+    github: hadiagha
+    linkedin: hadi-aghazadeh
+    orcid: ""
+    google_scholar: ""
 
 # URL settings
 url: "https://hadiagha.github.io"
@@ -54,7 +54,7 @@ plugins:
 
 # SEO
 twitter:
-  username: your-twitter
+  username: hadi_aghazadeh
   card: summary_large_image
 
 # Analytics (optional - add your Google Analytics ID)

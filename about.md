@@ -5,60 +5,71 @@ description: Learn more about my research interests and background
 permalink: /about/
 ---
 
-## Welcome to My Scientific Blog
+## About Me
 
-I'm a researcher passionate about [your field of study]. This blog serves as a platform to share my insights, research findings, and thoughts on various scientific topics.
+I am **Hadi Aghazadeh**, a Databricks Certified Machine Learning Engineer and Ph.D. candidate at the **University of Calgary** (GPA: 4.0/4.0). My work sits at the intersection of **reinforcement learning**, **operations research**, and **machine learning systems** for real-world business problems.
 
-### Research Interests
+I am the author of the upcoming Manning book **"Reinforcement Learning for Business"**, where I focus on making RL practical for pricing, logistics, and operations at scale.
 
-My primary research interests include:
+Currently, I work as a **Machine Learning Engineer at Bits in Glass**, building production-grade ML solutions on **Databricks (Mosaic AI, MLflow)** and cloud platforms.
 
-- **Topic 1**: Brief description of your first research area
-- **Topic 2**: Brief description of your second research area
-- **Topic 3**: Brief description of your third research area
-- **Topic 4**: Brief description of your fourth research area
+### Research & Applied Interests
 
-### Background
+My main interests include:
 
-[Add your educational background, current position, and any relevant experience here. This helps establish credibility and allows readers to understand your perspective.]
+- **Reinforcement learning for operations and pricing** (e.g., dynamic surge pricing, fuel pricing, vehicle routing)
+- **Demand forecasting and time series** at scale
+- **Optimization and decision-making** (linear programming, RL-based control)
+- **LLM-powered systems** (RAG, document understanding, agentic workflows)
 
-### Publications
+My Ph.D. research focuses on **reinforcement learning for vehicle routing**, bridging academic ideas with deployable systems in industry.
 
-You can find my publications on:
-- [Google Scholar](https://scholar.google.com)
-- [ORCID](https://orcid.org)
-- [ResearchGate](https://www.researchgate.net)
-- [arXiv](https://arxiv.org)
+### Industry Experience
 
-### Why This Blog?
+Over the past years, I have worked across startups and industry on data-intensive products:
 
-I believe in the importance of science communication and making research accessible to a broader audience. Through this blog, I aim to:
+- **Machine Learning Engineer – Bits in Glass (2024–Present)**  
+  Building ML and LLM systems on Databricks, including invoice automation and dynamic fuel pricing optimization.
+- **Machine Learning Developer – AltaML (2023)**  
+  Contributed to a hybrid fuel demand forecasting model deployed to 100+ sites, driving significant annual savings.
+- **Senior Data Scientist – Snapp (2021–2022)**  
+  Led RL-based **dynamic surge pricing** improving order fulfillment by ~5% (~200K+ orders/day) and **fraud detection** solutions reducing manual review time by 300 hours/month.
+- **Data Scientist – Fanap (PARSA) (2018–2021)**  
+  Developed ATM cash demand forecasting and optimization systems, reducing operational costs by ~10%.
 
-1. Share insights from my research in an accessible format
-2. Discuss recent developments in [your field]
-3. Provide tutorials and educational content
-4. Foster discussions about important scientific topics
+### Education
 
-### Connect With Me
+- **Ph.D. Candidate, University of Calgary** – Geomatics Engineering  
+  *July 2022 – Expected Oct 2025*  
+  Research: **Reinforcement Learning for Vehicle Routing**
+- **M.Sc. in Industrial Engineering**, Amirkabir University of Technology (2015–2018)
+- **B.Sc. in Industrial Engineering**, Iran University of Science and Technology (2011–2015)
 
-Feel free to reach out if you have questions, collaboration ideas, or just want to discuss science:
+### Teaching & Learning
 
-- Email: [your-email@example.com](mailto:your-email@example.com)
-- Twitter: [@yourhandle](https://twitter.com/yourhandle)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
-- GitHub: [yourusername](https://github.com/yourusername)
+I enjoy teaching and translating complex ideas into practical workflows. I have:
 
-### Blog Philosophy
+- Created **Udemy courses** on:
+  - *Contextual Multi-Armed Bandit Problems in Python*
+  - *Reinforcement Learning for Operations Research*
+- Served as **Teaching Assistant** for *Data Mining and Databases* at the University of Calgary.
 
-This blog follows these principles:
+### Honors & Scholarships (Selected)
 
-- **Accuracy**: All content is thoroughly researched and fact-checked
-- **Accessibility**: Complex topics are explained clearly without oversimplification
-- **Attribution**: All sources and references are properly cited
-- **Openness**: Comments and discussions are welcomed and encouraged
+- **Alberta Innovates Scholarship** – one of Alberta's most prestigious academic awards (2024)
+- **Open Doctoral Scholarship**, University of Calgary (2024)
+- **First Place – Amii Reinforcement Learning Competition**, Upper Bound 2024
+- **Schulich Leadership for Engineers Catalyst Program**, University of Calgary (2023)
+- **First Place – AI Competition**, Amirkabir University of Technology (2018)
 
-Thank you for visiting, and I hope you find the content here useful and inspiring!
+### Connect
+
+If you are interested in collaboration, RL for business applications, or ML systems on Databricks and AWS, feel free to reach out:
+
+- Email: [hadi.aghazadeh@ucalgary.ca](mailto:hadi.aghazadeh@ucalgary.ca)  
+- Twitter/X: [@hadi_aghazadeh](https://twitter.com/hadi_aghazadeh)  
+- LinkedIn: [hadi-aghazadeh](https://www.linkedin.com/in/hadi-aghazadeh)  
+- GitHub: [hadiagha](https://github.com/hadiagha)
 
 ---
-
 *Last updated: {{ "now" | date: "%B %d, %Y" }}*

@@ -7,7 +7,7 @@ permalink: /contact/
 
 <div class="contact-page">
   <div class="contact-intro">
-    <p>I'm always happy to connect with fellow researchers, students, and anyone interested in my work. Feel free to reach out through any of the channels below.</p>
+    <p>I'm always happy to connect with practitioners, researchers, and students interested in machine learning, reinforcement learning for business, and applied ML systems.</p>
   </div>
 
   <div class="contact-methods">
@@ -16,8 +16,8 @@ permalink: /contact/
         <i class="fas fa-envelope"></i>
       </div>
       <h3>Email</h3>
-      <p>For academic inquiries, collaboration proposals, or general questions</p>
-      <a href="mailto:your-email@example.com" class="contact-link">your-email@example.com</a>
+      <p>For collaboration, speaking, consulting, or academic inquiries</p>
+      <a href="mailto:hadi.aghazadeh@ucalgary.ca" class="contact-link">hadi.aghazadeh@ucalgary.ca</a>
     </div>
 
     <div class="contact-card">
@@ -25,10 +25,9 @@ permalink: /contact/
         <i class="fas fa-university"></i>
       </div>
       <h3>Office</h3>
-      <p>Department of [Your Department]<br>
-      University Name<br>
-      Building Name, Room XXX<br>
-      City, State ZIP</p>
+      <p>Department of Geomatics Engineering<br>
+      University of Calgary<br>
+      Calgary, Alberta, Canada</p>
     </div>
 
     <div class="contact-card">
@@ -36,35 +35,35 @@ permalink: /contact/
         <i class="fas fa-phone"></i>
       </div>
       <h3>Phone</h3>
-      <p>Office hours: Monday-Friday, 9 AM - 5 PM</p>
-      <a href="tel:+1234567890" class="contact-link">+1 (234) 567-890</a>
+      <p>Preferred for time-sensitive coordination</p>
+      <a href="tel:+14034007294" class="contact-link">+1 (403) 400-7294</a>
     </div>
   </div>
 
   <div class="social-section">
     <h2>Connect on Social Media</h2>
     <div class="social-grid">
-      <a href="https://twitter.com/yourhandle" class="social-card" target="_blank" rel="noopener">
+      <a href="https://twitter.com/hadi_aghazadeh" class="social-card" target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
         <span>Twitter</span>
       </a>
-      <a href="https://linkedin.com/in/yourprofile" class="social-card" target="_blank" rel="noopener">
+      <a href="https://linkedin.com/in/hadi-aghazadeh" class="social-card" target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
         <span>LinkedIn</span>
       </a>
-      <a href="https://github.com/yourusername" class="social-card" target="_blank" rel="noopener">
+      <a href="https://github.com/hadiagha" class="social-card" target="_blank" rel="noopener">
         <i class="fab fa-github"></i>
         <span>GitHub</span>
       </a>
-      <a href="https://orcid.org/your-orcid" class="social-card" target="_blank" rel="noopener">
+      <a href="https://orcid.org" class="social-card" target="_blank" rel="noopener">
         <i class="fab fa-orcid"></i>
         <span>ORCID</span>
       </a>
-      <a href="https://scholar.google.com/citations?user=your-id" class="social-card" target="_blank" rel="noopener">
+      <a href="https://scholar.google.com" class="social-card" target="_blank" rel="noopener">
         <i class="fas fa-graduation-cap"></i>
         <span>Google Scholar</span>
       </a>
-      <a href="https://www.researchgate.net/profile/Your-Name" class="social-card" target="_blank" rel="noopener">
+      <a href="https://www.researchgate.net" class="social-card" target="_blank" rel="noopener">
         <i class="fab fa-researchgate"></i>
         <span>ResearchGate</span>
       </a>
@@ -110,13 +109,7 @@ permalink: /contact/
 
   <div class="office-hours">
     <h2>Office Hours</h2>
-    <p>I hold regular office hours for students and colleagues:</p>
-    <ul>
-      <li><strong>Monday:</strong> 2:00 PM - 4:00 PM</li>
-      <li><strong>Wednesday:</strong> 10:00 AM - 12:00 PM</li>
-      <li><strong>Friday:</strong> By appointment</li>
-    </ul>
-    <p>Please email me to schedule an appointment outside of these hours.</p>
+    <p>Meetings are generally by appointment. Please email me with a brief description of your topic and a few time options.</p>
   </div>
 </div>
 

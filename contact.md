@@ -19,7 +19,7 @@ permalink: /contact/
       <p>For collaboration, speaking, consulting, or academic inquiries</p>
       <a href="mailto:hadi.aghazadeh@ucalgary.ca" class="contact-link">hadi.aghazadeh@ucalgary.ca</a>
     </div>
-
+  
     <div class="contact-card">
       <div class="contact-icon">
         <i class="fas fa-university"></i>
@@ -28,15 +28,6 @@ permalink: /contact/
       <p>Department of Geomatics Engineering<br>
       University of Calgary<br>
       Calgary, Alberta, Canada</p>
-    </div>
-
-    <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fas fa-phone"></i>
-      </div>
-      <h3>Phone</h3>
-      <p>Preferred for time-sensitive coordination</p>
-      <a href="tel:+14034007294" class="contact-link">+1 (403) 400-7294</a>
     </div>
   </div>
 

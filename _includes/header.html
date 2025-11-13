@@ -3,8 +3,15 @@
     <div class="nav-container">
       <div class="nav-brand">
         <a href="{{ '/' | relative_url }}" class="site-title">
-          <span class="title-main">{{ site.title }}</span>
-          <span class="title-tagline">{{ site.tagline }}</span>
+          {% if site.author.avatar %}
+          <span class="site-avatar-wrapper">
+            <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="site-avatar" />
+          </span>
+          {% endif %}
+          <span class="title-text">
+            <span class="title-main">{{ site.title }}</span>
+            <span class="title-tagline">{{ site.tagline }}</span>
+          </span>
         </a>
       </div>
       

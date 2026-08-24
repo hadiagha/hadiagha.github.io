@@ -32,11 +32,16 @@ layout: default
             {{ page.date | date: "%B %d, %Y" }}
           </time>
         </span>
-        {% if page.last_modified_at %}
+        {% comment %}
+          The schema's field is `updated`; last_modified_at is kept as a
+          fallback so anything written against the older key still renders.
+        {% endcomment %}
+        {% assign revised = page.updated | default: page.last_modified_at %}
+        {% if revised %}
         <span class="post-modified">
-          <i class="fas fa-edit"></i>
-          Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
-            {{ page.last_modified_at | date: "%B %d, %Y" }}
+          <i class="fas fa-edit" aria-hidden="true"></i>
+          Updated <time datetime="{{ revised | date_to_xmlschema }}" itemprop="dateModified">
+            {{ revised | date: "%B %-d, %Y" }}
           </time>
         </span>
         {% endif %}

@@ -25,6 +25,15 @@
 
   {% seo %}
 
+  {% comment %}
+    jekyll-seo-tag emits og:image from page.image but has no alt equivalent, so
+    the schema's image_alt would otherwise be enforced by the content check and
+    then never used.
+  {% endcomment %}
+  {% if page.image and page.image_alt %}
+  <meta property="og:image:alt" content="{{ page.image_alt | escape }}">
+  {% endif %}
+
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -113,6 +113,7 @@ exclude:
   - docker-compose.yml
   - Makefile
   - README.md
+  - WRITING.md
   # Gitignored personal runbook, so the deploy never sees it — excluded here as
   # well so a local build cannot publish it either.
   - DEPLOY.md

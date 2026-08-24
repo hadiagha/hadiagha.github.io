@@ -27,6 +27,10 @@ it starts in seconds.
 
 ## Writing
 
+**[WRITING.md](WRITING.md) is the full guide** — every front-matter field, image
+and maths conventions, series, and what each `doctor` error means. What follows
+is the summary.
+
 ### 1. Start
 
 ```bash

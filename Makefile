@@ -18,7 +18,7 @@ check: build ## Build, then validate links, images and alt text
 	$(COMPOSE) run --rm site bundle exec htmlproofer _site \
 	  --disable-external \
 	  --allow-hash-href \
-	  --ignore-urls "/^\/assets\/images\/(favicon|apple-touch-icon)/,/^mailto:\?/"
+	  --ignore-urls "/^mailto:\?/"
 
 lock: ## Re-resolve Gemfile.lock after editing the Gemfile
 	$(COMPOSE) run --rm --no-deps site bundle lock

@@ -61,42 +61,12 @@ permalink: /contact/
     </div>
   </div>
 
-  <div class="contact-form-section">
-    <h2>Send a Message</h2>
-    <p>You can also use the form below to send me a message directly:</p>
-    
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
-      <div class="form-group">
-        <label for="name">Name *</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="subject">Subject *</label>
-        <input type="text" id="subject" name="subject" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="message">Message *</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
-      </div>
-      
-      <button type="submit" class="btn btn-primary">
-        <i class="fas fa-paper-plane"></i> Send Message
-      </button>
-    </form>
-    
-    <p class="form-note">
-      <strong>Note:</strong> To use this contact form, sign up for a free account at 
-      <a href="https://formspree.io" target="_blank" rel="noopener">Formspree.io</a> 
-      and replace <code>your-form-id</code> in the form action with your actual form ID.
-    </p>
-  </div>
+  {% comment %}
+    A contact form used to sit here posting to formspree.io/f/your-form-id — a
+    placeholder endpoint. Messages were accepted by the browser and silently
+    discarded, and the setup instructions meant for a developer were rendered
+    to every visitor. Email is the honest option until a real form is wired up.
+  {% endcomment %}
 
   <div class="office-hours">
     <h2>Office Hours</h2>
@@ -288,11 +258,20 @@ permalink: /contact/
 
 @media (max-width: 768px) {
   .contact-methods {
-    grid-template-columns: 1fr;
+    /* minmax(0, …) so a long email address cannot widen the page */
+    grid-template-columns: minmax(0, 1fr);
   }
-  
+
+  .contact-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .contact-card .contact-icon {
+    font-size: 2.25rem;
+  }
+
   .social-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 </style>

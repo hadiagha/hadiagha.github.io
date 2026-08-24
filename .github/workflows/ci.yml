@@ -28,13 +28,13 @@ jobs:
           JEKYLL_ENV: production
 
       - name: Validate HTML, links and images
-        # The favicon ignore is temporary: default.html references icon files
-        # that do not exist yet. Stage 2 adds them and removes this flag.
+        # The mailto ignore covers the share-by-email button, which is
+        # deliberately recipient-less so the reader fills it in.
         run: |
           bundle exec htmlproofer _site \
             --disable-external \
             --allow-hash-href \
-            --ignore-urls "/^\/assets\/images\/(favicon|apple-touch-icon)/,/^mailto:\?/"
+            --ignore-urls "/^mailto:\?/"
 
       - name: Reject oversized files
         run: |

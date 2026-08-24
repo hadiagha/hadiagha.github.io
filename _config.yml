@@ -64,12 +64,18 @@ twitter:
   username: hadi_aghazadeh
   card: summary_large_image
 
-# Analytics (optional - add your Google Analytics ID)
-google_analytics: UA-XXXXXXXXX-X
+# Analytics. Cloudflare Web Analytics; cookieless and loaded only in production.
+# Leave empty and no analytics script is emitted at all — the previous
+# UA-XXXXXXXXX-X placeholder was truthy to Liquid and shipped a live request to
+# a Universal Analytics property that no longer exists.
+# Left with no value on purpose so Liquid sees nil. Note that an empty string
+# would be TRUTHY in Liquid — only nil and false are falsy — which is exactly
+# how the old UA-XXXXXXXXX-X placeholder shipped a live script tag.
+cloudflare_analytics_token:
 
-# Disqus Comments (optional)
-disqus:
-  shortname: your-disqus-shortname
+# Comments are intentionally absent. The previous Disqus block held a
+# placeholder shortname, so every post requested a nonexistent subdomain.
+# giscus (GitHub Discussions) is the planned replacement.
 
 # Build exclusions. This list REPLACES Jekyll's defaults, so the Ruby/Node
 # entries have to be restated rather than assumed.

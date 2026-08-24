@@ -49,8 +49,12 @@ layout: default
 
   <div class="post-content container" itemprop="articleBody">
     {% if page.toc %}
-    <aside class="toc">
-      <h3>Table of Contents</h3>
+    {% comment %}
+      h2, not h3: this is the first heading after the post's h1, and skipping a
+      level breaks the document outline for screen-reader navigation.
+    {% endcomment %}
+    <aside class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">Table of Contents</h2>
       <nav id="toc"></nav>
     </aside>
     {% endif %}
@@ -140,23 +144,10 @@ layout: default
       {% endif %}
     </nav>
 
-    {% if site.disqus.shortname and page.comments != false %}
-    <div class="post-comments">
-      <h3>Comments</h3>
-      <div id="disqus_thread"></div>
-      <script>
-        var disqus_config = function () {
-          this.page.url = '{{ page.url | absolute_url }}';
-          this.page.identifier = '{{ page.id }}';
-        };
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    </div>
-    {% endif %}
+    {% comment %}
+      The Disqus block that used to sit here was driven by a placeholder
+      shortname, so every post loaded a script from a subdomain that does not
+      exist. giscus, backed by GitHub Discussions, is the planned replacement.
+    {% endcomment %}
   </footer>
 </article>

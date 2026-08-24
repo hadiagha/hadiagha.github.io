@@ -58,3 +58,6 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+# Personal runbook. Contains account-level steps and is deliberately local-only.
+DEPLOY.md

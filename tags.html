@@ -129,6 +129,10 @@ permalink: /tags/
   .tag-title {
     display: flex;
     align-items: center;
+    /* Flex items default to min-width:auto and will not shrink below their
+       content, so a long tag name plus the count overflowed narrow screens. */
+    flex-wrap: wrap;
+    min-width: 0;
     gap: var(--space-sm);
     margin-bottom: var(--space-xl);
     padding-bottom: var(--space-md);
@@ -189,8 +193,14 @@ permalink: /tags/
 
 @media (max-width: 768px) {
   .post-item {
-    grid-template-columns: 1fr;
+    /* minmax(0, …) so a long title cannot force the grid wider than the screen */
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-sm);
+    padding: var(--space-md);
+  }
+
+  .post-item .post-details {
+    min-width: 0;
   }
 }
 </style>

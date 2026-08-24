@@ -14,7 +14,10 @@
   
   // Neutrals
   --color-text: #1f2937;
-  --color-text-light: #6b7280;
+  // Was #6b7280, which measured 4.39:1 against --color-bg-tertiary in the
+  // footer — below the 4.5:1 minimum for body text. This clears it on all three
+  // light surfaces (5.78 / 5.53 / 5.25).
+  --color-text-light: #5f6673;
   --color-bg: #ffffff;
   --color-bg-secondary: #f9fafb;
   --color-bg-tertiary: #f3f4f6;
@@ -70,6 +73,90 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+}
+
+// Accessibility fundamentals ------------------------------------------------
+
+// Keyboard focus was entirely invisible before this: there was not one :focus
+// rule in the stylesheet. :focus-visible keeps it off mouse clicks.
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// Belt and braces for browsers without :focus-visible support.
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 0 0 0.375rem 0;
+  text-decoration: none;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+// Anchor targets get a temporary tabindex so focus can move to them; that must
+// not paint an outline around a whole section.
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+// Narrow-viewport safety ----------------------------------------------------
+
+// A grid track of `1fr` resolves to minmax(auto, 1fr), and `auto` will not
+// shrink below the longest unbreakable word. Long titles ("Reinforcement"),
+// email addresses and URLs were therefore forcing the whole document wider than
+// the screen on small phones. Letting them break fixes the cause rather than
+// hiding it with overflow-x: hidden on the body.
+h1, h2, h3, h4, h5, h6,
+p, li, dd, dt,
+figcaption,
+th, td,
+a {
+  overflow-wrap: break-word;
+}
+
+// Wide content scrolls inside its own box, never the page.
+.post-content .content,
+.page-content {
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn:hover,
+  .post-card:hover,
+  .social-links a:hover,
+  .share-btn:hover {
+    transform: none;
+  }
 }
 
 body {
@@ -176,14 +263,20 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-md);
 }
 
 .nav-brand {
+  // Without min-width:0 a flex item refuses to shrink below its content, so
+  // the long tagline pushed the nav toggle off the right edge of the screen.
+  min-width: 0;
+
   .site-title {
     display: flex;
     align-items: center;
     gap: var(--space-md);
     text-decoration: none;
+    min-width: 0;
   }
 
   .site-avatar-wrapper {
@@ -219,6 +312,15 @@ a {
     color: var(--color-text-light);
     font-weight: 400;
   }
+}
+
+// Theme toggle + hamburger, always in the header bar and never inside the
+// collapsing menu.
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
 }
 
 .nav-toggle {
@@ -668,22 +770,32 @@ a {
   
   .post-content {
     display: grid;
-    grid-template-columns: 1fr;
+    // minmax(0, 1fr) rather than 1fr: a bare 1fr means minmax(auto, 1fr), and
+    // `auto` refuses to shrink below its content. A wide display equation was
+    // therefore stretching the whole column and taking the page with it — which
+    // also stopped the equation's own overflow-x from ever engaging.
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2xl);
     max-width: var(--content-max);
     margin: 0 auto;
-    
+
     &.has-toc {
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 200px minmax(0, 1fr);
       max-width: 1000px;
+    }
+
+    .content {
+      min-width: 0;
     }
     
     .toc {
       position: sticky;
       top: 100px;
       align-self: start;
-      
-      h3 {
+
+      // The TOC heading is an h2 for outline correctness; it is still sized
+      // like a small label rather than a section heading.
+      h2 {
         font-size: 1rem;
         margin-bottom: var(--space-md);
       }
@@ -826,10 +938,17 @@ a {
   
   .citation-formats {
     display: grid;
+    // An implicit grid column is sized to max-content. The BibTeX block is
+    // ~494px wide, so this grid — not the maths — was what actually widened
+    // the article page on phones, and it kept the code blocks' own
+    // overflow-x from ever engaging.
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-lg);
   }
-  
+
   .citation-format {
+    min-width: 0;
+
     h4 {
       font-size: 1rem;
       margin-bottom: var(--space-sm);
@@ -901,7 +1020,9 @@ a {
     }
     
     &.twitter {
-      background-color: #1da1f2;
+      // Brand #1da1f2 gives only 2.83:1 against white label text. Darkened to
+      // clear 4.5:1; the platform's own branding is revisited in the redesign.
+      background-color: #146ba6;
     }
     
     &.linkedin {
@@ -992,10 +1113,36 @@ a {
 
 // Responsive design
 @media (max-width: 768px) {
+  // The root cause of the horizontal overflow: this grid kept its fixed 260px
+  // first column on phones. With a 3rem gap and the container's padding that
+  // left roughly 34px for the text on a 390px screen, so the copy wrapped one
+  // word per line and the document scrolled sideways.
+  .featured-book-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .featured-book-text h2 {
+    font-size: 1.5rem;
+  }
+
+  // The tagline is decorative on a phone and it is what pushed the hamburger
+  // off screen. The site name alone is enough.
+  .nav-brand .title-tagline {
+    display: none;
+  }
+
+  .nav-brand .title-main {
+    font-size: 1.15rem;
+  }
+
   .nav-toggle {
     display: flex;
+    flex-shrink: 0;
   }
-  
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -1029,13 +1176,16 @@ a {
     grid-template-columns: 1fr;
   }
   
-  .post-content {
-    &.has-toc {
-      grid-template-columns: 1fr;
-      
-      .toc {
-        display: none;
-      }
+  // Selector must be `.post .post-content.has-toc`, matching the base rule's
+  // specificity (0,3,0). Media queries add none of their own, so the shorter
+  // `.post-content.has-toc` (0,2,0) lost — the two-column grid stayed active on
+  // phones, and because .toc is hidden here, .content fell into the fixed 200px
+  // first track. Every article body was rendering 200px wide on mobile.
+  .post .post-content.has-toc {
+    grid-template-columns: minmax(0, 1fr);
+
+    .toc {
+      display: none;
     }
   }
   
@@ -1061,6 +1211,23 @@ a {
 // Math rendering styles
 .MathJax {
   font-size: 1.1em;
+}
+
+// Display equations are routinely wider than a phone screen — the Q-learning
+// and DQN blocks in the intro-RL post overflowed a 390px viewport by 175px.
+// Give each equation its own scroll container so the page never scrolls.
+mjx-container[display="true"],
+.MathJax_Display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding-bottom: 0.35rem;
+}
+
+// MathJax renders inline maths as a flex-ish inline block; stop long inline
+// expressions doing the same thing.
+mjx-container:not([display="true"]) {
+  max-width: 100%;
 }
 
 .MathJax_Display {

@@ -1,11 +1,12 @@
 <header class="site-header">
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Primary">
     <div class="nav-container">
       <div class="nav-brand">
         <a href="{{ '/' | relative_url }}" class="site-title">
           {% if site.author.avatar %}
           <span class="site-avatar-wrapper">
-            <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="site-avatar" />
+            <img src="{{ site.author.avatar | relative_url }}"
+                 alt="" width="40" height="40" class="site-avatar" />
           </span>
           {% endif %}
           <span class="title-text">
@@ -14,51 +15,66 @@
           </span>
         </a>
       </div>
-      
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      
+
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">
-              <i class="fas fa-home"></i> Home
+            <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}"
+               {% if page.url == '/' %}aria-current="page"{% endif %}>
+              <i class="fas fa-home" aria-hidden="true"></i> Home
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}">
-              <i class="fas fa-pen-nib"></i> Blog
+            <a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}"
+               {% if page.url contains '/blog' %}aria-current="page"{% endif %}>
+              <i class="fas fa-pen-nib" aria-hidden="true"></i> Blog
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/tags' | relative_url }}" class="nav-link {% if page.url contains '/tags' %}active{% endif %}">
-              <i class="fas fa-tags"></i> Topics
+            <a href="{{ '/tags' | relative_url }}" class="nav-link {% if page.url contains '/tags' %}active{% endif %}"
+               {% if page.url contains '/tags' %}aria-current="page"{% endif %}>
+              <i class="fas fa-tags" aria-hidden="true"></i> Topics
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}">
-              <i class="fas fa-user"></i> About
+            <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}"
+               {% if page.url contains '/about' %}aria-current="page"{% endif %}>
+              <i class="fas fa-user" aria-hidden="true"></i> About
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/cv' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}">
-              <i class="fas fa-file-alt"></i> CV
+            <a href="{{ '/cv' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}"
+               {% if page.url contains '/cv' %}aria-current="page"{% endif %}>
+              <i class="fas fa-file-alt" aria-hidden="true"></i> CV
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/contact' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}">
-              <i class="fas fa-envelope"></i> Contact
+            <a href="{{ '/contact' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}"
+               {% if page.url contains '/contact' %}aria-current="page"{% endif %}>
+              <i class="fas fa-envelope" aria-hidden="true"></i> Contact
             </a>
-          </li>
-          <li class="nav-item">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-              <i class="fas fa-moon"></i>
-            </button>
           </li>
         </ul>
+      </div>
+
+      {% comment %}
+        Theme toggle and hamburger sit outside .nav-menu deliberately. The
+        toggle used to be the last item in the nav list, which meant that on a
+        phone — where that list collapses into a slide-in panel — dark mode was
+        unreachable without first opening the menu.
+      {% endcomment %}
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button"
+                aria-label="Switch to dark theme" aria-pressed="false">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+
+        <button class="nav-toggle" id="nav-toggle" type="button"
+                aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </nav>

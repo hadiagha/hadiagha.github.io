@@ -15,7 +15,10 @@ author:
     google_scholar: ""
 
 # URL settings
-url: "https://hadiagha.github.io"
+# Canonical host. Everything absolute — canonical tags, Open Graph, the sitemap,
+# the Atom feed, citation blocks — is built from this, so it must not be changed
+# before the TLS certificate exists for the domain.
+url: "https://hadiaghazadeh.com"
 baseurl: ""
 
 # Build settings
@@ -90,6 +93,9 @@ exclude:
   - docker-compose.yml
   - Makefile
   - README.md
+  # Gitignored personal runbook, so the deploy never sees it — excluded here as
+  # well so a local build cannot publish it either.
+  - DEPLOY.md
   - scripts
   - .github
   - .dockerignore

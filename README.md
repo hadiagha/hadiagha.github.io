@@ -81,4 +81,9 @@ assets/       css, js, images, cv
 _config.yml   site configuration
 ```
 
-The site is at <https://hadiagha.github.io>.
+The site is at <https://hadiaghazadeh.com>. The old `hadiagha.github.io`
+address redirects there automatically, preserving paths.
+
+`CNAME` at the repo root holds the custom domain. Jekyll copies it into `_site`,
+so the Actions deploy carries it through; deleting it would drop the domain on
+the next publish.

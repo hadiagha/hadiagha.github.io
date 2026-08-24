@@ -1,0 +1,2 @@
+# Drafts live here. They are visible with `make preview` and never built in
+# production, so an unfinished piece cannot leak at a public URL.

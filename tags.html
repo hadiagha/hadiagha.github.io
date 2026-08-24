@@ -45,7 +45,7 @@ permalink: /tags/
                 <h3 class="post-title">
                   <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
                 </h3>
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+                <p class="post-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
               </div>
             </article>
           {% endfor %}

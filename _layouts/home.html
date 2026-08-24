@@ -79,7 +79,7 @@ layout: default
           <h3 class="post-title">
             <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
           </h3>
-          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+          <p class="post-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
           <div class="post-tags">
             {% for tag in post.tags %}
             <a href="{{ '/tags#' | append: tag | relative_url }}" class="tag">

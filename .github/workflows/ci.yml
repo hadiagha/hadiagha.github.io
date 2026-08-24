@@ -22,6 +22,11 @@ jobs:
           ruby-version-file: .ruby-version
           bundler-cache: true
 
+      - name: Validate content
+        # Front matter, filename/date agreement, tags, series, alt text and
+        # orphaned media. Uses only the standard library, so no setup step.
+        run: python3 scripts/doctor.py
+
       - name: Build
         run: bundle exec jekyll build --trace
         env:

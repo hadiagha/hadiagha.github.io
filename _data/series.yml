@@ -1,0 +1,15 @@
+# Article series.
+#
+# A post joins a series with `series: <key-from-this-file>` and
+# `series_part: <n>` in its front matter. The post layout then renders
+# "Part n of m" with links to the siblings.
+#
+# `make doctor` reports posts referencing a series key that is not defined here.
+#
+# Example:
+#
+# rl-for-operations-research:
+#   title: Reinforcement learning for operations research
+#   description: >-
+#     Working through classical OR problems with RL, from formulation to a
+#     policy you could actually deploy.

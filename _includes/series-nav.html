@@ -1,0 +1,35 @@
+{% comment %}
+  Series navigation. Renders only when the post declares a `series` key that
+  exists in _data/series.yml. Siblings are gathered by scanning posts for the
+  same key and ordering by series_part, so adding a part needs no index file.
+{% endcomment %}
+
+{% assign series_key = page.series %}
+{% assign series_meta = site.data.series[series_key] %}
+
+{% if series_key and series_meta %}
+  {% assign siblings = site.posts | where: "series", series_key | sort: "series_part" %}
+  {% if siblings.size > 0 %}
+  <aside class="series-nav" aria-labelledby="series-heading">
+    <p class="series-eyebrow">
+      Part {{ page.series_part }} of {{ siblings.size }}
+    </p>
+    <h2 id="series-heading" class="series-title">{{ series_meta.title }}</h2>
+    {% if series_meta.description %}
+    <p class="series-description">{{ series_meta.description }}</p>
+    {% endif %}
+    <ol class="series-list">
+      {% for item in siblings %}
+      <li class="series-item {% if item.url == page.url %}is-current{% endif %}">
+        <span class="series-num">{{ item.series_part }}</span>
+        {% if item.url == page.url %}
+          <span aria-current="true">{{ item.title }}</span>
+        {% else %}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </aside>
+  {% endif %}
+{% endif %}

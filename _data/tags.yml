@@ -1,0 +1,53 @@
+# Controlled tag vocabulary.
+#
+# `make doctor` warns about any tag used in a post that is not listed here.
+# The point is not bureaucracy — it is that a tag used once is a tag nobody can
+# browse by. Add deliberately, and prefer an existing tag over a near-synonym.
+
+reinforcement-learning:
+  label: Reinforcement learning
+  description: Sequential decision-making, policies, bandits, deep RL.
+
+optimization:
+  label: Optimization
+  description: Mathematical programming, MILP, branch-and-bound, cutting planes.
+
+operations-research:
+  label: Operations research
+  description: Routing, scheduling, allocation, classical OR methods.
+
+forecasting:
+  label: Forecasting
+  description: Time series, demand and price forecasting, backtesting.
+
+ml-engineering:
+  label: ML engineering
+  description: Pipelines, serving, monitoring, and the production plumbing.
+
+llm:
+  label: Large language models
+  description: Fine-tuning, RAG, agents, evaluation.
+
+energy-markets:
+  label: Energy markets
+  description: Electricity pricing, unit commitment, power flow.
+
+mathematics:
+  label: Mathematics
+  description: The derivations behind the methods.
+
+paper-notes:
+  label: Paper notes
+  description: Notes on something I read.
+
+career:
+  label: Career
+  description: Professional lessons, working practices, reflections.
+
+books:
+  label: Books
+  description: Reading and reviews.
+
+tutorial:
+  label: Tutorial
+  description: Step-by-step, code-first walkthroughs.

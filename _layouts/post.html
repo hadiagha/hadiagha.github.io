@@ -5,7 +5,20 @@ layout: default
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="container">
+      {% assign kind = page.kind | default: "article" %}
+      {% unless kind == "article" %}
+      <p class="post-kind post-kind--{{ kind }}">
+        {% case kind %}
+          {% when "note" %}<i class="fas fa-sticky-note" aria-hidden="true"></i> Note
+          {% when "review" %}<i class="fas fa-book" aria-hidden="true"></i> Book review
+          {% when "essay" %}<i class="fas fa-feather" aria-hidden="true"></i> Essay
+        {% endcase %}
+      </p>
+      {% endunless %}
       <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+      {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+      {% endif %}
       <div class="post-meta">
         <span class="post-author">
           <i class="fas fa-user"></i>
@@ -60,6 +73,7 @@ layout: default
     {% endif %}
     
     <div class="content">
+      {% include series-nav.html %}
       {{ content }}
     </div>
   </div>

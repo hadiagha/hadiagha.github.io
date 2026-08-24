@@ -33,7 +33,14 @@ permalink: /blog/
         </header>
         
         <div class="post-content">
-          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+          {% comment %}
+            `description` is the authored summary and is required by the schema;
+            `excerpt` is Jekyll's auto-generated first paragraph, kept only as a
+            fallback for anything written before the schema existed.
+          {% endcomment %}
+          <p class="post-excerpt">
+            {{ post.description | default: post.excerpt | strip_html | truncate: 200 }}
+          </p>
         </div>
         
         <footer class="post-footer">

@@ -24,7 +24,14 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
   math_engine: mathjax
-  
+
+# Dart Sass emits a source map alongside main.css by default; we don't ship one.
+# `compressed` is explicit because Jekyll 3 compressed by default and Jekyll 4
+# does not — without it the migration would silently inflate main.css 6x.
+sass:
+  sourcemap: never
+  style: compressed
+
 # Collections
 collections:
   posts:
@@ -64,9 +71,19 @@ google_analytics: UA-XXXXXXXXX-X
 disqus:
   shortname: your-disqus-shortname
 
-# Build exclusions
+# Build exclusions. This list REPLACES Jekyll's defaults, so the Ruby/Node
+# entries have to be restated rather than assumed.
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
+  - .bundle
+  - .ruby-version
+  - Dockerfile
+  - docker-compose.yml
+  - Makefile
+  - README.md
+  - scripts
+  - .github
+  - .dockerignore

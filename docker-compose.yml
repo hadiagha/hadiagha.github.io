@@ -1,0 +1,11 @@
+services:
+  site:
+    build: .
+    image: hadiagha-site:latest
+    ports:
+      - "4000:4000"   # site
+      - "35729:35729" # livereload
+    volumes:
+      - .:/site
+    environment:
+      JEKYLL_ENV: development

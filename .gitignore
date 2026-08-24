@@ -1,47 +1,60 @@
-# Jekyll
+# Build output
 _site/
-.sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+.sass-cache/
 
-# Ruby
+# Ruby / Bundler
+# NOTE: Gemfile.lock is intentionally NOT ignored. Committing it is what makes
+# local, CI and production builds resolve the same gem versions.
+vendor/
+.bundle/
 *.gem
 *.rbc
-/.config
-/coverage/
-/InstalledFiles
-/pkg/
-/spec/reports/
-/spec/examples.txt
-/test/tmp/
-/test/version_tmp/
-/tmp/
-Gemfile.lock
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Secrets and private data. Analytics exports, subscriber lists and API keys
+# must never enter this repository.
+.env
+.env.*
+*.key
+*.pem
+secrets.yml
+analytics/
+subscribers*.csv
+
+# Large media. Video lives on YouTube; datasets and model files belong in a
+# release asset or their own repository.
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.parquet
+*.ckpt
+*.pt
+*.pth
+*.h5
+*.onnx
 
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon?
 
 # Windows
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# IDE
+# Editors
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# Node (if using any JS tools)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment variables
-.env
-.env.local
-.env.production

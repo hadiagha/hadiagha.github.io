@@ -1,134 +1,216 @@
 ---
 layout: page
 title: Curriculum Vitae
-description: Overview of my academic, professional, and research experience
+description: Senior Data Scientist · Applied Scientist · Machine Learning Engineer
 permalink: /cv/
+updated: 2026-08-24
 ---
 
 <div class="cv-download">
-  <a href="/assets/hadi_cv.pdf" class="btn btn-primary" download>
-    <i class="fas fa-download"></i> Download PDF Version
+  <a href="{{ '/assets/hadi_cv.pdf' | relative_url }}" class="btn btn-primary" download>
+    <i class="fas fa-download" aria-hidden="true"></i> Download PDF
   </a>
+  <p class="cv-contact">
+    <a href="mailto:hadi@hadiaghazadeh.com">hadi@hadiaghazadeh.com</a> ·
+    Calgary, Alberta, Canada
+  </p>
 </div>
 
 ## Profile
 
-**Name:** Hadi Aghazadeh  
-**Current Role:** Machine Learning Engineer, Bits in Glass (Remote, Calgary)  
-**Focus:** Reinforcement Learning, Operations Research, ML Systems, and LLM-based applications  
-**Certification:** Databricks Certified Machine Learning Associate  
-**Book:** *Reinforcement Learning for Business* (Manning Publications)
+Senior Data Scientist and applied machine learning researcher with **8+ years**
+building production forecasting, optimization and decision-intelligence systems.
+I own the end-to-end development and operation of **locational marginal price
+forecasting across 10,000+ pricing nodes** in US and Canadian electricity
+markets, covering feature engineering, applied research, model development,
+distributed training, deployment, APIs, monitoring and production maintenance.
 
-I design and deploy data-driven solutions for pricing, forecasting, and decision-making under uncertainty, with experience across fintech, mobility, and fuel/energy applications.
+Specialized in time-series forecasting, operations research, mixed-integer
+optimization and reinforcement learning, with hands-on experience building
+cloud-native ML systems. PhD candidate, published researcher, and author of a
+practical book on applied reinforcement learning.
+
+## Experience
+
+### Senior Data Scientist — Enverus
+*March 2026 – Present · Calgary, Canada*
+
+- Own end-to-end development and production operation of **locational marginal
+  price forecasting** covering more than **10,000 pricing nodes** across U.S. and
+  Canadian electricity markets.
+- Lead the full ML lifecycle: data analysis, feature engineering, applied
+  research, model development, backtesting, distributed training, deployment,
+  API development, monitoring, incident resolution and ongoing maintenance.
+- Build and operate large-scale training and inference pipelines on
+  **Kubernetes**, with **Google Cloud** for model serving and storage,
+  **Snowflake** for analytical workloads and **Kafka** for streaming data.
+- Develop reproducible deployment and model-management workflows with **Pulumi
+  and Terraform**; production observability with **Grafana and Sentry**.
+- Research and prototype large-scale **mixed-integer linear programming** for
+  power-flow and **security-constrained unit commitment**, emphasising fast,
+  computationally efficient electricity-price optimization.
+- Investigate **reinforcement-learning-guided cutting-plane selection** to
+  improve branch-and-bound search and accelerate large-scale power-system
+  optimization models.
+
+### Machine Learning Engineer and Technical Lead — Bits in Glass
+*April 2024 – February 2026 · Calgary, Canada (Remote)*
+
+- Led technical development of a production **hierarchical RAG platform
+  processing more than 20 million oil-and-gas documents**, combining structured
+  and unstructured data, hybrid retrieval, embedding-model evaluation,
+  Databricks, LangChain and Model Context Protocol.
+- Architected a production **dynamic fuel-pricing optimization system** using
+  integer linear programming and contextual bandits, supporting adaptive margin-
+  and volume-based strategies and cutting pricing decision time from several
+  hours to **under 30 minutes**.
+- Directed implementation of an **agentic AI framework for railway legacy-system
+  modernization**, automating extraction of business rules and user stories from
+  COBOL applications.
+- Built an AI-enabled **energy-sector digital twin** integrating AWS TwinMaker,
+  IoT sensor data, 3D asset models and natural-language scenario exploration.
+- Developed an end-to-end LLM document-processing pipeline with LangGraph and
+  Databricks Mosaic AI, achieving **95%+ structured extraction accuracy** on
+  batch invoice data.
+- Designed a repeatable evaluation framework for enterprise RAG systems with
+  limited ground-truth data.
+
+### Machine Learning Developer — AltaML
+*May 2023 – September 2023 · Calgary, Canada (Hybrid)*
+
+- Developed a scalable hybrid demand-forecasting system for **100+ fuel-retail
+  locations**, improving inventory planning and generating more than **$1 million
+  in projected annual savings**.
+
+### Senior Data Scientist — Snapp
+*May 2021 – June 2022 · Tehran, Iran (Hybrid)*
+*Largest ride-hailing platform in the Middle East*
+
+- Led development of a reinforcement-learning-based **dynamic surge-pricing
+  system** that improved order-fulfilment rate by **5%** across more than
+  **200,000 daily orders**, improving marketplace balance, revenue performance
+  and driver utilization.
+- Directed development of an unsupervised **fraud-detection system** achieving
+  **90%+ recall** and eliminating more than **300 hours of manual review per
+  month**.
+
+### Data Scientist — Fanap (PARSA)
+*January 2018 – April 2021 · Tehran, Iran*
+
+- Led development of an end-to-end **ATM cash-demand forecasting and
+  replenishment optimization system**, achieving **17% MAPE** and reducing
+  operational costs by **10%**.
 
 ## Education
 
-### Ph.D. Candidate in Geomatics Engineering
-**University of Calgary** | *July 2022 – Expected Oct 2025*  
-- Research focus: **Reinforcement Learning for Vehicle Routing**  
-- GPA: **4.0/4.0**  
-- Awards: Alberta Innovates Scholarship, Open Doctoral Scholarship
+### PhD Candidate, Geomatics Engineering — University of Calgary
+*July 2022 – Defending 9 October 2026 · GPA 4.0/4.0*
 
-### M.Sc. in Industrial Engineering
-**Amirkabir University of Technology** | *2015 – 2018*
+Research: reinforcement learning, real-time policy optimization, vehicle
+routing, disaster-response logistics and transportation optimization.
 
-### B.Sc. in Industrial Engineering
-**Iran University of Science and Technology** | *2011 – 2015*
+### MSc, Industrial Engineering — Amirkabir University of Technology
+*2015 – 2018 · Tehran Polytechnic*
 
-## Professional Experience
+### BSc, Industrial Engineering — Iran University of Science and Technology
+*2011 – 2015*
 
-### Machine Learning Engineer
-**Bits in Glass** | *April 2024 – Present* | Calgary, Canada (Remote)
-- Build ML and LLM solutions on **Databricks (Mosaic AI, MLflow)** for production use.
-- Designed and deployed an **automated invoice text extraction** system using LLMs and LangGraph to process large batches of PDFs with structured outputs.
-- Developed a **dynamic fuel pricing optimization** pipeline combining reinforcement learning and linear programming for real-time pricing.
+## Book and selected publications
 
-### Machine Learning Developer
-**AltaML** | *May 2023 – Sept 2023* | Calgary, Canada
-- Contributed to a **hybrid fuel demand forecasting** model for 100+ sites, enabling savings exceeding **$1M per year**.
+**Aghazadeh, H.** (2026). *Applied Reinforcement Learning: Business optimization
+and LLM fine-tuning.* Manning Publications.
+[Publisher]({{ site.book.manning }})
 
-### Senior Data Scientist
-**Snapp (largest ride-hailing startup in the Middle East)** | *May 2021 – June 2022* | Tehran, Iran
-- Led **dynamic surge pricing** using reinforcement learning, improving order fulfillment by ~5% (~200K orders/day).
-- Developed an **unsupervised fraud detection** solution, saving ~300 labor hours per month with >90% recall.
+The [research page]({{ '/research/' | relative_url }}) lists all publications
+with venues and links.
 
-### Data Scientist
-**Fanap (PARSA)** | *Jan 2018 – April 2021* | Tehran, Iran
-- Built end-to-end **ATM cash demand forecasting** (MAPE ~17%) and optimization models, reducing operational costs by ~10%.
+## Technical expertise
 
-## Teaching & Courses
+**Forecasting and machine learning** — time-series forecasting, demand
+forecasting, LMP forecasting, feature engineering, backtesting, model
+evaluation, deep learning, transformer architectures, large language models,
+RAG, agentic AI, foundation-model fine-tuning
 
-- **Instructor (Udemy)**  
-  - *Contextual Multi-Armed Bandit Problems in Python*  
-  - *Reinforcement Learning for Operations Research*  
-  Courses bridge RL theory with practical implementations.
+**Optimization and decision science** — operations research, mixed-integer
+linear programming, security-constrained unit commitment, power-flow
+optimization, branch-and-bound, cutting planes, reinforcement learning, deep RL,
+contextual bandits, dynamic pricing, vehicle routing, supply-chain optimization
 
-- **Teaching Assistant, University of Calgary**  
-  - *Data Mining and Databases*
+**Production ML and infrastructure** — Kubernetes, Google Cloud Platform,
+Snowflake, Kafka, Terraform, Pulumi, Grafana, Sentry, Databricks, MLflow,
+Docker, AWS, SageMaker, Bedrock, Microsoft Azure, CI/CD for ML, model serving,
+API development, production monitoring
 
-## Book
+**Frameworks and tools** — Python, PyTorch, TensorFlow, LangChain, LangGraph,
+Hugging Face, Model Context Protocol, OpenAI API, Claude API, Apache Spark
 
-- **Reinforcement Learning for Business**, Manning Publications  
-  - Practical RL techniques for pricing, logistics, and operations.  
-  - [Book page at Manning](https://www.manning.com/books/reinforcement-learning-for-business)
+## Certifications
 
-## Honors and Awards (Selected)
+- **Databricks Certified Machine Learning Associate** (2024)
+- **Reinforcement Learning Specialization**, University of Alberta / Coursera (2022)
 
-- **Alberta Innovates Scholarship** (2024) – one of Alberta's most prestigious academic awards.  
-- **Open Doctoral Scholarship**, University of Calgary (2024).  
-- **First Place – Amii Reinforcement Learning Competition**, Upper Bound 2024.  
-- **Schulich Leadership for Engineers Catalyst Program**, University of Calgary (2023).  
-- **First Place – AI Competition**, Amirkabir University of Technology (2018), demand forecasting (150+ teams).
+## Selected honors and awards
 
-## Certificates
+- **Alberta Innovates Graduate Student Scholarship** (2024) — $31,000 per year for two years
+- **First Place, Amii Reinforcement Learning Competition**, Upper Bound Conference (2024)
+- **Open Doctoral Scholarship**, University of Calgary (2024) — $15,000
+- **First Place, AI Demand Forecasting Competition**, Amirkabir University of
+  Technology (2018) — first among more than 150 teams
 
-- **Databricks Certified Machine Learning Associate** (2024)  
-- **Reinforcement Learning Specialization**, University of Alberta (Coursera, 2022)
+## Leadership and teaching
 
-## Technical Skills
-
-**Core:** Python, Databricks, PyTorch, LangChain, Git, AWS, MS Azure  
-**Domains:** Reinforcement Learning, Time Series Forecasting, Optimization, LLM/RAG systems
+- **Vice President and Student Representative**, Graduate Geomatics Group,
+  University of Calgary (2023–2024) — led a graduate engineering community of
+  more than 50 members
+- **Teaching Assistant**, University of Calgary — Engineering Design,
+  Programming with Data, Spatial Data Mining
+- **Course instructor and creator** — *Contextual Multi-Armed Bandits in Python*
+  and *Reinforcement Learning for Operations Research*
+- **Peer reviewer** for machine learning, transportation, optimization and
+  spatial-computing journals
 
 ## Languages
 
-- **English:** Advanced  
-- **Persian:** Native
-
-## Status
-
-- Permanent Residency candidate in Canada (received ITA).  
-- Currently on Open Work Permit and Study Permit.
-
----
+English (advanced) · Persian (native)
 
 <style>
 .cv-download {
   text-align: center;
-  margin-bottom: 2rem;
-  padding: 2rem;
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-xl);
   background-color: var(--color-bg-secondary);
   border-radius: 0.5rem;
+}
+
+.cv-download .cv-contact {
+  margin: var(--space-md) 0 0;
+  font-size: 0.95rem;
+  color: var(--color-text-light);
 }
 
 .page-content h2 {
   color: var(--color-primary);
   border-bottom: 2px solid var(--color-border);
   padding-bottom: 0.5rem;
-  margin-top: 2rem;
+  margin-top: var(--space-2xl);
 }
 
 .page-content h3 {
   color: var(--color-text);
-  margin-top: 1.5rem;
+  margin-top: var(--space-xl);
+  margin-bottom: 0.25rem;
+}
+
+.page-content h3 + p em {
+  color: var(--color-text-light);
 }
 
 .page-content ul {
   list-style-type: disc;
-  margin-left: 2rem;
+  margin-left: var(--space-xl);
 }
 
 .page-content ol {
-  margin-left: 2rem;
+  margin-left: var(--space-xl);
 }
 </style>

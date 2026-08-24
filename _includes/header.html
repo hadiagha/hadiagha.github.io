@@ -17,39 +17,44 @@
       </div>
 
       <div class="nav-menu" id="nav-menu">
+        {% comment %}
+          Home and Topics are not in the top bar: the brand link covers Home,
+          and Topics is reachable from Blog and the footer. Eight items with
+          icons overflow the bar between the mobile breakpoint and ~1000px.
+        {% endcomment %}
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}"
-               {% if page.url == '/' %}aria-current="page"{% endif %}>
-              <i class="fas fa-home" aria-hidden="true"></i> Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}"
+            <a href="{{ '/blog/' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}"
                {% if page.url contains '/blog' %}aria-current="page"{% endif %}>
-              <i class="fas fa-pen-nib" aria-hidden="true"></i> Blog
+              <i class="fas fa-pen-nib" aria-hidden="true"></i> Writing
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/tags' | relative_url }}" class="nav-link {% if page.url contains '/tags' %}active{% endif %}"
-               {% if page.url contains '/tags' %}aria-current="page"{% endif %}>
-              <i class="fas fa-tags" aria-hidden="true"></i> Topics
+            <a href="{{ '/book/' | relative_url }}" class="nav-link {% if page.url contains '/book' %}active{% endif %}"
+               {% if page.url contains '/book' %}aria-current="page"{% endif %}>
+              <i class="fas fa-book-open" aria-hidden="true"></i> Book
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}"
+            <a href="{{ '/research/' | relative_url }}" class="nav-link {% if page.url contains '/research' %}active{% endif %}"
+               {% if page.url contains '/research' %}aria-current="page"{% endif %}>
+              <i class="fas fa-flask" aria-hidden="true"></i> Research
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/about/' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}"
                {% if page.url contains '/about' %}aria-current="page"{% endif %}>
               <i class="fas fa-user" aria-hidden="true"></i> About
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/cv' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}"
+            <a href="{{ '/cv/' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}"
                {% if page.url contains '/cv' %}aria-current="page"{% endif %}>
               <i class="fas fa-file-alt" aria-hidden="true"></i> CV
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ '/contact' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}"
+            <a href="{{ '/contact/' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}"
                {% if page.url contains '/contact' %}aria-current="page"{% endif %}>
               <i class="fas fa-envelope" aria-hidden="true"></i> Contact
             </a>

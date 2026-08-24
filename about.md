@@ -1,75 +1,91 @@
 ---
 layout: page
-title: About Me
-description: Learn more about my research interests and background
+title: About
+description: Reinforcement learning, optimization and forecasting — mostly in production
 permalink: /about/
+updated: 2026-08-24
 ---
 
-## About Me
+I work on **decision-making under uncertainty**. In practice that means
+reinforcement learning, mathematical optimization and forecasting — usually
+applied to systems where a wrong decision costs real money, and where the
+textbook version of the method turns out to need considerable adjustment before
+it survives contact with production.
 
-I am **Hadi Aghazadeh**, a Databricks Certified Machine Learning Engineer and Ph.D. candidate at the **University of Calgary** (GPA: 4.0/4.0). My work sits at the intersection of **reinforcement learning**, **operations research**, and **machine learning systems** for real-world business problems.
+That thread runs through everything here: a PhD on routing under uncertainty, a
+day job forecasting electricity prices, a book on applying RL to business
+problems, and the writing on this site about what actually works.
 
-I am the author of the upcoming Manning book **"Reinforcement Learning for Business"**, where I focus on making RL practical for pricing, logistics, and operations at scale.
+## What I'm working on
 
-Currently, I work as a **Machine Learning Engineer at Bits in Glass**, building production-grade ML solutions on **Databricks (Mosaic AI, MLflow)** and cloud platforms.
+I'm a **Senior Data Scientist at [Enverus](https://www.enverus.com/)**, where I
+own the end-to-end development and operation of **locational marginal price
+forecasting across more than 10,000 pricing nodes** in US and Canadian
+electricity markets — feature engineering, applied research, distributed
+training, deployment, APIs, monitoring and the unglamorous maintenance that
+keeps a forecast trustworthy.
 
-### Research & Applied Interests
+Alongside the forecasting work I research large-scale **mixed-integer linear
+programming** for power-flow and security-constrained unit commitment, including
+using reinforcement learning to guide cutting-plane selection — teaching a
+solver which cuts are worth adding, so branch-and-bound converges faster on
+problems that are otherwise intractable at market speed.
 
-My main interests include:
+Before Enverus I led technical work at **Bits in Glass**, building a
+hierarchical RAG platform over 20 million oil-and-gas documents and a dynamic
+fuel-pricing system that combined integer programming with contextual bandits.
+Earlier still I built RL-based **surge pricing at Snapp**, the largest
+ride-hailing platform in the Middle East, running across roughly 200,000 orders
+a day. My [CV]({{ '/cv/' | relative_url }}) has the full history.
 
-- **Reinforcement learning for operations and pricing** (e.g., dynamic surge pricing, fuel pricing, vehicle routing)
-- **Demand forecasting and time series** at scale
-- **Optimization and decision-making** (linear programming, RL-based control)
-- **LLM-powered systems** (RAG, document understanding, agentic workflows)
+## Research
 
-My Ph.D. research focuses on **reinforcement learning for vehicle routing**, bridging academic ideas with deployable systems in industry.
+I'm a **PhD candidate in Geomatics Engineering at the University of Calgary**,
+defending on **9 October 2026**. My research applies hierarchical reinforcement
+learning to real-time policy optimization — vehicle routing, disaster-response
+logistics and transportation problems where demand is stochastic, the fleet is
+heterogeneous, and a decision has to be made now rather than optimally.
 
-### Industry Experience
+Published work appears in *Computers & Operations Research*, *Transportation
+Research Part C*, ACM SIGSPATIAL and the KDD supply-chain workshop. The
+[research page]({{ '/research/' | relative_url }}) lists everything.
 
-Over the past years, I have worked across startups and industry on data-intensive products:
+## The book
 
-- **Machine Learning Engineer – Bits in Glass (2024–Present)**  
-  Building ML and LLM systems on Databricks, including invoice automation and dynamic fuel pricing optimization.
-- **Machine Learning Developer – AltaML (2023)**  
-  Contributed to a hybrid fuel demand forecasting model deployed to 100+ sites, driving significant annual savings.
-- **Senior Data Scientist – Snapp (2021–2022)**  
-  Led RL-based **dynamic surge pricing** improving order fulfillment by ~5% (~200K+ orders/day) and **fraud detection** solutions reducing manual review time by 300 hours/month.
-- **Data Scientist – Fanap (PARSA) (2018–2021)**  
-  Developed ATM cash demand forecasting and optimization systems, reducing operational costs by ~10%.
+I'm the author of **[Applied Reinforcement Learning]({{ '/book/' | relative_url }})**
+(Manning), currently in early access with full release expected January 2027. It
+covers RL for business optimization — warehouse logistics, dynamic pricing,
+routing, resource allocation — through to fine-tuning language models with PPO,
+GRPO and verifiable rewards.
 
-### Education
+I wrote it because most RL material stops at games and simulations. The gap
+between a working policy in a clean environment and one that holds up against
+real constraints, messy data and stakeholders who need to understand the
+decision is where the actual difficulty lives, and it deserved a book.
 
-- **Ph.D. Candidate, University of Calgary** – Geomatics Engineering  
-  *July 2022 – Expected Oct 2025*  
-  Research: **Reinforcement Learning for Vehicle Routing**
-- **M.Sc. in Industrial Engineering**, Amirkabir University of Technology (2015–2018)
-- **B.Sc. in Industrial Engineering**, Iran University of Science and Technology (2011–2015)
+## Teaching and writing
 
-### Teaching & Learning
+Teaching keeps me honest — it is difficult to hand-wave through an explanation
+when someone is going to try running the code. I've been a teaching assistant at
+Calgary for Engineering Design, Programming with Data, and Spatial Data Mining,
+and I've built Udemy courses on contextual bandits and reinforcement learning
+for operations research. I also review for machine learning, transportation,
+optimization and spatial-computing journals.
 
-I enjoy teaching and translating complex ideas into practical workflows. I have:
+This site is where the shorter-form version of that lives: articles and
+tutorials, notes on papers I'm reading, implementations, and occasional writing
+about the professional side of doing this work. Some of it is paired with videos
+on my YouTube channel, [PhiloAI](https://www.youtube.com/@philo_ai).
 
-- Created **Udemy courses** on:
-  - *Contextual Multi-Armed Bandit Problems in Python*
-  - *Reinforcement Learning for Operations Research*
-- Served as **Teaching Assistant** for *Data Mining and Databases* at the University of Calgary.
+## Elsewhere
 
-### Honors & Scholarships (Selected)
+- **Email** — [hadi@hadiaghazadeh.com](mailto:hadi@hadiaghazadeh.com)
+- **Google Scholar** — [publications and citations](https://scholar.google.ca/citations?user=maIEW1AAAAAJ)
+- **GitHub** — [hadiagha](https://github.com/hadiagha)
+- **LinkedIn** — [hadi-aghazadeh](https://www.linkedin.com/in/hadi-aghazadeh)
+- **YouTube** — [@philo_ai](https://www.youtube.com/@philo_ai)
+- **X** — [@hadi_aghazadeh](https://x.com/hadi_aghazadeh)
 
-- **Alberta Innovates Scholarship** – one of Alberta's most prestigious academic awards (2024)
-- **Open Doctoral Scholarship**, University of Calgary (2024)
-- **First Place – Amii Reinforcement Learning Competition**, Upper Bound 2024
-- **Schulich Leadership for Engineers Catalyst Program**, University of Calgary (2023)
-- **First Place – AI Competition**, Amirkabir University of Technology (2018)
-
-### Connect
-
-If you are interested in collaboration, RL for business applications, or ML systems on Databricks and AWS, feel free to reach out:
-
-- Email: [hadi.aghazadeh@ucalgary.ca](mailto:hadi.aghazadeh@ucalgary.ca)  
-- Twitter/X: [@hadi_aghazadeh](https://twitter.com/hadi_aghazadeh)  
-- LinkedIn: [hadi-aghazadeh](https://www.linkedin.com/in/hadi-aghazadeh)  
-- GitHub: [hadiagha](https://github.com/hadiagha)
-
----
-*Last updated: {{ "now" | date: "%B %d, %Y" }}*
+I'm always glad to hear from people working on RL or optimization in production,
+and from students trying to get started. If you're writing about something in
+this space, send it to me — I'd rather read your work than another press release.

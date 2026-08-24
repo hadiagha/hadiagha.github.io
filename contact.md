@@ -17,7 +17,7 @@ permalink: /contact/
       </div>
       <h3>Email</h3>
       <p>For collaboration, speaking, consulting, or academic inquiries</p>
-      <a href="mailto:hadi.aghazadeh@ucalgary.ca" class="contact-link">hadi.aghazadeh@ucalgary.ca</a>
+      <a href="mailto:hadi@hadiaghazadeh.com" class="contact-link">hadi@hadiaghazadeh.com</a>
     </div>
   
     <div class="contact-card">
@@ -33,30 +33,35 @@ permalink: /contact/
 
   <div class="social-section">
     <h2>Connect on Social Media</h2>
+  {% comment %}
+    The ORCID and ResearchGate cards that used to sit here pointed at those
+    sites' homepages rather than at any profile, and the Google Scholar card did
+    the same. Only links that actually resolve to Hadi are listed now.
+  {% endcomment %}
     <div class="social-grid">
-      <a href="https://twitter.com/hadi_aghazadeh" class="social-card" target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-        <span>Twitter</span>
-      </a>
-      <a href="https://linkedin.com/in/hadi-aghazadeh" class="social-card" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://github.com/hadiagha" class="social-card" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://orcid.org" class="social-card" target="_blank" rel="noopener">
-        <i class="fab fa-orcid"></i>
-        <span>ORCID</span>
-      </a>
-      <a href="https://scholar.google.com" class="social-card" target="_blank" rel="noopener">
-        <i class="fas fa-graduation-cap"></i>
+      <a href="https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}" class="social-card" rel="noopener me">
+        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
         <span>Google Scholar</span>
       </a>
-      <a href="https://www.researchgate.net" class="social-card" target="_blank" rel="noopener">
-        <i class="fab fa-researchgate"></i>
-        <span>ResearchGate</span>
+      <a href="https://github.com/{{ site.author.social.github }}" class="social-card" rel="noopener me">
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/{{ site.author.social.linkedin }}" class="social-card" rel="noopener me">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" class="social-card" rel="noopener me">
+        <i class="fab fa-youtube" aria-hidden="true"></i>
+        <span>YouTube</span>
+      </a>
+      <a href="https://x.com/{{ site.author.social.twitter }}" class="social-card" rel="noopener me">
+        <i class="fab fa-x-twitter" aria-hidden="true"></i>
+        <span>X</span>
+      </a>
+      <a href="{{ '/feed.xml' | relative_url }}" class="social-card">
+        <i class="fas fa-rss" aria-hidden="true"></i>
+        <span>RSS</span>
       </a>
     </div>
   </div>

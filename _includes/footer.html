@@ -46,9 +46,12 @@
         <ul class="footer-links">
           <li><a href="{{ '/blog/' | relative_url }}">Latest posts</a></li>
           <li><a href="{{ '/tags/' | relative_url }}">Browse by topic</a></li>
+          <li><a href="{{ '/search/' | relative_url }}">Search</a></li>
+          <li><a href="{{ '/videos/' | relative_url }}">Videos</a></li>
           <li><a href="{{ '/book/' | relative_url }}">The book</a></li>
           <li><a href="{{ '/research/' | relative_url }}">Research</a></li>
           <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+          <li><a href="{{ '/user-manual/' | relative_url }}">Working with me</a></li>
           <li><a href="{{ '/cv/' | relative_url }}">CV</a></li>
           <li><a href="{{ '/contact/' | relative_url }}">Get in touch</a></li>
         </ul>
@@ -60,6 +63,19 @@
         <a href="{{ '/feed.xml' | relative_url }}" class="subscribe-button">
           {% include icon.html name="rss" %} Subscribe to RSS
         </a>
+        {% comment %}
+          Everything is in the main feed. These narrower ones exist because the
+          kinds ask different amounts of a reader's time: someone who wants the
+          long worked articles should not have to take every short note to get
+          them.
+        {% endcomment %}
+        <p class="feed-kinds">
+          Or just
+          <a href="{{ '/feeds/articles.xml' | relative_url }}">articles</a>,
+          <a href="{{ '/feeds/notes.xml' | relative_url }}">notes</a>,
+          <a href="{{ '/feeds/reviews.xml' | relative_url }}">reviews</a> or
+          <a href="{{ '/feeds/essays.xml' | relative_url }}">essays</a>.
+        </p>
       </div>
     </div>
     

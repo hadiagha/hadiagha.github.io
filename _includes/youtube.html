@@ -1,0 +1,52 @@
+{% comment %}
+  A YouTube embed that does not contact YouTube until someone asks it to.
+
+      {% include youtube.html id=page.youtube_id title=page.youtube_title %}
+
+  A normal <iframe src="youtube.com/embed/..."> loads roughly half a megabyte
+  of Google's JavaScript on page load and sets cookies, for every reader,
+  whether or not they ever press play. This renders a placeholder instead and
+  swaps in the real player on click — so a reader who scrolls past a post with
+  a video makes no third-party request at all.
+
+  Two further details:
+
+    * The player, once loaded, comes from youtube-nocookie.com, which does not
+      write tracking cookies until playback actually starts.
+
+    * `autoplay=1` is on the swapped-in URL. That is not autoplay on page load;
+      it means the video starts when someone has already clicked play, which is
+      what they were asking for.
+
+  `poster` is optional and must be a local image. Deliberately not YouTube's
+  own i.ytimg.com thumbnail: fetching that would put the request back on page
+  load and tell Google which video each reader is looking at, which is most of
+  what this include exists to avoid. With no poster the placeholder is the
+  site's own gradient.
+{% endcomment %}
+
+{%- assign yt_id = include.id -%}
+{%- assign yt_title = include.title | default: "Watch on YouTube" -%}
+
+{%- if yt_id -%}
+<figure class="video-embed">
+  <button type="button" class="video-embed-trigger"
+          data-youtube-id="{{ yt_id }}"
+          data-youtube-title="{{ yt_title | escape }}"
+          {% if include.poster %}style="background-image: url('{{ include.poster | relative_url }}')"{% endif %}>
+    <span class="video-embed-play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+        <path d="M8 5.5v13l11-6.5z"/>
+      </svg>
+    </span>
+    <span class="video-embed-label">
+      <span class="video-embed-title">{{ yt_title }}</span>
+      <span class="video-embed-hint">Play video &middot; loads YouTube</span>
+    </span>
+  </button>
+  <figcaption class="video-embed-caption">
+    Nothing is requested from YouTube until you press play.
+    <a href="https://www.youtube.com/watch?v={{ yt_id }}" rel="noopener">Watch on YouTube instead</a>.
+  </figcaption>
+</figure>
+{%- endif -%}

@@ -1,0 +1,6 @@
+---
+permalink: /feeds/essays.xml
+layout: null
+sitemap: false
+---
+{% include kind-feed.xml kind="essay" label="Essays" description="Reflections on the work rather than the technique." %}

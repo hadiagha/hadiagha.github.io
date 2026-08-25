@@ -9,8 +9,29 @@ RUN apt-get update \
       build-essential \
       git \
       ca-certificates \
+      curl \
       libcurl4 \
  && rm -rf /var/lib/apt/lists/*
+
+# Pagefind builds the search index over the generated site. Installed as the
+# upstream static binary rather than through npm, because this image has no
+# Node and adding it to run one command would cost about 50 MB.
+#
+# The musl build is deliberate: it is statically linked, so the same file runs
+# here on Debian and on the CI runner without caring about the glibc version.
+# Pinned, because the index format and the client script are versioned
+# together — a mismatch between the two is a silently empty search box.
+ARG PAGEFIND_VERSION=1.5.2
+RUN set -eux; \
+    case "$(dpkg --print-architecture)" in \
+      amd64) target='x86_64-unknown-linux-musl' ;; \
+      arm64) target='aarch64-unknown-linux-musl' ;; \
+      *) echo "unsupported architecture: $(dpkg --print-architecture)" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL "https://github.com/CloudCannon/pagefind/releases/download/v${PAGEFIND_VERSION}/pagefind-v${PAGEFIND_VERSION}-${target}.tar.gz" \
+      | tar -xz -C /usr/local/bin pagefind; \
+    chmod +x /usr/local/bin/pagefind; \
+    pagefind --version
 
 WORKDIR /site
 

@@ -1,0 +1,6 @@
+---
+permalink: /feeds/notes.xml
+layout: null
+sitemap: false
+---
+{% include kind-feed.xml kind="note" label="Notes" description="Shorter pieces — something read, tried, or worth recording." %}

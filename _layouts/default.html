@@ -80,6 +80,18 @@
 
   {% feed_meta %}
 
+  {% comment %}
+    Structured data beyond what jekyll-seo-tag emits. Person goes on the two
+    pages that are actually about the person, not on every page — repeating an
+    entity does not strengthen it. VideoObject is emitted by the post layout.
+  {% endcomment %}
+  {% if page.url == "/" or page.url == "/about/" %}
+    {% include schema-person.html %}
+  {% endif %}
+  {% if page.youtube_id %}
+    {% include schema-video.html %}
+  {% endif %}
+
   <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">

@@ -218,3 +218,29 @@ document.querySelectorAll('.post-content img').forEach((img) => {
     img.addEventListener('load', () => img.classList.add('loaded'));
   }
 });
+
+
+// Video facade.
+// The placeholder rendered by _includes/youtube.html swaps itself for the real
+// player on click, so a reader who never presses play never makes a request to
+// YouTube. See that file for why the poster is never fetched from ytimg.
+document.querySelectorAll('.video-embed-trigger').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    const id = trigger.getAttribute('data-youtube-id');
+    const title = trigger.getAttribute('data-youtube-title') || 'YouTube video';
+    if (!id) return;
+
+    const frame = document.createElement('iframe');
+    // nocookie, and autoplay because the click WAS the request to play.
+    frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+    frame.title = title;
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.allowFullscreen = true;
+
+    trigger.replaceWith(frame);
+    // Focus was on the button that just vanished; move it to the player so
+    // keyboard users are not dropped back at the top of the document.
+    frame.focus();
+  });
+});

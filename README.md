@@ -130,6 +130,29 @@ Awesome stylesheet, which cost 102 KB and a connection to cdnjs on every page.
 The names at the call site are the familiar ones — `edit`, `file-alt`,
 `university` — and `_includes/icon.html` records which FA6 glyph each resolves to.
 
+## Search
+
+Search is [Pagefind](https://pagefind.app), which indexes the built HTML rather
+than calling out to a service — so what anyone types stays in their browser.
+
+```bash
+make build    # jekyll build, then the pagefind index
+make search   # the same thing; `build` depends on it
+```
+
+The index is built from `_site`, which `jekyll serve` never writes — so search
+does not work under `make preview`. The search page says so rather than sitting
+there doing nothing. In CI both workflows run `pagefind` between the build and
+the artifact upload.
+
+What gets indexed is controlled by `data-pagefind-body` in the post and page
+layouts. Listing pages opt out with `search: false` in their front matter, so a
+query matches the post rather than the index that links to it.
+
+The Pagefind version is pinned in two places that must agree: `PAGEFIND_VERSION`
+in the [Dockerfile](Dockerfile) and the `npx pagefind@…` calls in the workflows.
+The index format and the client script are versioned together.
+
 ## Deploying
 
 Push to `main`. `.github/workflows/deploy.yml` builds and publishes; it takes
@@ -161,10 +184,19 @@ Commit both `Gemfile` and `Gemfile.lock`.
 ```
 _posts/       published writing
 _layouts/     page templates
-_includes/    shared fragments
-assets/       css, js, images, cv
+_includes/    shared fragments — icon, youtube, schema-*, kind-feed
+feeds/        one Atom feed per content kind
+assets/       css, js, fonts, images, cv
+_data/        tag vocabulary and series definitions
+scripts/      doctor, new-post, publish, images, fonts
 _config.yml   site configuration
 ```
+
+Pages: `/` · `/blog/` · `/tags/` · `/search/` · `/videos/` · `/book/` ·
+`/research/` · `/about/` · `/user-manual/` · `/cv/` · `/contact/`.
+
+Feeds: `/feed.xml` for everything, plus `/feeds/articles.xml`,
+`/feeds/notes.xml`, `/feeds/reviews.xml` and `/feeds/essays.xml`.
 
 The site is at <https://hadiaghazadeh.com>. The old `hadiagha.github.io`
 address redirects there automatically, preserving paths.

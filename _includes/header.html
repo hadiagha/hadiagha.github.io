@@ -69,6 +69,16 @@
         unreachable without first opening the menu.
       {% endcomment %}
       <div class="nav-actions">
+        {% comment %}
+          Search sits here rather than in the nav list. That list is already
+          six items and overflows between the mobile breakpoint and ~1000px,
+          and nav-actions stays visible on a phone where the list collapses.
+        {% endcomment %}
+        <a href="{{ '/search/' | relative_url }}" class="nav-icon-link"
+           aria-label="Search"{% if page.url == '/search/' %} aria-current="page"{% endif %}>
+          {% include icon.html name="search" %}
+        </a>
+
         <button class="theme-toggle" id="theme-toggle" type="button"
                 aria-label="Switch to dark theme" aria-pressed="false">
           {% include icon.html name="moon" %}

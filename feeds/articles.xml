@@ -1,0 +1,6 @@
+---
+permalink: /feeds/articles.xml
+layout: null
+sitemap: false
+---
+{% include kind-feed.xml kind="article" label="Articles" description="Worked explanations, usually with code or mathematics." %}

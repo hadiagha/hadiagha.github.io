@@ -1,0 +1,112 @@
+---
+layout: page
+title: Videos
+description: Posts with a companion video, and the channel they live on
+permalink: /videos/
+search: false
+---
+
+{% comment %}
+  Every post that declares a youtube_id. Nothing is duplicated here by hand —
+  add the field to a post's front matter and it appears, which is the only way
+  a list like this stays true a year from now.
+{% endcomment %}
+
+{% assign video_posts = site.posts | where_exp: "p", "p.youtube_id" %}
+
+<div class="videos-page">
+  <p class="videos-intro">
+    I put some of this writing on video as well, on
+    <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" rel="noopener">PhiloAI</a>
+    — usually the parts that are easier to follow when you can watch the code run.
+    Each one below has a written version too.
+  </p>
+
+  {% if video_posts.size > 0 %}
+  <div class="posts-grid">
+    {% for post in video_posts %}
+    <article class="post-card">
+      <div class="post-card-header">
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%B %d, %Y" }}
+          </time>
+        </div>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.youtube_title | default: post.title }}</a>
+        </h3>
+        <p class="post-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+      </div>
+      <div class="post-card-footer">
+        <a href="{{ post.url | relative_url }}" class="read-more">
+          Read and watch {% include icon.html name="arrow-right" %}
+        </a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="no-posts">
+    {% include icon.html name="inbox" %}
+    <h3>No companion videos yet</h3>
+    <p>
+      There are videos on
+      <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" rel="noopener">the channel</a>;
+      the ones paired with a written post will be listed here.
+    </p>
+  </div>
+  {% endif %}
+
+  <div class="videos-channel">
+    <h2>The channel</h2>
+    <p>
+      <strong>PhiloAI</strong> covers reinforcement learning, optimization and
+      the practical side of getting models into production — the same ground as
+      the writing here.
+    </p>
+    <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" class="btn btn-primary" rel="noopener">
+      {% include icon.html name="youtube" %} Visit the channel
+    </a>
+  </div>
+</div>
+
+<style>
+/* Reuses .posts-grid, .post-card and .no-posts from the main stylesheet, so a
+   video card and a post card are the same object. Only the two page-specific
+   blocks are defined here. */
+.videos-page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.videos-intro {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-2xl);
+}
+
+.videos-channel {
+  margin-top: var(--space-3xl);
+  padding: var(--space-xl);
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.75rem;
+}
+
+.videos-channel h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.videos-channel p {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-lg);
+}
+
+/* The empty state is a .no-posts block, which sizes its icon with font-size. */
+.no-posts .icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-lg);
+  opacity: 0.5;
+}
+</style>

@@ -76,6 +76,7 @@ permalink: /contact/
   <div class="office-hours">
     <h2>Office Hours</h2>
     <p>Meetings are generally by appointment. Please email me with a brief description of your topic and a few time options.</p>
+    <p>If you're about to work with me on something, <a href="{{ '/user-manual/' | relative_url }}">working with me</a> covers how I tend to operate — worth five minutes before a first project.</p>
   </div>
 </div>
 

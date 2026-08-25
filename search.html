@@ -1,0 +1,112 @@
+---
+layout: page
+title: Search
+description: Everything on this site, indexed
+permalink: /search/
+search: false
+sitemap: false
+---
+
+{% comment %}
+  Pagefind. The index is built from the generated HTML after Jekyll runs — see
+  the `search` target in the Makefile and the build step in both workflows — so
+  it is served from this origin like everything else. There is no search API
+  and no third party: what someone types here never leaves their browser.
+
+  This uses Pagefind's Component UI (the custom elements below) rather than the
+  older PagefindUI class. Pagefind's own advice for new integrations as of
+  1.5.0, and the reason given is accessibility, which is worth the larger
+  bundle on a page nobody loads unless they want to search.
+
+  The index does not exist during `make preview`, because `jekyll serve` never
+  writes the _site directory Pagefind reads. Hence the fallback at the bottom:
+  an empty box that silently does nothing is worse than a sentence saying why.
+{% endcomment %}
+
+<div class="search-page">
+  {% comment %}
+    Composed from the individual elements rather than the all-in-one
+    <pagefind-searchbox>. That element renders its own complete UI and replaces
+    whatever is nested inside it, so it cannot carry the two filter dropdowns —
+    which are the reason for having a search page rather than a search box.
+  {% endcomment %}
+  <pagefind-config bundle-path="{{ '/pagefind/' | relative_url }}"></pagefind-config>
+
+  <pagefind-input placeholder="Search posts, pages and notes" autofocus></pagefind-input>
+
+  <div class="search-filters">
+    <pagefind-filter-dropdown filter="kind" label="Kind"></pagefind-filter-dropdown>
+    <pagefind-filter-dropdown filter="tag" label="Topic"></pagefind-filter-dropdown>
+  </div>
+
+  <pagefind-summary default-message="Start typing to search everything published here."></pagefind-summary>
+  <pagefind-results></pagefind-results>
+
+  <noscript>
+    <p class="search-fallback">
+      Search needs JavaScript. Everything is browsable without it:
+      <a href="{{ '/blog/' | relative_url }}">all posts</a> in date order, or
+      <a href="{{ '/tags/' | relative_url }}">by topic</a>.
+    </p>
+  </noscript>
+
+  <p class="search-fallback" id="search-unavailable" hidden>
+    The search index isn't loaded. If you're running the site locally it is
+    built by <code>make build</code>, not by <code>jekyll serve</code>. In the
+    meantime there's <a href="{{ '/blog/' | relative_url }}">all posts</a> and
+    <a href="{{ '/tags/' | relative_url }}">topics</a>.
+  </p>
+</div>
+
+<link rel="stylesheet" href="{{ '/pagefind/pagefind-component-ui.css' | relative_url }}">
+<script src="{{ '/pagefind/pagefind-component-ui.js' | relative_url }}"
+        onerror="document.getElementById('search-unavailable').hidden = false"></script>
+<script>
+  // The custom elements upgrade themselves once the script has run. If it never
+  // arrived, <pagefind-input> stays an unknown element with no shadow root —
+  // which is the signal that the index is missing.
+  window.addEventListener('load', () => {
+    const box = document.querySelector('pagefind-input');
+    // An upgraded element has rendered its own markup; an un-upgraded one is
+    // still the empty tag from the source, which is what a missing bundle
+    // looks like.
+    if (!box || !box.querySelector('input')) {
+      document.getElementById('search-unavailable').hidden = false;
+    }
+  });
+</script>
+
+<style>
+/* Pagefind's Component UI is themed through custom properties, so it can be
+   pointed at the site's own tokens rather than restyled. The --pagefind-* names
+   below are Pagefind's, not ours. */
+.search-page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+
+  --pagefind-ui-scale: 0.9;
+  --pagefind-ui-primary: var(--color-primary);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-bg);
+  --pagefind-ui-border: var(--color-border);
+  --pagefind-ui-tag: var(--color-bg-secondary);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0.5rem;
+  --pagefind-ui-font: var(--font-sans);
+}
+
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0;
+}
+
+.search-fallback {
+  padding: var(--space-lg);
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.5rem;
+  color: var(--color-text-light);
+  margin-top: var(--space-lg);
+}
+</style>

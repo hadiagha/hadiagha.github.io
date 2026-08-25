@@ -2,7 +2,13 @@
 layout: default
 ---
 
-<article class="page">
+{% comment %}
+  `search: false` in a page's front matter keeps it out of the index. The
+  listing pages — Blog, Topics, Videos — are nothing but links to posts, so
+  indexing them makes every search match the listing as well as the post it
+  points at.
+{% endcomment %}
+<article class="page"{% unless page.search == false %} data-pagefind-body data-pagefind-filter="kind:page"{% endunless %}>
   <header class="page-header">
     <div class="container">
       <h1 class="page-title">{{ page.title }}</h1>

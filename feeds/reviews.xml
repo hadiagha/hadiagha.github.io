@@ -1,0 +1,6 @@
+---
+permalink: /feeds/reviews.xml
+layout: null
+sitemap: false
+---
+{% include kind-feed.xml kind="review" label="Book reviews" description="Books, and whether they were worth the time." %}

@@ -1,0 +1,82 @@
+{% comment %}
+  Person structured data.
+
+  jekyll-seo-tag already emits WebSite and BlogPosting, but its author is only
+  ever `{"@type":"Person","name":"..."}` — a bare name, with nothing tying it to
+  the profiles, employer or subject matter that let a search engine work out
+  which Hadi Aghazadeh this is. That is what `sameAs` does, and it is the whole
+  reason to write this out by hand.
+
+  Emitted on the homepage and the About page only. Repeating an entity on every
+  page does not strengthen it; a single well-formed one that other pages can
+  point at via @id is what the vocabulary is for.
+
+  Every value here comes from _config.yml or from a fact already published on
+  the About page. Nothing is asserted that is not already true elsewhere on the
+  site — if it changes there, change it here.
+{% endcomment %}
+
+{%- capture person_id -%}{{ '/#person' | absolute_url }}{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ person_id | jsonify }},
+  "name": {{ site.author.name | jsonify }},
+  "url": {{ '/' | absolute_url | jsonify }},
+  "image": {{ site.author.avatar | absolute_url | jsonify }},
+  "description": {{ site.author.bio | jsonify }},
+  "email": {{ site.author.email | prepend: "mailto:" | jsonify }},
+  "jobTitle": "Senior Data Scientist",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Enverus",
+    "url": "https://www.enverus.com/"
+  },
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Calgary",
+    "url": "https://www.ucalgary.ca/"
+  },
+  "knowsAbout": [
+    "Reinforcement learning",
+    "Mathematical optimization",
+    "Operations research",
+    "Time series forecasting",
+    "Mixed-integer programming",
+    "Electricity market modelling",
+    "Machine learning engineering"
+  ],
+  "sameAs": [
+    {%- assign links = "" | split: "" -%}
+    {%- if site.author.social.github -%}
+      {%- capture l %}https://github.com/{{ site.author.social.github }}{% endcapture -%}
+      {%- assign links = links | push: l -%}
+    {%- endif -%}
+    {%- if site.author.social.linkedin -%}
+      {%- capture l %}https://www.linkedin.com/in/{{ site.author.social.linkedin }}{% endcapture -%}
+      {%- assign links = links | push: l -%}
+    {%- endif -%}
+    {%- if site.author.social.twitter -%}
+      {%- capture l %}https://x.com/{{ site.author.social.twitter }}{% endcapture -%}
+      {%- assign links = links | push: l -%}
+    {%- endif -%}
+    {%- if site.author.social.youtube -%}
+      {%- capture l %}https://www.youtube.com/@{{ site.author.social.youtube }}{% endcapture -%}
+      {%- assign links = links | push: l -%}
+    {%- endif -%}
+    {%- if site.author.social.google_scholar -%}
+      {%- capture l %}https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}{% endcapture -%}
+      {%- assign links = links | push: l -%}
+    {%- endif -%}
+    {%- if site.author.social.orcid -%}
+      {%- capture l %}https://orcid.org/{{ site.author.social.orcid }}{% endcapture -%}
+      {%- assign links = links | push: l -%}
+    {%- endif -%}
+    {%- for l in links -%}
+    {{ l | jsonify }}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>

@@ -32,6 +32,14 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Build search index
+        # Pagefind reads the generated HTML, so it has to run after Jekyll and
+        # before the artifact is packed. Pinned to the same version the local
+        # image installs (see Dockerfile): the index format and the client
+        # script are versioned together, and a mismatch is a search box that
+        # loads and then finds nothing.
+        run: npx -y pagefind@1.5.2 --site _site
+
       - name: Validate HTML, links and images
         # The mailto ignore covers the share-by-email button, which is
         # deliberately recipient-less so the reader fills it in.
@@ -45,9 +53,15 @@ jobs:
         run: |
           # Video, datasets and model files belong on YouTube, in a release,
           # or in their own repo — never in the site history.
-          large=$(find . -path ./.git -prune -o -type f -size +2M -print)
+          #
+          # git ls-files, not find: the check is about what is committed. A
+          # bare `find .` also walked vendor/bundle, where setup-ruby's
+          # bundler-cache puts the gems — and nokogiri ships native libraries
+          # well over 2 MB, so this step would have failed on every pull
+          # request for a reason that had nothing to do with the change.
+          large=$(git ls-files -z | xargs -0 -I{} find {} -size +2M -print)
           if [ -n "$large" ]; then
-            echo "::error::Files over 2 MB were added:"
+            echo "::error::Committed files over 2 MB:"
             echo "$large"
             exit 1
           fi

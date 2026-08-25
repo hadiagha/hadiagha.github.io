@@ -92,10 +92,38 @@ kind: article
 | `series_part` | | Position in the series, counting from 1 |
 | `image` | | Social preview image. Becomes `og:image` |
 | `image_alt` | | Becomes `og:image:alt`. Required by `doctor` whenever `image` is set |
-| `youtube_id` | | Bare 11-character ID. **Player lands in stage 7** — the field validates now |
-| `youtube_title` | | Accessible name for the video |
+| `youtube_id` | | Bare 11-character ID. Renders a click-to-load player and lists the post on `/videos/` |
+| `youtube_title` | | Title shown on the player. Defaults to the post title |
+| `youtube_date` | | Only if the video went up on a different day from the post |
+| `youtube_poster` | | A local image to use as the player's still. Must be local — see below |
 | `canonical_url` | | Only if the piece appeared somewhere else first |
 | `featured` | | Reserved for the curated "Start here" list |
+
+### Adding a video
+
+```yaml
+youtube_id: dQw4w9WgXcQ
+youtube_title: "Q-learning from scratch, line by line"
+```
+
+That renders a player at the top of the post and adds it to
+[/videos/]({{ '/videos/' | relative_url }}). It also emits `VideoObject`
+structured data, which is what can get a video thumbnail into a search result.
+
+The player is a **facade**: the page shows a placeholder, and YouTube is only
+contacted once a reader presses play. A normal embed loads about half a
+megabyte of Google's JavaScript on page load for every reader, including the
+ones who scroll straight past.
+
+Two consequences worth knowing:
+
+- **`youtube_poster` must be a local image.** Using YouTube's own thumbnail
+  would put the request back on page load and tell Google which video each
+  reader is looking at — most of what the facade avoids. With no poster the
+  placeholder is the site's gradient with the title on it, which is fine.
+- **The ID is the bare ID.** From
+  `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, that's `dQw4w9WgXcQ`.
+  `make check` fails on a full URL.
 
 ### Writing a good `description`
 

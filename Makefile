@@ -1,7 +1,7 @@
 COMPOSE := docker compose
 
 .DEFAULT_GOAL := help
-.PHONY: help new preview build check doctor images fonts publish lock shell clean rebuild
+.PHONY: help new preview build search check doctor images fonts publish lock shell clean rebuild
 
 help: ## Show this help
 	@grep -hE '^[a-z-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -13,9 +13,16 @@ new: ## Start a draft: make new title="..." [kind=article|note|review|essay]
 preview: ## Serve at http://localhost:4000 with live reload and drafts
 	$(COMPOSE) up
 
-build: ## Production build into _site/
+build: search ## Production build into _site/, with the search index
+
+# Split out so `build` depends on it: Pagefind reads the generated HTML, so it
+# has to run after Jekyll, every time, or the index describes the previous
+# build. `jekyll serve` never writes _site, which is why search does not work
+# under `make preview` — run `make build` and serve _site if you need to test it.
+search:
 	$(COMPOSE) run --rm -e JEKYLL_ENV=production site \
 	  bundle exec jekyll build --trace
+	$(COMPOSE) run --rm site pagefind --site _site
 
 check: doctor build ## Everything: front matter, then links, images and alt text
 	$(COMPOSE) run --rm site bundle exec htmlproofer _site \

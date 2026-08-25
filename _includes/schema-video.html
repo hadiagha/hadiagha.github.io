@@ -1,0 +1,47 @@
+{% comment %}
+  VideoObject structured data, for a post that declares a youtube_id.
+
+  Google needs name, description, thumbnailUrl and uploadDate before a video is
+  eligible for a rich result; omit any one of them and the markup is reported as
+  incomplete rather than simply ignored. So all four are always present here:
+
+    * name        — youtube_title, falling back to the post title
+    * description — the post's description, which the schema already requires
+    * thumbnailUrl— YouTube's own still. This is a URL written into JSON-LD, not
+                    a resource the page loads, so it costs the reader nothing;
+                    the facade in _includes/youtube.html is what keeps requests
+                    off the page.
+    * uploadDate  — youtube_date if the video went up on a different day from
+                    the post, otherwise the post's own date
+
+  If the video ever moves off YouTube, `embedUrl` is the only line that has to
+  change.
+{% endcomment %}
+
+{%- assign yt_id = page.youtube_id -%}
+{%- if yt_id -%}
+{%- assign yt_name = page.youtube_title | default: page.title -%}
+{%- assign yt_date = page.youtube_date | default: page.date -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ yt_name | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "thumbnailUrl": {{ yt_id | prepend: "https://i.ytimg.com/vi/" | append: "/maxresdefault.jpg" | jsonify }},
+  "uploadDate": {{ yt_date | date_to_xmlschema | jsonify }},
+  "embedUrl": {{ yt_id | prepend: "https://www.youtube-nocookie.com/embed/" | jsonify }},
+  "contentUrl": {{ yt_id | prepend: "https://www.youtube.com/watch?v=" | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }},
+    "@id": {{ '/#person' | absolute_url | jsonify }}
+  },
+  "isPartOf": {
+    "@type": "BlogPosting",
+    "@id": {{ page.url | absolute_url | jsonify }}
+  }
+}
+</script>
+{%- endif -%}

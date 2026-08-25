@@ -2,7 +2,22 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+{% comment %}
+  data-pagefind-body marks what the search index should contain. Once ANY page
+  carries it, Pagefind indexes only elements that do — which is the point: the
+  navigation and footer appear on every page, and without this every search
+  matched all of them.
+{% endcomment %}
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting"
+         data-pagefind-body
+         data-pagefind-meta="date:{{ page.date | date: '%-d %b %Y' }}"
+         data-pagefind-filter="kind:{{ page.kind | default: 'article' }}">
+  {%- for tag in page.tags -%}
+  {%- comment -%}`hidden` rather than a utility class: display:none comes from the
+  browser's own stylesheet, so this cannot affect layout, and Pagefind reads the
+  HTML rather than the rendered page so it still sees the filter.{%- endcomment -%}
+  <span hidden data-pagefind-filter="tag:{{ tag }}"></span>
+  {%- endfor -%}
   <header class="post-header">
     <div class="container">
       {% assign kind = page.kind | default: "article" %}
@@ -79,11 +94,14 @@ layout: default
     
     <div class="content">
       {% include series-nav.html %}
+      {% if page.youtube_id %}
+        {% include youtube.html id=page.youtube_id title=page.youtube_title poster=page.youtube_poster %}
+      {% endif %}
       {{ content }}
     </div>
   </div>
 
-  <footer class="post-footer container">
+  <footer class="post-footer container" data-pagefind-ignore>
     <div class="post-citation">
       <h3>Cite this post</h3>
       <div class="citation-formats">

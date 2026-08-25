@@ -16,6 +16,10 @@ That thread runs through everything here: a PhD on routing under uncertainty, a
 day job forecasting electricity prices, a book on applying RL to business
 problems, and the writing on this site about what actually works.
 
+If you're thinking about working together, **[how I
+work]({{ '/user-manual/' | relative_url }})** covers the practical side — what
+I'm useful for, what I'm not, and how to get the most out of a conversation.
+
 ## What I'm working on
 
 I'm a **Senior Data Scientist at [Enverus](https://www.enverus.com/)**, where I
@@ -89,3 +93,6 @@ on my YouTube channel, [PhiloAI](https://www.youtube.com/@philo_ai).
 I'm always glad to hear from people working on RL or optimization in production,
 and from students trying to get started. If you're writing about something in
 this space, send it to me — I'd rather read your work than another press release.
+
+Before a first project, [how I work]({{ '/user-manual/' | relative_url }}) is
+worth five minutes.

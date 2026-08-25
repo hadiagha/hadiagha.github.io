@@ -873,20 +873,18 @@ a {
   margin-top: var(--space-2xl);
 }
 
-// With five topics the grid runs four across and drops the fifth on its own at
-// the left of a second row, which reads as a wrap accident rather than a
-// deliberate last item. Span it across the row and centre it at the same width
-// as the cards above.
+// Capped at three columns, so five topics lay out as 3 + 2.
 //
-// 1144px is where the four-column layout starts: auto-fit needs 4x250px plus
-// three 2rem gaps = 1096px of content, and .container is capped at 1200px with
-// 1.5rem of padding either side. Below that the column count changes and the
-// rule must not apply, which is why it is scoped rather than unconditional.
+// Left to itself auto-fit puts four across at this width — 4x250px plus three
+// 2rem gaps is 1096px, and .container gives 1152px of content at its 1200px
+// maximum — which leaves the fifth card alone on a second row.
+//
+// Only the widest case needs pinning. Below 1144px auto-fit already resolves
+// to three columns and then to two and one, so the narrow layouts are left
+// alone.
 @media (min-width: 1144px) {
-  .features-grid > .feature:nth-child(5):last-child {
-    grid-column: 1 / -1;
-    max-width: calc((100% - 3 * var(--space-xl)) / 4);
-    margin-inline: auto;
+  .features-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

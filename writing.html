@@ -1,0 +1,76 @@
+---
+layout: default
+title: Writing
+description: Everything published here, newest first — articles, notes, book reviews and essays.
+permalink: /writing/
+---
+
+{% comment %}
+  The archive. Individual posts keep their /blog/YYYY/MM/DD/slug/ permalinks
+  forever — changing a published URL breaks every link to it — so only this
+  index moved. /blog/ redirects here; see blog.html.
+
+  Filtering happens in the browser over the already-rendered list rather than
+  by generating a page per combination. With one controlled tag vocabulary and
+  four kinds that is a couple of hundred pages of build output to save a single
+  click, and the filter bar stays hidden entirely when JavaScript has not run,
+  so nobody is offered a control that does nothing.
+{% endcomment %}
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-description">{{ page.description }}</p>
+  </div>
+</header>
+
+<div class="container">
+  {% if site.posts.size > 0 %}
+
+  <div class="filters" id="filters" role="group" aria-label="Filter posts">
+    <span class="filter-label" id="filter-kind-label">Kind</span>
+    <button type="button" class="filter" data-filter="kind" data-value="all" aria-pressed="true">
+      All<span class="filter-count">{{ site.posts.size }}</span>
+    </button>
+    {% assign kinds = "article,note,review,essay" | split: "," %}
+    {% for k in kinds %}
+      {% assign matching = site.posts | where: "kind", k %}
+      {% if matching.size > 0 %}
+      <button type="button" class="filter" data-filter="kind" data-value="{{ k }}" aria-pressed="false">
+        {% case k %}{% when "article" %}Articles{% when "note" %}Notes{% when "review" %}Reviews{% when "essay" %}Essays{% endcase %}<span class="filter-count">{{ matching.size }}</span>
+      </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% comment %}
+    Tags come from _data/tags.yml, not from site.tags, so the order is the one
+    chosen in that file rather than alphabetical, and a tag with no posts is
+    skipped instead of drawing an empty button.
+  {% endcomment %}
+  <div class="filters" id="filters-tags" role="group" aria-label="Filter posts by topic">
+    <span class="filter-label">Topic</span>
+    <button type="button" class="filter" data-filter="tag" data-value="all" aria-pressed="true">All</button>
+    {% for entry in site.data.tags %}
+      {% assign slug = entry[0] %}
+      {% assign tagged = site.tags[slug] %}
+      {% if tagged.size > 0 %}
+      <button type="button" class="filter" data-filter="tag" data-value="{{ slug }}" aria-pressed="false">
+        {{ entry[1].label | default: slug }}<span class="filter-count">{{ tagged.size }}</span>
+      </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <ol class="entries" id="entries">
+    {% for post in site.posts %}
+    {% include entry.html post=post %}
+    {% endfor %}
+  </ol>
+
+  <p class="entries-empty" id="entries-empty" hidden>Nothing matches that combination.</p>
+
+  {% else %}
+  <p class="entries-empty">Nothing published yet.</p>
+  {% endif %}
+</div>

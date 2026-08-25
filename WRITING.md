@@ -166,11 +166,40 @@ Always tag the language.
 
 ```markdown
 [Another post here]({{ '/blog/2024/01/02/intro-rl/' | relative_url }})
+[Everything tagged optimization]({{ '/writing/' | relative_url }}?tag=optimization)
 [Somewhere else](https://example.com/)
 ```
 
 Use `relative_url` for internal links so they survive a domain change.
 `make check` fails on any internal link that doesn't resolve.
+
+Three internal destinations are worth knowing:
+
+| Link | Goes to |
+|---|---|
+| `/writing/` | The archive, filterable by kind and topic |
+| `/writing/?tag=<slug>` | The archive, pre-filtered to that topic |
+| `/tags/#<slug>` | That topic's section on the Topics page |
+
+Prefer `/writing/?tag=…` when linking to a subject. The `/tags/` anchor only
+exists once that topic has at least one post, so it breaks for anything not yet
+written about — `make check` will catch it, but the query form never breaks in
+the first place.
+
+### Linking to a section
+
+Every heading gets an id from its own text, so `## Why cutting planes` is
+reachable at `#why-cutting-planes`. Hover a heading on the published page and a
+`#` appears; that is the link.
+
+Those ids come from the heading text, which means **renaming a heading breaks
+any link saved to it**. If you need to rename one and keep the old anchor,
+write the id explicitly:
+
+```markdown
+## Choosing the cut
+{: #why-cutting-planes }
+```
 
 ### Tables and quotes
 

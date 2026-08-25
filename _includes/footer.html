@@ -1,71 +1,77 @@
 <footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-content">
+  <div class="container">
+    <div class="footer-grid">
       <div class="footer-section">
-        <h3>{{ site.title }}</h3>
-        <p>{{ site.description }}</p>
+        {% comment %}
+          These were h3 with no h2 above them anywhere on the page. Footer
+          headings are the second level of the document, so h2 is correct — and
+          they are styled as small labels regardless.
+        {% endcomment %}
+        <h2>{{ site.title }}</h2>
+        <p>{{ site.tagline }}</p>
+
         <div class="social-links">
           {% if site.author.social.twitter %}
-          <a href="https://x.com/{{ site.author.social.twitter }}" rel="noopener me" aria-label="X (Twitter)">
-            <i class="fab fa-x-twitter" aria-hidden="true"></i>
+          <a href="https://x.com/{{ site.author.social.twitter }}" rel="noopener me">
+            {% include icon.html name="x" label="X" size=15 %}
           </a>
           {% endif %}
           {% if site.author.social.github %}
-          <a href="https://github.com/{{ site.author.social.github }}" rel="noopener me" aria-label="GitHub">
-            <i class="fab fa-github" aria-hidden="true"></i>
+          <a href="https://github.com/{{ site.author.social.github }}" rel="noopener me">
+            {% include icon.html name="github" label="GitHub" size=15 %}
           </a>
           {% endif %}
           {% if site.author.social.linkedin %}
-          <a href="https://www.linkedin.com/in/{{ site.author.social.linkedin }}" rel="noopener me" aria-label="LinkedIn">
-            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <a href="https://www.linkedin.com/in/{{ site.author.social.linkedin }}" rel="noopener me">
+            {% include icon.html name="linkedin" label="LinkedIn" size=15 %}
           </a>
           {% endif %}
           {% if site.author.social.youtube %}
-          <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" rel="noopener me" aria-label="YouTube">
-            <i class="fab fa-youtube" aria-hidden="true"></i>
+          <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" rel="noopener me">
+            {% include icon.html name="youtube" label="YouTube" size=15 %}
           </a>
           {% endif %}
           {% if site.author.social.google_scholar %}
-          <a href="https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}" rel="noopener me" aria-label="Google Scholar">
-            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+          <a href="https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}" rel="noopener me">
+            {% include icon.html name="scholar" label="Google Scholar" size=15 %}
           </a>
           {% endif %}
           {% if site.author.social.orcid %}
-          <a href="https://orcid.org/{{ site.author.social.orcid }}" rel="noopener me" aria-label="ORCID">
-            <i class="fab fa-orcid" aria-hidden="true"></i>
+          <a href="https://orcid.org/{{ site.author.social.orcid }}" rel="noopener me">
+            {% include icon.html name="orcid" label="ORCID" size=15 %}
           </a>
           {% endif %}
-          <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">
-            <i class="fas fa-rss" aria-hidden="true"></i>
+          <a href="{{ '/feed.xml' | relative_url }}">
+            {% include icon.html name="rss" label="RSS feed" size=15 %}
           </a>
         </div>
       </div>
-      
+
       <div class="footer-section">
-        <h3>Quick Links</h3>
+        <h2>Read</h2>
         <ul class="footer-links">
-          <li><a href="{{ '/blog/' | relative_url }}">Latest posts</a></li>
-          <li><a href="{{ '/tags/' | relative_url }}">Browse by topic</a></li>
+          <li><a href="{{ '/start/' | relative_url }}">Start here</a></li>
+          <li><a href="{{ '/writing/' | relative_url }}">All writing</a></li>
+          <li><a href="{{ '/tags/' | relative_url }}">Topics</a></li>
           <li><a href="{{ '/book/' | relative_url }}">The book</a></li>
           <li><a href="{{ '/research/' | relative_url }}">Research</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h2>Elsewhere</h2>
+        <ul class="footer-links">
           <li><a href="{{ '/about/' | relative_url }}">About</a></li>
           <li><a href="{{ '/cv/' | relative_url }}">CV</a></li>
           <li><a href="{{ '/contact/' | relative_url }}">Get in touch</a></li>
+          <li><a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></li>
         </ul>
       </div>
-      
-      <div class="footer-section">
-        <h3>Subscribe</h3>
-        <p>Get notified of new posts via RSS</p>
-        <a href="{{ '/feed.xml' | relative_url }}" class="subscribe-button">
-          <i class="fas fa-rss"></i> Subscribe to RSS
-        </a>
-      </div>
     </div>
-    
+
     <div class="footer-bottom">
-      <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}. All rights reserved.</p>
-      <p>Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> & <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}</p>
+      <p>Built with <a href="https://jekyllrb.com" rel="noopener">Jekyll</a>. Source on <a href="https://github.com/{{ site.author.social.github }}/{{ site.author.social.github }}.github.io" rel="noopener">GitHub</a>.</p>
     </div>
   </div>
 </footer>

@@ -18,8 +18,7 @@ updated: 2026-08-24
     </a>
   </div>
   <div class="book-hero-text">
-    <p class="book-status">
-      <i class="fas fa-circle-notch" aria-hidden="true"></i>
+    <p class="eyebrow book-status">
       In {{ site.book.status }} — full release expected {{ site.book.release }}
     </p>
     <p class="book-lede">
@@ -31,10 +30,10 @@ updated: 2026-08-24
     </p>
     <div class="book-actions">
       <a href="{{ site.book.manning }}" class="btn btn-primary" rel="noopener">
-        <i class="fas fa-book-open" aria-hidden="true"></i> Read it on Manning
+        Read it on Manning
       </a>
       <a href="{{ site.book.github }}" class="btn btn-outline" rel="noopener">
-        <i class="fab fa-github" aria-hidden="true"></i> Code on GitHub
+        {% include icon.html name="github" size=15 %} Code on GitHub
       </a>
     </div>
   </div>
@@ -135,79 +134,70 @@ now and release.
 </script>
 
 <style>
+/* Page-specific layout only. Everything typographic — the buttons, the eyebrow,
+   the table rules — now comes from the stylesheet, so what used to live here
+   has been deleted rather than restyled. */
 .book-hero {
   display: grid;
-  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
   gap: var(--space-2xl);
   align-items: start;
   margin-bottom: var(--space-2xl);
+  max-width: none;
 }
 
 .book-hero-cover img {
+  display: block;
   width: 100%;
   height: auto;
-  border-radius: 0.75rem;
-  box-shadow: var(--shadow-lg);
-  display: block;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
 }
 
-.book-status {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text-light);
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 999px;
-  margin-bottom: var(--space-md);
-}
+.book-hero-text { min-width: 0; }
+
+.book-status { color: var(--sage); }
 
 .book-lede {
-  font-size: 1.125rem;
-  line-height: 1.7;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-soft);
 }
 
 .book-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   margin-top: var(--space-lg);
 }
 
-.page-content table {
+/* The chapter list is a two-column table of numbers and titles: it wants the
+   full measure and a narrow first column, not the max-content sizing that
+   suits a data table. */
+.prose table {
+  display: table;
   width: 100%;
-  border-collapse: collapse;
-  margin: var(--space-md) 0 var(--space-xl);
+  max-width: var(--measure);
 }
 
-.page-content table td {
-  padding: var(--space-sm) var(--space-md);
-  border-bottom: 1px solid var(--color-border);
-  vertical-align: top;
-}
-
-.page-content table td:first-child {
-  width: 3rem;
-  color: var(--color-text-light);
+.prose td:first-child {
+  width: 2.5rem;
+  color: var(--ink-soft);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .book-hero {
     grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-    text-align: center;
+    gap: var(--space-lg);
   }
 
+  /* The cover centres; the prose does not. Centred body text is measurably
+     harder to read, because every line starts in a different place. */
   .book-hero-cover {
-    max-width: 220px;
-  }
-
-  .book-actions {
-    justify-content: center;
+    max-width: 12rem;
+    justify-self: center;
   }
 }
 </style>

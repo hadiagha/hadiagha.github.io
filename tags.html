@@ -1,206 +1,76 @@
 ---
-layout: page
+layout: default
 title: Topics
-description: Browse posts by topic
+description: Everything grouped by subject, with a note on what each one covers.
 permalink: /tags/
 ---
 
-<div class="tags-page">
-  <!-- Tag cloud -->
-  <section class="tag-cloud">
-    <h2>All Topics</h2>
-    <div class="tags-list">
-      {% assign tags = site.tags | sort %}
-      {% for tag in tags %}
-        {% assign tag_name = tag[0] %}
-        {% assign tag_posts = tag[1] %}
-        <a href="#{{ tag_name | slugify }}" class="tag-item">
-          <span class="tag-name">{{ tag_name }}</span>
-          <span class="tag-count">{{ tag_posts.size }}</span>
-        </a>
-      {% endfor %}
-    </div>
-  </section>
+{% comment %}
+  Driven by _data/tags.yml rather than site.tags, which changes three things:
+  the order is the deliberate one from that file instead of alphabetical, each
+  topic carries the description written for it, and a tag that exists on a post
+  but not in the vocabulary shows up as an obvious gap rather than silently
+  becoming a new section. `make doctor` reports those before they ship.
+{% endcomment %}
 
-  <!-- Posts by tag -->
-  <section class="posts-by-tag">
-    {% assign tags = site.tags | sort %}
-    {% for tag in tags %}
-      {% assign tag_name = tag[0] %}
-      {% assign tag_posts = tag[1] %}
-      <div id="{{ tag_name | slugify }}" class="tag-section">
-        <h2 class="tag-title">
-          <i class="fas fa-tag"></i> {{ tag_name }}
-          <span class="post-count">({{ tag_posts.size }} posts)</span>
-        </h2>
-        <div class="tag-posts">
-          {% for post in tag_posts %}
-            <article class="post-item">
-              <div class="post-date">
-                <time datetime="{{ post.date | date_to_xmlschema }}">
-                  {{ post.date | date: "%b %d, %Y" }}
-                </time>
-              </div>
-              <div class="post-details">
-                <h3 class="post-title">
-                  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                </h3>
-                <p class="post-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-      </div>
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-description">{{ page.description }}</p>
+  </div>
+</header>
+
+<div class="container">
+  {% comment %}
+    site.tags[slug] — with slug assigned to its own variable first. Liquid does
+    not resolve `site.tags[entry[0]]`: an index expression inside the brackets
+    is not part of its variable syntax, so the lookup silently returns nil and
+    every topic counts as empty. This whole page rendered "No topics yet" while
+    a tagged post sat in _posts.
+  {% endcomment %}
+  {% assign used = 0 %}
+  {% for entry in site.data.tags %}
+    {% assign slug = entry[0] %}
+    {% if site.tags[slug].size > 0 %}{% assign used = used | plus: 1 %}{% endif %}
+  {% endfor %}
+
+  {% if used > 0 %}
+  <nav class="topic-index" aria-label="Jump to a topic">
+    {% for entry in site.data.tags %}
+      {% assign slug = entry[0] %}
+      {% assign tagged = site.tags[slug] %}
+      {% if tagged.size > 0 %}
+      <a class="topic-chip" href="#{{ slug }}">
+        {{ entry[1].label | default: slug }}
+        <span class="topic-count">{{ tagged.size }}</span>
+      </a>
+      {% endif %}
     {% endfor %}
-  </section>
+  </nav>
+
+  {% for entry in site.data.tags %}
+    {% assign slug = entry[0] %}
+    {% assign meta = entry[1] %}
+    {% assign tagged = site.tags[slug] %}
+    {% if tagged.size > 0 %}
+    <section class="topic-group" id="{{ slug }}">
+      <h2>{{ meta.label | default: slug }}</h2>
+      {% if meta.description %}
+      <p class="topic-blurb">{{ meta.description }}</p>
+      {% endif %}
+      <ol class="entries">
+        {% for post in tagged %}
+        {% include entry.html post=post show_tags=false %}
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+  {% endfor %}
+
+  {% else %}
+  <p class="entries-empty">
+    No topics yet — they appear here as soon as the first tagged post is
+    published.
+  </p>
+  {% endif %}
 </div>
-
-<style>
-.tags-page {
-  max-width: var(--content-max);
-  margin: 0 auto;
-}
-
-.tag-cloud {
-  margin-bottom: var(--space-3xl);
-  
-  h2 {
-    margin-bottom: var(--space-xl);
-  }
-}
-
-.tags-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
-}
-
-.tag-item {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg);
-  background-color: var(--color-bg-secondary);
-  border: 2px solid transparent;
-  border-radius: 2rem;
-  text-decoration: none;
-  transition: all var(--transition-fast);
-  
-  &:hover {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    transform: translateY(-2px);
-    
-    .tag-name, .tag-count {
-      color: white;
-    }
-  }
-  
-  .tag-name {
-    font-weight: 500;
-    color: var(--color-text);
-  }
-  
-  .tag-count {
-    background-color: var(--color-bg);
-    color: var(--color-text-light);
-    padding: 0.125rem 0.5rem;
-    border-radius: 1rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-}
-
-.posts-by-tag {
-  .tag-section {
-    margin-bottom: var(--space-3xl);
-    scroll-margin-top: 100px;
-    
-    &:target {
-      .tag-title {
-        color: var(--color-primary);
-      }
-    }
-  }
-  
-  .tag-title {
-    display: flex;
-    align-items: center;
-    /* Flex items default to min-width:auto and will not shrink below their
-       content, so a long tag name plus the count overflowed narrow screens. */
-    flex-wrap: wrap;
-    min-width: 0;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xl);
-    padding-bottom: var(--space-md);
-    border-bottom: 2px solid var(--color-border);
-    
-    .post-count {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--color-text-light);
-    }
-  }
-  
-  .tag-posts {
-    display: grid;
-    gap: var(--space-lg);
-  }
-  
-  .post-item {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: var(--space-lg);
-    padding: var(--space-lg);
-    background-color: var(--color-bg-secondary);
-    border-radius: 0.5rem;
-    transition: all var(--transition-fast);
-    
-    &:hover {
-      background-color: var(--color-bg-tertiary);
-      transform: translateX(4px);
-    }
-    
-    .post-date {
-      color: var(--color-text-light);
-      font-size: 0.875rem;
-      font-weight: 500;
-    }
-    
-    .post-title {
-      font-size: 1.25rem;
-      margin-bottom: var(--space-sm);
-      
-      a {
-        color: var(--color-text);
-        
-        &:hover {
-          color: var(--color-primary);
-        }
-      }
-    }
-    
-    .post-excerpt {
-      color: var(--color-text-light);
-      margin: 0;
-      font-size: 0.95rem;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .post-item {
-    /* minmax(0, …) so a long title cannot force the grid wider than the screen */
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-sm);
-    padding: var(--space-md);
-  }
-
-  .post-item .post-details {
-    min-width: 0;
-  }
-}
-</style>

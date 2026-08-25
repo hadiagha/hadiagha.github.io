@@ -2,171 +2,178 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+{% assign kind = page.kind | default: "article" %}
+{% comment %}
+  The schema's field is `updated`; last_modified_at is kept as a fallback so
+  anything written against the older key still renders.
+{% endcomment %}
+{% assign revised = page.updated | default: page.last_modified_at %}
+
+<article class="post{% if page.toc %} has-toc{% endif %}" itemscope itemtype="https://schema.org/BlogPosting">
   <header class="post-header">
     <div class="container">
-      {% assign kind = page.kind | default: "article" %}
-      {% unless kind == "article" %}
-      <p class="post-kind post-kind--{{ kind }}">
-        {% case kind %}
-          {% when "note" %}<i class="fas fa-sticky-note" aria-hidden="true"></i> Note
-          {% when "review" %}<i class="fas fa-book" aria-hidden="true"></i> Book review
-          {% when "essay" %}<i class="fas fa-feather" aria-hidden="true"></i> Essay
-        {% endcase %}
-      </p>
-      {% endunless %}
-      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-      {% if page.description %}
-      <p class="post-description">{{ page.description }}</p>
-      {% endif %}
-      <div class="post-meta">
-        <span class="post-author">
-          <i class="fas fa-user"></i>
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span itemprop="name">{{ page.author | default: site.author.name }}</span>
-          </span>
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar"></i>
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {{ page.date | date: "%B %d, %Y" }}
-          </time>
-        </span>
-        {% comment %}
-          The schema's field is `updated`; last_modified_at is kept as a
-          fallback so anything written against the older key still renders.
-        {% endcomment %}
-        {% assign revised = page.updated | default: page.last_modified_at %}
-        {% if revised %}
-        <span class="post-modified">
-          <i class="fas fa-edit" aria-hidden="true"></i>
-          Updated <time datetime="{{ revised | date_to_xmlschema }}" itemprop="dateModified">
-            {{ revised | date: "%B %-d, %Y" }}
-          </time>
-        </span>
+      <div class="post-header-inner">
+        {% unless kind == "article" %}
+        <p class="kind">{% case kind %}{% when "note" %}Note{% when "review" %}Book review{% when "essay" %}Essay{% else %}{{ kind }}{% endcase %}</p>
+        {% endunless %}
+
+        <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+        {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
         {% endif %}
-        <span class="post-reading-time">
-          <i class="fas fa-clock"></i>
-          {% assign words = content | number_of_words %}
-          {% if words < 360 %}
-            1 min read
-          {% else %}
-            {{ words | divided_by: 180 }} min read
-          {% endif %}
+
+        {% comment %}
+          The metadata line used to open with a person icon and the author's
+          name on a single-author site, then repeat an icon before every field.
+          The separators here are drawn in CSS, so nothing decorative ends up in
+          a screen reader or on the clipboard.
+        {% endcomment %}
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person" class="visually-hidden">
+          <span itemprop="name">{{ page.author | default: site.author.name }}</span>
         </span>
-      </div>
-      <div class="post-tags">
-        {% for tag in page.tags %}
-        <a href="{{ '/tags#' | append: tag | replace: ' ', '-' | downcase | relative_url }}" class="tag">
-          <i class="fas fa-tag"></i> {{ tag }}
-        </a>
-        {% endfor %}
+
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%-d %B %Y" }}
+          </time>
+          {% if revised %}
+          <span>Updated <time datetime="{{ revised | date_to_xmlschema }}" itemprop="dateModified">{{ revised | date: "%-d %B %Y" }}</time></span>
+          {% endif %}
+          <span>
+            {% assign words = content | number_of_words %}
+            {% if words < 360 %}1 min read{% else %}{{ words | divided_by: 180 }} min read{% endif %}
+          </span>
+        </div>
+
+        {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+          <a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
     </div>
   </header>
 
-  <div class="post-content container" itemprop="articleBody">
-    {% if page.toc %}
-    {% comment %}
-      h2, not h3: this is the first heading after the post's h1, and skipping a
-      level breaks the document outline for screen-reader navigation.
-    {% endcomment %}
-    <aside class="toc" aria-labelledby="toc-heading">
-      <h2 id="toc-heading">Table of Contents</h2>
-      <nav id="toc"></nav>
-    </aside>
-    {% endif %}
-    
-    <div class="content">
-      {% include series-nav.html %}
-      {{ content }}
+  <div class="container">
+    <div class="post-content{% if page.toc %} has-toc{% endif %}" itemprop="articleBody">
+      {% if page.toc %}
+      {% comment %}
+        h2, not h3: this is the first heading after the post's h1, and skipping
+        a level breaks the document outline for screen-reader navigation. The
+        `has-toc` is set here from the front matter rather than by main.js,
+        so the two-column layout is correct in the very first paint instead of
+        snapping into place once the script runs. main.js only *removes* it
+        again, in the one case the front matter cannot know about: a post that
+        asked for a table of contents but has no headings to put in it.
+      {% endcomment %}
+      <aside class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">Contents</h2>
+        <nav id="toc" aria-labelledby="toc-heading"></nav>
+      </aside>
+      {% endif %}
+
+      <div class="content prose">
+        {% include series-nav.html %}
+        {{ content }}
+      </div>
     </div>
   </div>
 
-  <footer class="post-footer container">
-    <div class="post-citation">
-      <h3>Cite this post</h3>
-      <div class="citation-formats">
-        <div class="citation-format">
-          <h4>APA</h4>
-          <code class="citation-text">
-            {{ page.author | default: site.author.name }} ({{ page.date | date: "%Y, %B %d" }}). {{ page.title }}. {{ site.title }}. {{ page.url | absolute_url }}
-          </code>
-          <button class="copy-btn" data-clipboard-text="{{ page.author | default: site.author.name }} ({{ page.date | date: '%Y, %B %d' }}). {{ page.title }}. {{ site.title }}. {{ page.url | absolute_url }}">
-            <i class="fas fa-copy"></i> Copy
-          </button>
-        </div>
-        <div class="citation-format">
-          <h4>MLA</h4>
-          <code class="citation-text">
-            {{ page.author | default: site.author.name }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%d %b. %Y" }}, {{ page.url | absolute_url }}.
-          </code>
-          <button class="copy-btn" data-clipboard-text='{{ page.author | default: site.author.name }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%d %b. %Y" }}, {{ page.url | absolute_url }}.'>
-            <i class="fas fa-copy"></i> Copy
-          </button>
-        </div>
-        <div class="citation-format">
-          <h4>BibTeX</h4>
-          <pre class="citation-text">{% raw %}@misc{{% endraw %}{{ page.slug | default: page.title | slugify }}{% raw %},
-  author = {{% endraw %}{{ page.author | default: site.author.name }}{% raw %}},
-  title = {{% endraw %}{{ page.title }}{% raw %}},
-  howpublished = {\url{{% endraw %}{{ page.url | absolute_url }}{% raw %}}},
-  year = {{% endraw %}{{ page.date | date: "%Y" }}{% raw %}},
-  note = {[Online; accessed {% endraw %}{{ "now" | date: "%d-%B-%Y" }}{% raw %}]}
-}{% endraw %}</pre>
-          <button class="copy-btn" data-clipboard-text='@misc{% raw %}{{% endraw %}{{ page.slug | default: page.title | slugify }}{% raw %},
-  author = {{% endraw %}{{ page.author | default: site.author.name }}{% raw %}},
-  title = {{% endraw %}{{ page.title }}{% raw %}},
-  howpublished = {\url{{% endraw %}{{ page.url | absolute_url }}{% raw %}}},
-  year = {{% endraw %}{{ page.date | date: "%Y" }}{% raw %}},
-  note = {[Online; accessed {% endraw %}{{ "now" | date: "%d-%B-%Y" }}{% raw %}]}
-}{% endraw %}'>
-            <i class="fas fa-copy"></i> Copy
-          </button>
+  <div class="container">
+    <footer class="post-footer">
+      <div class="post-citation">
+        {% comment %}
+          Three citation formats used to sit permanently open under every post.
+          Most readers will never cite a blog post, and the BibTeX block is the
+          widest element on the page. Behind a <details> it costs one line until
+          someone wants it.
+        {% endcomment %}
+        <details>
+          <summary class="citation-toggle">Cite this post</summary>
+          {% capture cite_url %}{{ page.url | absolute_url }}{% endcapture %}
+          {% capture cite_author %}{{ page.author | default: site.author.name }}{% endcapture %}
+          {% capture cite_key %}{{ page.slug | default: page.title | slugify }}{% endcapture %}
+
+          <div class="citation-formats">
+            <div class="citation-format">
+              <h3>APA</h3>
+              {% capture apa %}{{ cite_author }} ({{ page.date | date: "%Y, %B %-d" }}). {{ page.title }}. {{ site.title }}. {{ cite_url }}{% endcapture %}
+              <code class="citation-text">{{ apa }}</code>
+              <button class="copy-btn" type="button" data-clipboard-text="{{ apa | escape }}">
+                {% include icon.html name="copy" size=13 %} <span>Copy</span>
+              </button>
+            </div>
+
+            <div class="citation-format">
+              <h3>MLA</h3>
+              {% capture mla %}{{ cite_author }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%-d %b. %Y" }}, {{ cite_url }}.{% endcapture %}
+              <code class="citation-text">{{ mla }}</code>
+              <button class="copy-btn" type="button" data-clipboard-text="{{ mla | escape }}">
+                {% include icon.html name="copy" size=13 %} <span>Copy</span>
+              </button>
+            </div>
+
+            <div class="citation-format">
+              <h3>BibTeX</h3>
+              {%- capture bibtex -%}
+@misc{{ '{' }}{{ cite_key }},
+  author       = {{ '{' }}{{ cite_author }}},
+  title        = {{ '{' }}{{ page.title }}},
+  year         = {{ '{' }}{{ page.date | date: "%Y" }}},
+  howpublished = {\url{{ '{' }}{{ cite_url }}}}
+}
+              {%- endcapture -%}
+              <pre class="citation-text">{{ bibtex }}</pre>
+              <button class="copy-btn" type="button" data-clipboard-text="{{ bibtex | escape }}">
+                {% include icon.html name="copy" size=13 %} <span>Copy</span>
+              </button>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      {% if page.share != false %}
+      <div class="post-share">
+        <h2>Share</h2>
+        <div class="share-links">
+          <a href="https://x.com/intent/tweet?text={{ page.title | url_encode }}&amp;url={{ page.url | absolute_url | url_encode }}" rel="noopener">
+            {% include icon.html name="x" size=14 %} X
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" rel="noopener">
+            {% include icon.html name="linkedin" size=14 %} LinkedIn
+          </a>
+          <a href="mailto:?subject={{ page.title | url_encode }}&amp;body={{ page.url | absolute_url | url_encode }}">
+            {% include icon.html name="mail" size=14 %} Email
+          </a>
         </div>
       </div>
-    </div>
+      {% endif %}
 
-    <div class="post-share">
-      <h3>Share this post</h3>
-      <div class="share-buttons">
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn twitter">
-          <i class="fab fa-twitter"></i> Twitter
-        </a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn linkedin">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url }}" class="share-btn email">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-      </div>
-    </div>
-
-    <nav class="post-navigation">
-      {% if page.previous %}
-      <a href="{{ page.previous.url | relative_url }}" class="nav-prev">
-        <i class="fas fa-chevron-left"></i>
-        <span>
-          <small>Previous</small>
+      {% if page.previous or page.next %}
+      <nav class="post-navigation" aria-label="More posts">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="nav-prev">
+          <small>&larr; Previous</small>
           <strong>{{ page.previous.title }}</strong>
-        </span>
-      </a>
-      {% endif %}
-      {% if page.next %}
-      <a href="{{ page.next.url | relative_url }}" class="nav-next">
-        <span>
-          <small>Next</small>
+        </a>
+        {% endif %}
+        {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="nav-next">
+          <small>Next &rarr;</small>
           <strong>{{ page.next.title }}</strong>
-        </span>
-        <i class="fas fa-chevron-right"></i>
-      </a>
+        </a>
+        {% endif %}
+      </nav>
       {% endif %}
-    </nav>
 
-    {% comment %}
-      The Disqus block that used to sit here was driven by a placeholder
-      shortname, so every post loaded a script from a subdomain that does not
-      exist. giscus, backed by GitHub Discussions, is the planned replacement.
-    {% endcomment %}
-  </footer>
+      {% comment %}
+        The Disqus block that used to sit here was driven by a placeholder
+        shortname, so every post loaded a script from a subdomain that does not
+        exist. giscus, backed by GitHub Discussions, is the planned replacement.
+      {% endcomment %}
+    </footer>
+  </div>
 </article>

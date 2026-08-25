@@ -2,17 +2,27 @@
 layout: default
 ---
 
-<article class="page">
+{% comment %}
+  `wide: true` in the front matter drops the reading measure from block-level
+  children, for pages that are lists and tables rather than prose — the CV and
+  the research index. Paragraphs and list items keep the measure regardless,
+  because a 68rem-wide paragraph is unreadable wherever it appears.
+{% endcomment %}
+<article class="page{% if page.wide %} page--wide{% endif %}">
   <header class="page-header">
     <div class="container">
-      <h1 class="page-title">{{ page.title }}</h1>
-      {% if page.description %}
-      <p class="page-description">{{ page.description }}</p>
-      {% endif %}
+      <div class="page-header-inner">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="page-description">{{ page.description }}</p>
+        {% endif %}
+      </div>
     </div>
   </header>
 
-  <div class="page-content container">
-    {{ content }}
+  <div class="container">
+    <div class="page-content prose">
+      {{ content }}
+    </div>
   </div>
 </article>

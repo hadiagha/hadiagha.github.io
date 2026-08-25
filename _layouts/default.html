@@ -109,11 +109,25 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
 
   {% comment %}
-    The != "" test is load-bearing: an empty string is truthy in Liquid, so a
-    bare `if` would emit the beacon with a blank token.
+    Cloudflare Web Analytics. Two guards, both load-bearing:
+
+      * The != "" test, because an empty string is truthy in Liquid, so a bare
+        `if` would emit the beacon with a blank token.
+      * The environment test, so `make preview` never reports local browsing as
+        real traffic.
+
+    type="module" rather than defer, which is the form Cloudflare's own snippet
+    uses. Module scripts are deferred by definition, so the load behaviour is
+    the same, and matching the vendor's tag means we stay correct if they ship
+    actual module syntax in that file later. It is fetched in CORS mode because
+    of type="module"; static.cloudflareinsights.com sends
+    access-control-allow-origin: *, so that resolves.
+
+    Expect this to undercount. The host is on every major blocklist and this
+    site's readers are the people most likely to be running one.
   {% endcomment %}
   {% if site.cloudflare_analytics_token and site.cloudflare_analytics_token != "" and jekyll.environment == "production" %}
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
   {% endif %}
 </head>

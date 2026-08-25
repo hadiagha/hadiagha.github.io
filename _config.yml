@@ -91,10 +91,22 @@ twitter:
 # Leave empty and no analytics script is emitted at all — the previous
 # UA-XXXXXXXXX-X placeholder was truthy to Liquid and shipped a live request to
 # a Universal Analytics property that no longer exists.
-# Left with no value on purpose so Liquid sees nil. Note that an empty string
-# would be TRUTHY in Liquid — only nil and false are falsy — which is exactly
-# how the old UA-XXXXXXXXX-X placeholder shipped a live script tag.
-cloudflare_analytics_token:
+# The site tag for Cloudflare Web Analytics. This is public by design — it ships
+# in the HTML of every page — so it belongs in the repository rather than in a
+# CI secret. It is write-only: it accepts pageviews and cannot read the
+# dashboard, so it is not a credential.
+#
+# If this is ever blanked out, leave it with NO value rather than "". An empty
+# string is TRUTHY in Liquid — only nil and false are falsy — which is exactly
+# how the old UA-XXXXXXXXX-X placeholder shipped a live script tag to a property
+# that no longer existed. The guard in _layouts/default.html tests != "" for
+# that reason; do not rely on the guard alone.
+#
+# Automatic (edge-injected) setup does not work here and never will: it requires
+# the domain to be proxied through Cloudflare, and the DNS records are
+# deliberately DNS-only so GitHub can issue the TLS certificate. This is the
+# JS-snippet setup instead.
+cloudflare_analytics_token: "74fffd7e11584509bb94054ff4c38cf9"
 
 # Comments are intentionally absent. The previous Disqus block held a
 # placeholder shortname, so every post requested a nonexistent subdomain.

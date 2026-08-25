@@ -19,7 +19,7 @@ updated: 2026-08-24
   </div>
   <div class="book-hero-text">
     <p class="book-status">
-      <i class="fas fa-circle-notch" aria-hidden="true"></i>
+      {% include icon.html name="circle-notch" %}
       In {{ site.book.status }} — full release expected {{ site.book.release }}
     </p>
     <p class="book-lede">
@@ -31,10 +31,10 @@ updated: 2026-08-24
     </p>
     <div class="book-actions">
       <a href="{{ site.book.manning }}" class="btn btn-primary" rel="noopener">
-        <i class="fas fa-book-open" aria-hidden="true"></i> Read it on Manning
+        {% include icon.html name="book-open" %} Read it on Manning
       </a>
       <a href="{{ site.book.github }}" class="btn btn-outline" rel="noopener">
-        <i class="fab fa-github" aria-hidden="true"></i> Code on GitHub
+        {% include icon.html name="github" %} Code on GitHub
       </a>
     </div>
   </div>

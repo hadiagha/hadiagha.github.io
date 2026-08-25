@@ -9,9 +9,9 @@ layout: default
       {% unless kind == "article" %}
       <p class="post-kind post-kind--{{ kind }}">
         {% case kind %}
-          {% when "note" %}<i class="fas fa-sticky-note" aria-hidden="true"></i> Note
-          {% when "review" %}<i class="fas fa-book" aria-hidden="true"></i> Book review
-          {% when "essay" %}<i class="fas fa-feather" aria-hidden="true"></i> Essay
+          {% when "note" %}{% include icon.html name="sticky-note" %} Note
+          {% when "review" %}{% include icon.html name="book" %} Book review
+          {% when "essay" %}{% include icon.html name="feather" %} Essay
         {% endcase %}
       </p>
       {% endunless %}
@@ -21,13 +21,13 @@ layout: default
       {% endif %}
       <div class="post-meta">
         <span class="post-author">
-          <i class="fas fa-user"></i>
+          {% include icon.html name="user" %}
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
             <span itemprop="name">{{ page.author | default: site.author.name }}</span>
           </span>
         </span>
         <span class="post-date">
-          <i class="fas fa-calendar"></i>
+          {% include icon.html name="calendar" %}
           <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: "%B %d, %Y" }}
           </time>
@@ -39,14 +39,14 @@ layout: default
         {% assign revised = page.updated | default: page.last_modified_at %}
         {% if revised %}
         <span class="post-modified">
-          <i class="fas fa-edit" aria-hidden="true"></i>
+          {% include icon.html name="edit" %}
           Updated <time datetime="{{ revised | date_to_xmlschema }}" itemprop="dateModified">
             {{ revised | date: "%B %-d, %Y" }}
           </time>
         </span>
         {% endif %}
         <span class="post-reading-time">
-          <i class="fas fa-clock"></i>
+          {% include icon.html name="clock" %}
           {% assign words = content | number_of_words %}
           {% if words < 360 %}
             1 min read
@@ -58,7 +58,7 @@ layout: default
       <div class="post-tags">
         {% for tag in page.tags %}
         <a href="{{ '/tags#' | append: tag | replace: ' ', '-' | downcase | relative_url }}" class="tag">
-          <i class="fas fa-tag"></i> {{ tag }}
+          {% include icon.html name="tag" %} {{ tag }}
         </a>
         {% endfor %}
       </div>
@@ -93,7 +93,7 @@ layout: default
             {{ page.author | default: site.author.name }} ({{ page.date | date: "%Y, %B %d" }}). {{ page.title }}. {{ site.title }}. {{ page.url | absolute_url }}
           </code>
           <button class="copy-btn" data-clipboard-text="{{ page.author | default: site.author.name }} ({{ page.date | date: '%Y, %B %d' }}). {{ page.title }}. {{ site.title }}. {{ page.url | absolute_url }}">
-            <i class="fas fa-copy"></i> Copy
+            {% include icon.html name="copy" %} Copy
           </button>
         </div>
         <div class="citation-format">
@@ -102,7 +102,7 @@ layout: default
             {{ page.author | default: site.author.name }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%d %b. %Y" }}, {{ page.url | absolute_url }}.
           </code>
           <button class="copy-btn" data-clipboard-text='{{ page.author | default: site.author.name }}. "{{ page.title }}." {{ site.title }}, {{ page.date | date: "%d %b. %Y" }}, {{ page.url | absolute_url }}.'>
-            <i class="fas fa-copy"></i> Copy
+            {% include icon.html name="copy" %} Copy
           </button>
         </div>
         <div class="citation-format">
@@ -121,7 +121,7 @@ layout: default
   year = {{% endraw %}{{ page.date | date: "%Y" }}{% raw %}},
   note = {[Online; accessed {% endraw %}{{ "now" | date: "%d-%B-%Y" }}{% raw %}]}
 }{% endraw %}'>
-            <i class="fas fa-copy"></i> Copy
+            {% include icon.html name="copy" %} Copy
           </button>
         </div>
       </div>
@@ -131,13 +131,13 @@ layout: default
       <h3>Share this post</h3>
       <div class="share-buttons">
         <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn twitter">
-          <i class="fab fa-twitter"></i> Twitter
+          {% include icon.html name="twitter" %} Twitter
         </a>
         <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn linkedin">
-          <i class="fab fa-linkedin"></i> LinkedIn
+          {% include icon.html name="linkedin" %} LinkedIn
         </a>
         <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url }}" class="share-btn email">
-          <i class="fas fa-envelope"></i> Email
+          {% include icon.html name="envelope" %} Email
         </a>
       </div>
     </div>
@@ -145,7 +145,7 @@ layout: default
     <nav class="post-navigation">
       {% if page.previous %}
       <a href="{{ page.previous.url | relative_url }}" class="nav-prev">
-        <i class="fas fa-chevron-left"></i>
+        {% include icon.html name="chevron-left" %}
         <span>
           <small>Previous</small>
           <strong>{{ page.previous.title }}</strong>
@@ -158,7 +158,7 @@ layout: default
           <small>Next</small>
           <strong>{{ page.next.title }}</strong>
         </span>
-        <i class="fas fa-chevron-right"></i>
+        {% include icon.html name="chevron-right" %}
       </a>
       {% endif %}
     </nav>

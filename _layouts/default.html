@@ -34,11 +34,25 @@
   <meta property="og:image:alt" content="{{ page.image_alt | escape }}">
   {% endif %}
 
+  {% comment %}
+    Inter, Merriweather and JetBrains Mono are served from this origin now, not
+    from fonts.googleapis.com. Same files, same rendering — what goes away is
+    two extra DNS lookups and TLS handshakes before any text can be drawn, and
+    a third party being told the IP address of everyone who reads this site.
+    The files are in assets/fonts/; scripts/fonts.py is how they got there.
+
+    These two carry nearly every glyph on a typical page and are discovered
+    only once the stylesheet has been parsed, so preloading them takes a round
+    trip out of first paint. crossorigin is required even though they are
+    same-origin: fonts are always fetched in CORS mode, and a preload without
+    it downloads the file a second time instead of reusing it.
+  {% endcomment %}
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="{{ '/assets/fonts/merriweather-latin.woff2' | relative_url }}">
+
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   {% if page.math %}
   {% comment %}

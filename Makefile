@@ -1,7 +1,7 @@
 COMPOSE := docker compose
 
 .DEFAULT_GOAL := help
-.PHONY: help new preview build check doctor images publish lock shell clean rebuild
+.PHONY: help new preview build check doctor images fonts publish lock shell clean rebuild
 
 help: ## Show this help
 	@grep -hE '^[a-z-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -28,6 +28,9 @@ doctor: ## Validate front matter, dates, tags, series and unused media
 
 images: ## Resize and generate WebP for images under assets/posts/
 	@python3 scripts/images.py
+
+fonts: ## Re-download the self-hosted webfonts (rarely needed)
+	@python3 scripts/fonts.py
 
 publish: ## Move a draft into _posts/: make publish slug=your-post-slug
 	@bash scripts/publish.sh "$(slug)"

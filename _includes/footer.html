@@ -7,36 +7,36 @@
         <div class="social-links">
           {% if site.author.social.twitter %}
           <a href="https://x.com/{{ site.author.social.twitter }}" rel="noopener me" aria-label="X (Twitter)">
-            <i class="fab fa-x-twitter" aria-hidden="true"></i>
+            {% include icon.html name="x-twitter" %}
           </a>
           {% endif %}
           {% if site.author.social.github %}
           <a href="https://github.com/{{ site.author.social.github }}" rel="noopener me" aria-label="GitHub">
-            <i class="fab fa-github" aria-hidden="true"></i>
+            {% include icon.html name="github" %}
           </a>
           {% endif %}
           {% if site.author.social.linkedin %}
           <a href="https://www.linkedin.com/in/{{ site.author.social.linkedin }}" rel="noopener me" aria-label="LinkedIn">
-            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            {% include icon.html name="linkedin" %}
           </a>
           {% endif %}
           {% if site.author.social.youtube %}
           <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" rel="noopener me" aria-label="YouTube">
-            <i class="fab fa-youtube" aria-hidden="true"></i>
+            {% include icon.html name="youtube" %}
           </a>
           {% endif %}
           {% if site.author.social.google_scholar %}
           <a href="https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}" rel="noopener me" aria-label="Google Scholar">
-            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            {% include icon.html name="graduation-cap" %}
           </a>
           {% endif %}
           {% if site.author.social.orcid %}
           <a href="https://orcid.org/{{ site.author.social.orcid }}" rel="noopener me" aria-label="ORCID">
-            <i class="fab fa-orcid" aria-hidden="true"></i>
+            {% include icon.html name="orcid" %}
           </a>
           {% endif %}
           <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">
-            <i class="fas fa-rss" aria-hidden="true"></i>
+            {% include icon.html name="rss" %}
           </a>
         </div>
       </div>
@@ -58,7 +58,7 @@
         <h3>Subscribe</h3>
         <p>Get notified of new posts via RSS</p>
         <a href="{{ '/feed.xml' | relative_url }}" class="subscribe-button">
-          <i class="fas fa-rss"></i> Subscribe to RSS
+          {% include icon.html name="rss" %} Subscribe to RSS
         </a>
       </div>
     </div>

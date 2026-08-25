@@ -111,6 +111,25 @@ make images   # resize to 1600px and generate WebP under assets/posts/
 
 Runs on the host and needs Pillow. Optional; the site builds without it.
 
+## Assets
+
+Fonts and icons are served from this origin; the site makes no third-party
+request on any page except MathJax, and that only on posts with `math: true`.
+
+Inter, Merriweather and JetBrains Mono live in `assets/fonts/`. They are the
+same files Google was serving, mirrored so that readers are not announced to
+fonts.googleapis.com on every page view.
+
+```bash
+make fonts   # re-download them; needed only when changing a family or weight
+```
+
+Icons are inline SVG via `{% raw %}{% include icon.html name="github" %}{% endraw %}`,
+using Font Awesome's own 6.4.0 outlines (CC BY 4.0). That replaced the Font
+Awesome stylesheet, which cost 102 KB and a connection to cdnjs on every page.
+The names at the call site are the familiar ones — `edit`, `file-alt`,
+`university` — and `_includes/icon.html` records which FA6 glyph each resolves to.
+
 ## Deploying
 
 Push to `main`. `.github/workflows/deploy.yml` builds and publishes; it takes

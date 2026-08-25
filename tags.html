@@ -30,7 +30,7 @@ permalink: /tags/
       {% assign tag_posts = tag[1] %}
       <div id="{{ tag_name | slugify }}" class="tag-section">
         <h2 class="tag-title">
-          <i class="fas fa-tag"></i> {{ tag_name }}
+          {% include icon.html name="tag" %} {{ tag_name }}
           <span class="post-count">({{ tag_posts.size }} posts)</span>
         </h2>
         <div class="tag-posts">

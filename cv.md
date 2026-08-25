@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 <div class="cv-download">
   <a href="{{ '/assets/hadi_cv.pdf' | relative_url }}" class="btn btn-primary" download>
-    <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+    {% include icon.html name="download" %} Download PDF
   </a>
   <p class="cv-contact">
     <a href="mailto:hadi@hadiaghazadeh.com">hadi@hadiaghazadeh.com</a> ·

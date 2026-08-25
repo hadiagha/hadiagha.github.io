@@ -15,13 +15,13 @@ permalink: /blog/
           </h2>
           <div class="post-meta">
             <span class="post-date">
-              <i class="fas fa-calendar"></i>
+              {% include icon.html name="calendar" %}
               <time datetime="{{ post.date | date_to_xmlschema }}">
                 {{ post.date | date: "%B %d, %Y" }}
               </time>
             </span>
             <span class="post-reading-time">
-              <i class="fas fa-clock"></i>
+              {% include icon.html name="clock" %}
               {% assign words = post.content | number_of_words %}
               {% if words < 360 %}
                 1 min read
@@ -47,12 +47,12 @@ permalink: /blog/
           <div class="post-tags">
             {% for tag in post.tags %}
               <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">
-                <i class="fas fa-tag"></i> {{ tag }}
+                {% include icon.html name="tag" %} {{ tag }}
               </a>
             {% endfor %}
           </div>
           <a href="{{ post.url | relative_url }}" class="read-more">
-            Read more <i class="fas fa-arrow-right"></i>
+            Read more {% include icon.html name="arrow-right" %}
           </a>
         </footer>
       </article>
@@ -61,7 +61,7 @@ permalink: /blog/
   
   {% if site.posts.size == 0 %}
     <div class="no-posts">
-      <i class="fas fa-inbox"></i>
+      {% include icon.html name="inbox" %}
       <h3>No posts yet</h3>
       <p>Check back soon for new content!</p>
     </div>
@@ -168,7 +168,8 @@ permalink: /blog/
   padding: var(--space-3xl);
   color: var(--color-text-light);
   
-  i {
+  .icon {
+    /* was `i`, when the icon was a font glyph */
     font-size: 4rem;
     margin-bottom: var(--space-lg);
     opacity: 0.5;

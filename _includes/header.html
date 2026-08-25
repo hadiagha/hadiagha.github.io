@@ -26,37 +26,37 @@
           <li class="nav-item">
             <a href="{{ '/blog/' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}"
                {% if page.url contains '/blog' %}aria-current="page"{% endif %}>
-              <i class="fas fa-pen-nib" aria-hidden="true"></i> Writing
+              {% include icon.html name="pen-nib" %} Writing
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ '/book/' | relative_url }}" class="nav-link {% if page.url contains '/book' %}active{% endif %}"
                {% if page.url contains '/book' %}aria-current="page"{% endif %}>
-              <i class="fas fa-book-open" aria-hidden="true"></i> Book
+              {% include icon.html name="book-open" %} Book
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ '/research/' | relative_url }}" class="nav-link {% if page.url contains '/research' %}active{% endif %}"
                {% if page.url contains '/research' %}aria-current="page"{% endif %}>
-              <i class="fas fa-flask" aria-hidden="true"></i> Research
+              {% include icon.html name="flask" %} Research
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ '/about/' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}"
                {% if page.url contains '/about' %}aria-current="page"{% endif %}>
-              <i class="fas fa-user" aria-hidden="true"></i> About
+              {% include icon.html name="user" %} About
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ '/cv/' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}"
                {% if page.url contains '/cv' %}aria-current="page"{% endif %}>
-              <i class="fas fa-file-alt" aria-hidden="true"></i> CV
+              {% include icon.html name="file-alt" %} CV
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ '/contact/' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}"
                {% if page.url contains '/contact' %}aria-current="page"{% endif %}>
-              <i class="fas fa-envelope" aria-hidden="true"></i> Contact
+              {% include icon.html name="envelope" %} Contact
             </a>
           </li>
         </ul>
@@ -71,7 +71,7 @@
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" type="button"
                 aria-label="Switch to dark theme" aria-pressed="false">
-          <i class="fas fa-moon" aria-hidden="true"></i>
+          {% include icon.html name="moon" %}
         </button>
 
         <button class="nav-toggle" id="nav-toggle" type="button"

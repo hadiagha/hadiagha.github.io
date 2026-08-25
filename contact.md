@@ -13,7 +13,7 @@ permalink: /contact/
   <div class="contact-methods">
     <div class="contact-card">
       <div class="contact-icon">
-        <i class="fas fa-envelope"></i>
+        {% include icon.html name="envelope" %}
       </div>
       <h3>Email</h3>
       <p>For collaboration, speaking, consulting, or academic inquiries</p>
@@ -22,7 +22,7 @@ permalink: /contact/
   
     <div class="contact-card">
       <div class="contact-icon">
-        <i class="fas fa-university"></i>
+        {% include icon.html name="university" %}
       </div>
       <h3>Office</h3>
       <p>Department of Geomatics Engineering<br>
@@ -40,27 +40,27 @@ permalink: /contact/
   {% endcomment %}
     <div class="social-grid">
       <a href="https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}" class="social-card" rel="noopener me">
-        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+        {% include icon.html name="graduation-cap" %}
         <span>Google Scholar</span>
       </a>
       <a href="https://github.com/{{ site.author.social.github }}" class="social-card" rel="noopener me">
-        <i class="fab fa-github" aria-hidden="true"></i>
+        {% include icon.html name="github" %}
         <span>GitHub</span>
       </a>
       <a href="https://www.linkedin.com/in/{{ site.author.social.linkedin }}" class="social-card" rel="noopener me">
-        <i class="fab fa-linkedin" aria-hidden="true"></i>
+        {% include icon.html name="linkedin" %}
         <span>LinkedIn</span>
       </a>
       <a href="https://www.youtube.com/@{{ site.author.social.youtube }}" class="social-card" rel="noopener me">
-        <i class="fab fa-youtube" aria-hidden="true"></i>
+        {% include icon.html name="youtube" %}
         <span>YouTube</span>
       </a>
       <a href="https://x.com/{{ site.author.social.twitter }}" class="social-card" rel="noopener me">
-        <i class="fab fa-x-twitter" aria-hidden="true"></i>
+        {% include icon.html name="x-twitter" %}
         <span>X</span>
       </a>
       <a href="{{ '/feed.xml' | relative_url }}" class="social-card">
-        <i class="fas fa-rss" aria-hidden="true"></i>
+        {% include icon.html name="rss" %}
         <span>RSS</span>
       </a>
     </div>
@@ -162,7 +162,8 @@ permalink: /contact/
     transform: translateY(-2px);
   }
   
-  i {
+  .icon {
+    /* was `i`, when the icon was a font glyph */
     font-size: 2rem;
     margin-bottom: 0.5rem;
   }

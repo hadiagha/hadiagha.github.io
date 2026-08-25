@@ -882,9 +882,53 @@ a {
 // Only the widest case needs pinning. Below 1144px auto-fit already resolves
 // to three columns and then to two and one, so the narrow layouts are left
 // alone.
-@media (min-width: 1144px) {
+// Centring a short last row.
+//
+// A grid cannot centre a partial row on its own: the cards fill from the left
+// and the empty slot is always on the right. The fix is to give the grid twice
+// as many tracks as it has cards per row, span every card across two of them,
+// and start the short row one track late. That leaves a half-card of space at
+// each end.
+//
+// The card width is unchanged by this. With 2n tracks of width c and gap g, a
+// two-track span is 2c+g, which works out to exactly the width of one of n
+// equal columns — so the full rows above do not move at all.
+//
+// The breakpoints are the ones auto-fit was already choosing: 250px minimum
+// plus 2rem gaps inside a container capped at 1200px means three across from
+// 862px and two from 580px.
+
+// Two up: five cards land 2 + 2 + 1, and the last one centres.
+@media (min-width: 580px) and (max-width: 861px) {
   .features-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .features-grid > .feature {
+    grid-column: span 2;
+  }
+
+  .features-grid > .feature:nth-child(5):last-child {
+    grid-column: 2 / span 2;
+  }
+}
+
+// Three up: five cards land 3 + 2, and the pair centres.
+@media (min-width: 862px) {
+  .features-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .features-grid > .feature {
+    grid-column: span 2;
+  }
+
+  // :nth-child(4):nth-last-child(2) is "the fourth of exactly five". A sixth
+  // topic would fill the second row by itself, and this offset would then push
+  // the last card onto a third row — so the rule retires itself rather than
+  // quietly breaking.
+  .features-grid > .feature:nth-child(4):nth-last-child(2) {
+    grid-column: 2 / span 2;
   }
 }
 

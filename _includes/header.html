@@ -1,61 +1,77 @@
 <header class="site-header">
   <nav class="navbar" aria-label="Primary">
     <div class="nav-container">
-      {% comment %}
-        The brand is the site name set in the reading face, with no avatar and
-        no tagline. The avatar was a 69 KB image loaded on every page to say
-        something the name already said, and the tagline had to be hidden below
-        768px anyway because it pushed the hamburger off the screen. The
-        portrait now appears once, on the homepage, where it is actually
-        introducing someone.
-      {% endcomment %}
-      <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+      <div class="nav-brand">
+        <a href="{{ '/' | relative_url }}" class="site-title">
+          {% if site.author.avatar %}
+          <span class="site-avatar-wrapper">
+            <img src="{{ site.author.avatar | relative_url }}"
+                 alt="" width="40" height="40" class="site-avatar" />
+          </span>
+          {% endif %}
+          <span class="title-text">
+            <span class="title-main">{{ site.title }}</span>
+            <span class="title-tagline">{{ site.tagline }}</span>
+          </span>
+        </a>
+      </div>
 
       <div class="nav-menu" id="nav-menu">
         {% comment %}
-          Home and Topics are deliberately absent: the brand link is Home, and
-          Topics is reachable from Writing and the footer.
-
-          Nav links used to carry Font Awesome glyphs. An icon next to a word
-          that already says "Writing" adds no information, and thirty such
-          glyphs were what justified a 102 KB icon font. See _includes/icon.html.
+          Home and Topics are not in the top bar: the brand link covers Home,
+          and Topics is reachable from Blog and the footer. Eight items with
+          icons overflow the bar between the mobile breakpoint and ~1000px.
         {% endcomment %}
-        {% comment %}
-          Which tab is current is decided on the FIRST path segment, not with
-          `page.url contains slug`. That older test lit the Book tab for any
-          post whose slug happened to contain the word "book".
-
-          Post URLs live under /blog/ and will stay there forever — changing a
-          published permalink breaks every existing link to it — so the Writing
-          tab answers to both /writing/ and /blog/....
-        {% endcomment %}
-        {% assign seg = page.url | remove_first: "/" | split: "/" | first %}
-        {% if seg == "blog" %}{% assign seg = "writing" %}{% endif %}
-
         <ul class="nav-list">
-          {% assign nav = "writing:Writing, book:Book, research:Research, about:About, cv:CV, contact:Contact" | split: "," %}
-          {% for item in nav %}
-            {% assign parts = item | strip | split: ":" %}
-            {% assign slug = parts[0] %}
           <li class="nav-item">
-            <a href="{{ '/' | append: slug | append: '/' | relative_url }}"
-               class="nav-link{% if seg == slug %} active{% endif %}"
-               {% if seg == slug %}aria-current="page"{% endif %}>{{ parts[1] }}</a>
+            <a href="{{ '/blog/' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}"
+               {% if page.url contains '/blog' %}aria-current="page"{% endif %}>
+              <i class="fas fa-pen-nib" aria-hidden="true"></i> Writing
+            </a>
           </li>
-          {% endfor %}
+          <li class="nav-item">
+            <a href="{{ '/book/' | relative_url }}" class="nav-link {% if page.url contains '/book' %}active{% endif %}"
+               {% if page.url contains '/book' %}aria-current="page"{% endif %}>
+              <i class="fas fa-book-open" aria-hidden="true"></i> Book
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/research/' | relative_url }}" class="nav-link {% if page.url contains '/research' %}active{% endif %}"
+               {% if page.url contains '/research' %}aria-current="page"{% endif %}>
+              <i class="fas fa-flask" aria-hidden="true"></i> Research
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/about/' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}"
+               {% if page.url contains '/about' %}aria-current="page"{% endif %}>
+              <i class="fas fa-user" aria-hidden="true"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/cv/' | relative_url }}" class="nav-link {% if page.url contains '/cv' %}active{% endif %}"
+               {% if page.url contains '/cv' %}aria-current="page"{% endif %}>
+              <i class="fas fa-file-alt" aria-hidden="true"></i> CV
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ '/contact/' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}"
+               {% if page.url contains '/contact' %}aria-current="page"{% endif %}>
+              <i class="fas fa-envelope" aria-hidden="true"></i> Contact
+            </a>
+          </li>
         </ul>
       </div>
 
       {% comment %}
         Theme toggle and hamburger sit outside .nav-menu deliberately. The
         toggle used to be the last item in the nav list, which meant that on a
-        phone — where that list collapses into a panel — dark mode could not be
-        reached without first opening the menu.
+        phone — where that list collapses into a slide-in panel — dark mode was
+        unreachable without first opening the menu.
       {% endcomment %}
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" type="button"
                 aria-label="Switch to dark theme" aria-pressed="false">
-          {% include icon.html name="moon" size=17 %}
+          <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
 
         <button class="nav-toggle" id="nav-toggle" type="button"

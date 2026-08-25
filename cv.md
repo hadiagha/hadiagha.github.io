@@ -4,12 +4,11 @@ title: Curriculum Vitae
 description: Senior Data Scientist · Applied Scientist · Machine Learning Engineer
 permalink: /cv/
 updated: 2026-08-24
-wide: true
 ---
 
 <div class="cv-download">
   <a href="{{ '/assets/hadi_cv.pdf' | relative_url }}" class="btn btn-primary" download>
-    {% include icon.html name="download" size=15 %} Download PDF
+    <i class="fas fa-download" aria-hidden="true"></i> Download PDF
   </a>
   <p class="cv-contact">
     <a href="mailto:hadi@hadiaghazadeh.com">hadi@hadiaghazadeh.com</a> ·
@@ -175,46 +174,43 @@ Hugging Face, Model Context Protocol, OpenAI API, Claude API, Apache Spark
 English (advanced) · Persian (native)
 
 <style>
-/* Written against the current tokens. The old block centred the download panel
-   across the full width of a wide page and indented every list twice, once
-   here and once in .prose. */
 .cv-download {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-md) var(--space-lg);
+  text-align: center;
   margin-bottom: var(--space-2xl);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--rule);
+  padding: var(--space-xl);
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.5rem;
 }
 
 .cv-download .cv-contact {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-size: var(--step--1);
-  color: var(--ink-soft);
+  margin: var(--space-md) 0 0;
+  font-size: 0.95rem;
+  color: var(--color-text-light);
 }
 
-/* A CV is scanned, not read: the section rules are what let the eye find
-   "Experience" without reading the words in between. */
-.prose h2 {
-  font-size: var(--step-2);
-  color: var(--accent);
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 0.35rem;
+.page-content h2 {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
   margin-top: var(--space-2xl);
 }
 
-.prose h3 {
-  margin-top: var(--space-lg);
-  margin-bottom: 0.1rem;
+.page-content h3 {
+  color: var(--color-text);
+  margin-top: var(--space-xl);
+  margin-bottom: 0.25rem;
 }
 
-/* The role's dates and location, set as emphasis directly under its heading. */
-.prose h3 + p em {
-  font-family: var(--font-sans);
-  font-style: normal;
-  font-size: var(--step--1);
-  color: var(--ink-soft);
+.page-content h3 + p em {
+  color: var(--color-text-light);
+}
+
+.page-content ul {
+  list-style-type: disc;
+  margin-left: var(--space-xl);
+}
+
+.page-content ol {
+  margin-left: var(--space-xl);
 }
 </style>

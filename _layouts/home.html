@@ -2,105 +2,37 @@
 layout: default
 ---
 
-{% comment %}
-  The homepage opens with a claim, not a banner.
-
-  What was here before was a full-width gradient panel carrying the site title,
-  the tagline and the meta description one under the other, then two buttons.
-  It occupied the whole first screen to say the same thing three times, and the
-  visitor had to scroll past it to reach a single word of actual writing.
-
-  A visitor arriving here is deciding whether this person is worth reading. So:
-  who, one sentence on what the work is, then the writing itself.
-{% endcomment %}
-
-<section class="intro">
-  <div class="container">
-    <div class="intro-grid">
-      <div>
-        <h1 class="intro-name">{{ site.author.name }}</h1>
-
-        <p class="intro-lede">I work on decision-making under uncertainty.</p>
-
-        <div class="intro-body">
-          <p>
-            Reinforcement learning, mathematical optimization and forecasting —
-            applied to systems where a wrong decision costs real money, and where
-            the textbook version of the method needs considerable adjustment
-            before it survives contact with production.
-          </p>
-          <p>
-            <strong>Senior Data Scientist at <a href="https://www.enverus.com/" rel="noopener">Enverus</a></strong>,
-            forecasting electricity prices across more than 10,000 pricing nodes.
-            <strong>PhD candidate at the University of Calgary</strong>, on
-            hierarchical RL for routing under uncertainty. Author of
-            <a href="{{ '/book/' | relative_url }}"><em>{{ site.book.title }}</em></a>
-            ({{ site.book.publisher }}).
-          </p>
-        </div>
-
-        <p class="intro-links">
-          <a href="{{ '/start/' | relative_url }}">Start here</a>
-          <a href="{{ '/about/' | relative_url }}">About me</a>
-          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-        </p>
-      </div>
-
-      {% if site.author.avatar %}
-      <div class="intro-portrait">
-        <img src="{{ site.author.avatar | relative_url }}" width="176" height="176"
-             alt="Portrait of {{ site.author.name }}">
-      </div>
-      {% endif %}
+<div class="home-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-tagline">{{ site.tagline }}</p>
+    <p class="hero-description">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-primary">
+        <i class="fas fa-book-open"></i> Read My Blog
+      </a>
+      <a href="{{ '/about' | relative_url }}" class="btn btn-secondary">
+        <i class="fas fa-user"></i> About Me
+      </a>
     </div>
   </div>
-</section>
+</div>
 
-<section class="band">
+<section class="featured-book">
   <div class="container">
-    <div class="band-head">
-      <h2>Writing</h2>
-      {% if site.posts.size > 5 %}
-      <a class="band-more" href="{{ '/writing/' | relative_url }}">All {{ site.posts.size }} posts &rarr;</a>
-      {% endif %}
-    </div>
-
-    {% comment %}
-      A list, not a card grid. The grid this replaces was
-      `repeat(auto-fill, minmax(350px, 1fr))`, which on a desktop screen drew
-      one post card beside two empty columns — the layout announced that the
-      site had nothing on it. A list reads correctly at one post and at two
-      hundred.
-    {% endcomment %}
-    {% if site.posts.size > 0 %}
-    <ol class="entries">
-      {% for post in site.posts limit: 5 %}
-      {% include entry.html post=post %}
-      {% endfor %}
-    </ol>
-    {% else %}
-    <p class="entries-empty">Nothing published yet.</p>
-    {% endif %}
-  </div>
-</section>
-
-<section class="book-band">
-  <div class="container">
-    <div class="book-layout">
-      <div class="book-cover">
+    <div class="featured-book-content">
+      <div class="featured-book-image">
         <a href="{{ '/book/' | relative_url }}">
           <picture>
             <source srcset="{{ '/assets/rl_book/ARL_Book_Cover.webp' | relative_url }}" type="image/webp">
             <img src="{{ site.book.cover | relative_url }}" width="640" height="640" loading="lazy"
-                 alt="Cover of {{ site.book.title }} by {{ site.author.name }}, published by {{ site.book.publisher }}">
+                 alt="Cover of {{ site.book.title }} by {{ site.author.name }}, published by {{ site.book.publisher }}" />
           </picture>
         </a>
       </div>
-
-      <div class="book-text">
-        <p class="eyebrow">The book</p>
+      <div class="featured-book-text">
         <h2>{{ site.book.title }}</h2>
-        <p class="book-sub">{{ site.book.subtitle }} &middot; {{ site.book.publisher }}</p>
+        <p class="featured-book-sub">{{ site.book.subtitle }} · {{ site.book.publisher }}</p>
         <p>
           Most reinforcement learning material stops at games and simulations.
           This book is about the other part: framing a real business problem as a
@@ -109,13 +41,15 @@ layout: default
           actually trust. Warehouse logistics and dynamic pricing through to
           fine-tuning language models with PPO and GRPO.
         </p>
-        <p class="book-status">
+        <p class="featured-book-status">
           In {{ site.book.status }} — full release expected {{ site.book.release }}.
         </p>
-        <div class="book-actions">
-          <a href="{{ '/book/' | relative_url }}" class="btn btn-primary">About the book</a>
+        <div class="featured-book-actions">
+          <a href="{{ '/book/' | relative_url }}" class="btn btn-primary">
+            <i class="fas fa-book-open" aria-hidden="true"></i> About the book
+          </a>
           <a href="{{ site.book.github }}" class="btn btn-outline" rel="noopener">
-            {% include icon.html name="github" size=15 %} Code
+            <i class="fab fa-github" aria-hidden="true"></i> Code
           </a>
         </div>
       </div>
@@ -123,30 +57,87 @@ layout: default
   </div>
 </section>
 
-<section class="band">
+<section class="recent-posts">
   <div class="container">
-    <div class="band-head">
-      <h2>What I write about</h2>
-      <a class="band-more" href="{{ '/tags/' | relative_url }}">Browse by topic &rarr;</a>
+    <h2 class="section-title">Recent Posts</h2>
+    <div class="posts-grid">
+      {% for post in site.posts limit:6 %}
+      <article class="post-card">
+        <div class="post-card-header">
+          <div class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%B %d, %Y" }}
+            </time>
+            {% if post.reading_time %}
+            <span class="reading-time">
+              <i class="fas fa-clock"></i> {{ post.reading_time }} min read
+            </span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="post-card-body">
+          <h3 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <p class="post-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+          <div class="post-tags">
+            {% for tag in post.tags %}
+            <a href="{{ '/tags#' | append: tag | relative_url }}" class="tag">
+              <i class="fas fa-tag"></i> {{ tag }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="post-card-footer">
+          <a href="{{ post.url | relative_url }}" class="read-more">
+            Read more <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
     </div>
+    {% if site.posts.size > 6 %}
+    <div class="more-posts">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">
+        View all posts <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</section>
 
-    <ul class="topics">
-      <li class="topic">
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">What I write about</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-dice" aria-hidden="true"></i>
+        </div>
         <h3>Reinforcement learning</h3>
         <p>Framing business problems as sequential decisions — pricing, routing, allocation — and what breaks between a working policy and a deployed one.</p>
-      </li>
-      <li class="topic">
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-square-root-alt" aria-hidden="true"></i>
+        </div>
         <h3>Optimization &amp; operations research</h3>
         <p>Mixed-integer programming, branch-and-bound and cutting planes, and where learned methods beat exact ones — or guide them.</p>
-      </li>
-      <li class="topic">
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line" aria-hidden="true"></i>
+        </div>
         <h3>Forecasting &amp; ML systems</h3>
         <p>Time-series forecasting at scale, backtesting that means something, and the production plumbing that keeps a model trustworthy.</p>
-      </li>
-      <li class="topic">
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-comment-dots" aria-hidden="true"></i>
+        </div>
         <h3>LLMs &amp; AI engineering</h3>
         <p>Retrieval systems, agentic workflows, and fine-tuning with PPO, GRPO and verifiable rewards.</p>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </section>

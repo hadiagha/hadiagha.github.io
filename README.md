@@ -137,50 +137,15 @@ make rebuild    # rebuild the image with the new gems
 
 Commit both `Gemfile` and `Gemfile.lock`.
 
-## Design
-
-The palette comes from the cover of *Applied Reinforcement Learning* — bistre,
-ochre, sage and uncoated paper — so the site and the book do not look like two
-unrelated projects. Every colour is a custom property defined on `:root` in
-[assets/css/main.scss](assets/css/main.scss) and redefined for dark mode; nothing
-below the token block hardcodes a colour.
-
-Type is Source Serif 4 for reading, IBM Plex Sans for interface furniture and
-IBM Plex Mono for code. All three are **self-hosted** — no request to Google
-Fonts, which would put a third party on the critical path of every page and hand
-them every visitor's IP address.
-
-```bash
-make fonts   # re-download and trim assets/fonts/ — rarely needed
-```
-
-`scripts/fonts.py` fetches the latin subsets, clips the variable fonts to the
-weights actually used, and prints the `@font-face` block to paste in. Needs
-`fonttools` and `brotli`. The committed `.woff2` files are what the build uses,
-so this only runs when changing a family or a weight range.
-
-Icons are inline SVG via `{% raw %}{% include icon.html name="github" %}{% endraw %}`. They
-replaced a 102 KB Font Awesome stylesheet that drew about thirty glyphs, ten of
-which sat next to text that already said the same thing.
-
 ## Layout
 
 ```
 _posts/       published writing
 _layouts/     page templates
-_includes/    shared fragments — icon.html, entry.html, header, footer
-assets/       css, js, fonts, images, cv
-_data/        tag vocabulary and series definitions
-scripts/      doctor, new-post, publish, images, fonts
+_includes/    shared fragments
+assets/       css, js, images, cv
 _config.yml   site configuration
 ```
-
-Pages: `/` (home), `/writing/` (the archive, filterable), `/tags/` (topics),
-`/start/`, `/book/`, `/research/`, `/about/`, `/cv/`, `/contact/`.
-
-Posts keep the permalink `/blog/:year/:month/:day/:title/` and always will —
-changing a published URL breaks every link to it. Only the index moved, from
-`/blog/` to `/writing/`; `blog.html` holds the redirect.
 
 The site is at <https://hadiaghazadeh.com>. The old `hadiagha.github.io`
 address redirects there automatically, preserving paths.

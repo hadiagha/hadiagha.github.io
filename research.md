@@ -3,7 +3,6 @@ layout: page
 title: Research
 description: Reinforcement learning for routing, logistics and real-time policy optimization
 permalink: /research/
-wide: true
 updated: 2026-08-24
 ---
 
@@ -86,26 +85,24 @@ spatial-computing journals. Vice President and Student Representative of the
 Graduate Geomatics Group at the University of Calgary (2023–2024).
 
 <style>
-/* Publications are grouped by venue. The venue headings are labels rather than
-   titles, so they are set in the sans face like every other label on the site. */
-.prose h3 {
+.page-content h3 {
   margin-top: var(--space-2xl);
+  font-size: 1.25rem;
+  color: var(--color-text-light);
   font-family: var(--font-sans);
-  font-size: var(--step--2);
   font-weight: 600;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--ink-soft);
 }
 
-.prose h3 + p { margin-top: var(--space-lg); }
+.page-content h3 + p {
+  margin-top: var(--space-lg);
+}
 
-/* Each entry leads with its title in bold on its own line, then the authors
-   and venue as running text. */
-.prose h3 ~ p strong {
+.page-content h3 ~ p strong {
   display: block;
-  font-size: var(--step-0);
-  line-height: 1.4;
+  font-size: 1.0625rem;
+  line-height: 1.45;
   margin-bottom: 0.15rem;
 }
 </style>

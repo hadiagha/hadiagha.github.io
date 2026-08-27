@@ -27,7 +27,7 @@ distributed training, deployment, APIs, monitoring and production maintenance.
 
 Specialized in time-series forecasting, operations research, mixed-integer
 optimization and reinforcement learning, with hands-on experience building
-cloud-native ML systems. PhD candidate, published researcher, and author of a
+cloud-native ML systems. PhD, published researcher, and author of a
 practical book on applied reinforcement learning.
 
 ## Experience

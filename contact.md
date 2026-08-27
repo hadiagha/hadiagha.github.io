@@ -19,16 +19,6 @@ permalink: /contact/
       <p>For collaboration, speaking, consulting, or academic inquiries</p>
       <a href="mailto:hadi@hadiaghazadeh.com" class="contact-link">hadi@hadiaghazadeh.com</a>
     </div>
-  
-    <div class="contact-card">
-      <div class="contact-icon">
-        {% include icon.html name="university" %}
-      </div>
-      <h3>Office</h3>
-      <p>Department of Geomatics Engineering<br>
-      University of Calgary<br>
-      Calgary, Alberta, Canada</p>
-    </div>
   </div>
 
   <div class="social-section">

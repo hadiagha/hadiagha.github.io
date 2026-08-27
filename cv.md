@@ -21,7 +21,7 @@ updated: 2026-08-24
 Senior Data Scientist and applied machine learning researcher with **8+ years**
 building production forecasting, optimization and decision-intelligence systems.
 I own the end-to-end development and operation of **locational marginal price
-forecasting across 10,000+ pricing nodes** in US and Canadian electricity
+forecasting across thousands of pricing nodes** in US and Canadian electricity
 markets, covering feature engineering, applied research, model development,
 distributed training, deployment, APIs, monitoring and production maintenance.
 
@@ -36,8 +36,7 @@ practical book on applied reinforcement learning.
 *March 2026 – Present · Calgary, Canada*
 
 - Own end-to-end development and production operation of **locational marginal
-  price forecasting** covering more than **10,000 pricing nodes** across U.S. and
-  Canadian electricity markets.
+  price forecasting** across U.S. and Canadian electricity markets.
 - Lead the full ML lifecycle: data analysis, feature engineering, applied
   research, model development, backtesting, distributed training, deployment,
   API development, monitoring, incident resolution and ongoing maintenance.
@@ -46,21 +45,21 @@ practical book on applied reinforcement learning.
   **Snowflake** for analytical workloads and **Kafka** for streaming data.
 - Develop reproducible deployment and model-management workflows with **Pulumi
   and Terraform**; production observability with **Grafana and Sentry**.
-- Research and prototype large-scale **mixed-integer linear programming** for
+- Research and prototype **Graph Neural Nets** and large-scale **mixed-integer linear programming** for
   power-flow and **security-constrained unit commitment**, emphasising fast,
   computationally efficient electricity-price optimization.
 - Investigate **reinforcement-learning-guided cutting-plane selection** to
   improve branch-and-bound search and accelerate large-scale power-system
   optimization models.
 
-### Machine Learning Engineer and Technical Lead — Bits in Glass
+### Machine Learning Engineer — Bits in Glass
 *April 2024 – February 2026 · Calgary, Canada (Remote)*
 
 - Led technical development of a production **hierarchical RAG platform
   processing more than 20 million oil-and-gas documents**, combining structured
   and unstructured data, hybrid retrieval, embedding-model evaluation,
   Databricks, LangChain and Model Context Protocol.
-- Architected a production **dynamic fuel-pricing optimization system** using
+- Contributed in a production **dynamic fuel-pricing optimization system** using
   integer linear programming and contextual bandits, supporting adaptive margin-
   and volume-based strategies and cutting pricing decision time from several
   hours to **under 30 minutes**.
@@ -75,10 +74,10 @@ practical book on applied reinforcement learning.
 - Designed a repeatable evaluation framework for enterprise RAG systems with
   limited ground-truth data.
 
-### Machine Learning Developer — AltaML
+### Associate Machine Learning Developer — AltaML
 *May 2023 – September 2023 · Calgary, Canada (Hybrid)*
 
-- Developed a scalable hybrid demand-forecasting system for **100+ fuel-retail
+- Contribute in developing a scalable hybrid demand-forecasting system for **100+ fuel-retail
   locations**, improving inventory planning and generating more than **$1 million
   in projected annual savings**.
 
@@ -86,7 +85,7 @@ practical book on applied reinforcement learning.
 *May 2021 – June 2022 · Tehran, Iran (Hybrid)*
 *Largest ride-hailing platform in the Middle East*
 
-- Led development of a reinforcement-learning-based **dynamic surge-pricing
+- Led development of a learning-based **dynamic surge-pricing
   system** that improved order-fulfilment rate by **5%** across more than
   **200,000 daily orders**, improving marketplace balance, revenue performance
   and driver utilization.
@@ -103,8 +102,8 @@ practical book on applied reinforcement learning.
 
 ## Education
 
-### PhD Candidate, Geomatics Engineering — University of Calgary
-*July 2022 – Defending 9 October 2026 · GPA 4.0/4.0*
+### PhD, Geomatics Engineering — University of Calgary
+*July 2022 – October 2026 · GPA 4.0/4.0*
 
 Research: reinforcement learning, real-time policy optimization, vehicle
 routing, disaster-response logistics and transportation optimization.
@@ -171,7 +170,7 @@ Hugging Face, Model Context Protocol, OpenAI API, Claude API, Apache Spark
 
 ## Languages
 
-English (advanced) · Persian (native)
+English (advanced) · Persian (native) · Azeri (mother tongue)
 
 <style>
 .cv-download {

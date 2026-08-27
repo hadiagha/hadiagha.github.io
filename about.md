@@ -3,18 +3,14 @@ layout: page
 title: About
 description: Reinforcement learning, optimization and forecasting — mostly in production
 permalink: /about/
-updated: 2026-08-24
+updated: 2026-08-26
 ---
 
-I work on **decision-making under uncertainty**. In practice that means
+I would love to solve practical problems using data-driven approaches. I try my best not to confine myself to certain specific yet limited tools and solutions and rather use the best suitable solution for the problem in hand but through my data science and machine learning career, I mostly worked on **decision-making under uncertainty** type of applications. In practice that means
 reinforcement learning, mathematical optimization and forecasting — usually
 applied to systems where a wrong decision costs real money, and where the
 textbook version of the method turns out to need considerable adjustment before
 it survives contact with production.
-
-That thread runs through everything here: a PhD on routing under uncertainty, a
-day job forecasting electricity prices, a book on applying RL to business
-problems, and the writing on this site about what actually works.
 
 If you're thinking about working together, **[how I
 work]({{ '/user-manual/' | relative_url }})** covers the practical side — what
@@ -24,18 +20,18 @@ I'm useful for, what I'm not, and how to get the most out of a conversation.
 
 I'm a **Senior Data Scientist at [Enverus](https://www.enverus.com/)**, where I
 own the end-to-end development and operation of **locational marginal price
-forecasting across more than 10,000 pricing nodes** in US and Canadian
+forecasting across thousands of nodes** in US and Canadian
 electricity markets — feature engineering, applied research, distributed
 training, deployment, APIs, monitoring and the unglamorous maintenance that
 keeps a forecast trustworthy.
 
-Alongside the forecasting work I research large-scale **mixed-integer linear
+Alongside the forecasting work I research using graph neural networks for interventional forecasting along with large-scale **mixed-integer linear
 programming** for power-flow and security-constrained unit commitment, including
 using reinforcement learning to guide cutting-plane selection — teaching a
 solver which cuts are worth adding, so branch-and-bound converges faster on
 problems that are otherwise intractable at market speed.
 
-Before Enverus I led technical work at **Bits in Glass**, building a
+Before Enverus I was a machine learning engineer at **Bits in Glass**, in which I contributed building a
 hierarchical RAG platform over 20 million oil-and-gas documents and a dynamic
 fuel-pricing system that combined integer programming with contextual bandits.
 Earlier still I built RL-based **surge pricing at Snapp**, the largest
@@ -44,8 +40,7 @@ a day. My [CV]({{ '/cv/' | relative_url }}) has the full history.
 
 ## Research
 
-I'm a **PhD candidate in Geomatics Engineering at the University of Calgary**,
-defending on **9 October 2026**. My research applies hierarchical reinforcement
+I have **PhD Geomatics Engineering at the University of Calgary**, and **BSc and MSc in Industrial Engineering** from top universities in Iran (Amirkabir University of Technology and IUST). My research applies hierarchical reinforcement
 learning to real-time policy optimization — vehicle routing, disaster-response
 logistics and transportation problems where demand is stochastic, the fleet is
 heterogeneous, and a decision has to be made now rather than optimally.
@@ -66,15 +61,6 @@ I wrote it because most RL material stops at games and simulations. The gap
 between a working policy in a clean environment and one that holds up against
 real constraints, messy data and stakeholders who need to understand the
 decision is where the actual difficulty lives, and it deserved a book.
-
-## Teaching and writing
-
-Teaching keeps me honest — it is difficult to hand-wave through an explanation
-when someone is going to try running the code. I've been a teaching assistant at
-Calgary for Engineering Design, Programming with Data, and Spatial Data Mining,
-and I've built Udemy courses on contextual bandits and reinforcement learning
-for operations research. I also review for machine learning, transportation,
-optimization and spatial-computing journals.
 
 This site is where the shorter-form version of that lives: articles and
 tutorials, notes on papers I'm reading, implementations, and occasional writing

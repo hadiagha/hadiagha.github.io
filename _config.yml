@@ -1,24 +1,20 @@
 # Site settings
 title: Hadi Aghazadeh
-tagline: Decision-making under uncertainty — reinforcement learning, optimization and forecasting
+tagline: Contemplations on AI, RL, LLMs, optimization, and scientific adventures
 description: >-
-  Hadi Aghazadeh writes about decision-making under uncertainty: reinforcement
-  learning, optimization and forecasting in production. Senior Data Scientist at
-  Enverus, PhD candidate at the University of Calgary, and author of Applied
-  Reinforcement Learning (Manning).
+  Welcome to my website! This is the place where I share my thoughts on AI, reinforcement learning, and any sort of scientific adventures related to these topics. I love to share my personal reflections on the books and papers I read here as well.
 author:
-  name: Hadi Aghazadeh
+  name: Hadi Aghazadeh, PhD
   email: hadi@hadiaghazadeh.com
-  bio: "Senior Data Scientist at Enverus, PhD candidate at the University of Calgary, and author of 'Applied Reinforcement Learning' (Manning)."
+  bio: "Senior Data Scientist at Enverus, PhD from University of Calgary, and author of 'Applied Reinforcement Learning' (Manning)."
   avatar: /assets/images/hadi_pic.png
   social:
     twitter: hadi_aghazadeh
     github: hadiagha
     linkedin: hadi-aghazadeh
     google_scholar: maIEW1AAAAAJ
-    youtube: philo_ai
-    # No ORCID iD on file yet; the footer link stays hidden until there is one.
-    orcid:
+    youtube: philo_ai 
+    orcid: 0000-0002-7631-3738
 
 # Book. Referenced by the homepage, the book page and the structured data.
 book:

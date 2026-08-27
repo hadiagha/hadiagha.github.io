@@ -19,8 +19,7 @@ guarantees. Most of my work lives in the space between: using learning to guide
 search, or to produce a policy that respects the structure the exact methods
 made explicit.
 
-**PhD candidate, Geomatics Engineering, University of Calgary** — defending
-**9 October 2026**, supervised by Xin Wang. GPA 4.0/4.0.
+**PhD, Geomatics Engineering, University of Calgary**, supervised by Xin Wang. GPA 4.0/4.0.
 
 ## Publications
 
@@ -69,7 +68,7 @@ For citations and the current list, see
 ## Applied research
 
 Some of the research happens at work rather than in a journal. At Enverus I
-prototype large-scale **mixed-integer linear programming** for power-flow and
+prototype using **Graph Neural Nets** and large-scale **mixed-integer linear programming** for power-flow and
 security-constrained unit commitment, and investigate **reinforcement-learning-guided
 cutting-plane selection** — using a learned policy to decide which cuts are worth
 adding, so branch-and-bound converges fast enough to be useful at market speed.

@@ -193,7 +193,7 @@ Always tag the language.
 ### Links
 
 ```markdown
-[Another post here]({{ '/blog/2024/01/02/intro-rl/' | relative_url }})
+[Another post here]({{ '/blog/2026/09/14/some-post-slug/' | relative_url }})
 [Somewhere else](https://example.com/)
 ```
 

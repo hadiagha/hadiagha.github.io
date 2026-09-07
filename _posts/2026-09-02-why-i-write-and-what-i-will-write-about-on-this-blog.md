@@ -117,31 +117,3 @@ As I write these words, I imagine Nasir al-Din al-Tusi, the Persian polymath, ar
 Intellectual work carries a kind of joy that is hard to describe in the abstract. You have to feel it and live it. I want to share some of those feelings and lived experiences here.
 
 So, let us get started.
-
-<style>
-/* Book covers are portrait and the sources are up to 1600px wide, so they need
-   a ceiling or each one fills the whole column. Scoped to this post rather than
-   added to the stylesheet until a second post wants the same thing.
-
-   The img selector carries the full ancestor chain on purpose: the base rule is
-   `.post .post-content .content img` (0,3,1), so a bare `.book-cover img`
-   (0,1,1) would lose and the global vertical margin would stay. */
-.book-cover {
-  max-width: 260px;
-  margin: var(--space-xl) auto;
-  text-align: center;
-}
-
-.post .post-content .content .book-cover img {
-  width: 100%;
-  height: auto;
-  margin: 0;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.18);
-}
-
-.book-cover figcaption {
-  margin-top: var(--space-sm);
-  font-size: 0.9rem;
-  color: var(--color-text-light);
-}
-</style>

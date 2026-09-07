@@ -1842,6 +1842,34 @@ mjx-container:not([display="true"]) {
   margin: var(--space-lg) 0 !important;
 }
 
+// Book covers in post bodies -------------------------------------------------
+//
+// Portrait artwork at up to 1600px wide fills the whole column without a
+// ceiling. This started as a <style> block inside the first post; a second post
+// now uses it, which is the point at which it belongs here instead.
+//
+// The img selector carries the full ancestor chain on purpose: the base rule is
+// `.post .post-content .content img` (0,3,1), so a bare `.book-cover img`
+// (0,1,1) would lose and the global vertical margin would stay.
+.book-cover {
+  max-width: 260px;
+  margin: var(--space-xl) auto;
+  text-align: center;
+}
+
+.post .post-content .content .book-cover img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.18);
+}
+
+.book-cover figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
 // Print styles
 @media print {
   .site-header,

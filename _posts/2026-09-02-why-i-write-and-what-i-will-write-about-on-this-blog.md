@@ -112,7 +112,7 @@ Writers such as [Chip Huyen](https://huyenchip.com/blog/), [Lilian Weng, the wri
 
 As I wrote in my [user manual]({{ '/user-manual/' | relative_url }}), I am comfortable saying no. But when I say yes, you can count on me. This time, I have said yes to writing regularly, without any external motivation. I am doing it for the pleasure of writing and for the chance to share what I think with other enthusiasts like you.
 
-As I write these words, I imagine Nasir al-Din al-Tusi, the Persian polymath, architect, and philosopher who served as an adviser to Hulagu Khan. I picture him finishing his daily duties, sitting behind a simple desk, and returning to mathematics. In my imagination, he tells himself: *Where are those kings now, to see the pleasure I am enjoying?*
+As I write these words, I imagine Nasir al-Din al-Tusi, the Persian polymath, architect, and philosopher who served as an adviser and minister to Hulagu Khan. As he finished his duties, he would sit behind his desk and immerse himself in the world of mathematics and say: *Where are those kings now, to see the pleasure I am enjoying?*
 
 Intellectual work carries a kind of joy that is hard to describe in the abstract. You have to feel it and live it. I want to share some of those feelings and lived experiences here.
 

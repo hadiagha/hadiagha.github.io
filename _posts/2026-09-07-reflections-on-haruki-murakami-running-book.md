@@ -46,23 +46,23 @@ Now, without further ado, here are the passages I loved most from the book:
 
 - Somerset Maugham: In each shave lies a philosophy.
 
-- No matter how mundane some action might appear, keep at it long enought and it becomes a contemplative, even meditative act.
+- No matter how mundane some action might appear, keep at it long enough and it becomes a contemplative, even meditative act.
 
 - I can't grasp much of anything without putting down my thoughts in writing.
 
-- If you don't keep repeating a mantra of some sort to youself, you'll never survive (in running a marathon).
+- If you don't keep repeating a mantra of some sort to yourself, you'll never survive (in running a marathon).
 
-- Pain is inevitable. Suggering is optional.
+- Pain is inevitable. Suffering is optional.
 
-- The point is to let exhilaration I feel at the end of each run carry over to the next day. I stop every day right at the point where I feel I can run (or write) more. Do that, and the next day's work goes suprisingly smoothly.
+- The point is to let exhilaration I feel at the end of each run carry over to the next day. I stop every day right at the point where I feel I can run (or write) more. Do that, and the next day's work goes surprisingly smoothly.
 
 - To keep on going, you have to keep up the rhythm. This is the important thing for long term projects.
 
 - I am not fan of team sports and I am much more interested in whether I reach the goals that I set for myself.
 
-- In writing profession, there is no such thing as winning or lossing.
+- In writing profession, there is no such thing as winning or losing.
 
-- Wrtiting novels and running full marathons are very muc alike.
+- Writing novels and running full marathons are very much alike.
 
 - I find spending an hour or two every day running alone, not speaking to anyone, as well as four or five hours alone at my desk, to be neither difficult nor boring. I could always think things to do by myself.
 
@@ -72,11 +72,11 @@ Now, without further ado, here are the passages I loved most from the book:
 
 - I am a kind of person who has to totally commit to whatever I do. I knew that if I did things halfheartedly, and they didn't workout, I'd always have regrets.
 
-- This was because these were forced on me from above. I never could stand being forced to do something I didn't want to do at a time I din't want to do it. Whenever I was able to do something I liked to do, though, when I wanted to do it, and the way I wanted to do it, I'd give it everything I had.
+- This was because these were forced on me from above. I never could stand being forced to do something I didn't want to do at a time I didn't want to do it. Whenever I was able to do something I liked to do, though, when I wanted to do it, and the way I wanted to do it, I'd give it everything I had.
 
 - I got up before five a.m. and went to bed before ten p.m. I am definitely a morning person.
 
-- The goughest part of a marathon comes after twenty-two miles.
+- The toughest part of a marathon comes after twenty-two miles.
 
 - The only way to understand what's really fair is to take a long-range view of things.
 
@@ -86,7 +86,7 @@ Now, without further ado, here are the passages I loved most from the book:
 
 - Whenever I picture packed trains and endless meetings, this gets me motivated all over again and I lace up my running shoes and set off without any qualms.
 
-- That's how I started running. thirsty-three- that's how old I was then. The age that Jesus Christ died. The age that scott Fitzgerald started to go downhill. 
+- That's how I started running. thirty-three- that's how old I was then. The age that Jesus Christ died. The age that Scott Fitzgerald started to go downhill. 
 
 - One other way I keep healthy is by taking a nap. I really nap a lot.
 
@@ -98,7 +98,7 @@ Now, without further ado, here are the passages I loved most from the book:
 
 - I am following one of my basic rules for training: I never take two days off in a row. Muscles are like work animals that are quick on the update. If you carefully increase the load, step by step, they learn to take it. As long as you explain your expectations to them by actually showing them examples of the amount of work they have to endure, your muscles will comply and gradually get stronger. It doesn't happen overnight, of course.
 
-- If, however, the load stops for a few days, the muscles automattically assume they don't have to work that hard anymore, and they lower their limits.
+- If, however, the load stops for a few days, the muscles automatically assume they don't have to work that hard anymore, and they lower their limits.
 
 - what's the most important quality a novelist has to have. It's pretty obvious: talent
 
@@ -116,7 +116,7 @@ Now, without further ado, here are the passages I loved most from the book:
 
 - To deal with something unhealthy, a person needs to be as healthy as possible. That's my motto.
 
-- (In any marathon) I didn't walk a single step. I stoped a lot to stretch, but I never walked.
+- (In any marathon) I didn't walk a single step. I stopped a lot to stretch, but I never walked.
 
 - Break one of my rules once, and I'm bound to break many more.
 
@@ -124,7 +124,7 @@ Now, without further ado, here are the passages I loved most from the book:
 
 - Reaching the finish line, never walking, and enjoying the race. These three, in this order, are my goals.
 
-- In most cases learning something essential in life requires phycical pain.
+- In most cases learning something essential in life requires physical pain.
 
 - Some day, if I have a gravestone and I'm able to pick out what's carved on it, I'd like it to say this: Haruki Murakami, 1949-20**, Writer (and Runner), At Least He Never Walked.
 

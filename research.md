@@ -65,18 +65,6 @@ Aghazadeh, H. — Manning Publications.
 For citations and the current list, see
 [Google Scholar](https://scholar.google.ca/citations?user={{ site.author.social.google_scholar }}).
 
-## Applied research
-
-Some of the research happens at work rather than in a journal. At Enverus I
-prototype using **Graph Neural Nets** and large-scale **mixed-integer linear programming** for power-flow and
-security-constrained unit commitment, and investigate **reinforcement-learning-guided
-cutting-plane selection** — using a learned policy to decide which cuts are worth
-adding, so branch-and-bound converges fast enough to be useful at market speed.
-
-It's the same question as the routing work in a different domain: exact methods
-know the structure, learned methods are fast, and the interesting result is
-usually a combination rather than a winner.
-
 ## Service
 
 Peer reviewer for machine learning, transportation, optimization and

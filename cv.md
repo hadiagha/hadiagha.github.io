@@ -45,12 +45,6 @@ practical book on applied reinforcement learning.
   **Snowflake** for analytical workloads and **Kafka** for streaming data.
 - Develop reproducible deployment and model-management workflows with **Pulumi
   and Terraform**; production observability with **Grafana and Sentry**.
-- Research and prototype **Graph Neural Nets** and large-scale **mixed-integer linear programming** for
-  power-flow and **security-constrained unit commitment**, emphasising fast,
-  computationally efficient electricity-price optimization.
-- Investigate **reinforcement-learning-guided cutting-plane selection** to
-  improve branch-and-bound search and accelerate large-scale power-system
-  optimization models.
 
 ### Machine Learning Engineer — Bits in Glass
 *April 2024 – February 2026 · Calgary, Canada (Remote)*

@@ -20,16 +20,10 @@ I'm useful for, what I'm not, and how to get the most out of a conversation.
 
 I'm a **Senior Data Scientist at [Enverus](https://www.enverus.com/)**, where I
 own the end-to-end development and operation of **locational marginal price
-forecasting across thousands of nodes** in US and Canadian
+forecasting across thousands of nodes** in
 electricity markets — feature engineering, applied research, distributed
 training, deployment, APIs, monitoring and the unglamorous maintenance that
 keeps a forecast trustworthy.
-
-Alongside the forecasting work I research using graph neural networks for interventional forecasting along with large-scale **mixed-integer linear
-programming** for power-flow and security-constrained unit commitment, including
-using reinforcement learning to guide cutting-plane selection — teaching a
-solver which cuts are worth adding, so branch-and-bound converges faster on
-problems that are otherwise intractable at market speed.
 
 Before Enverus I was a machine learning engineer at **Bits in Glass**, in which I contributed building a
 hierarchical RAG platform over 20 million oil-and-gas documents and a dynamic

@@ -1842,6 +1842,28 @@ mjx-container:not([display="true"]) {
   margin: var(--space-lg) 0 !important;
 }
 
+// Photographs in post bodies -------------------------------------------------
+//
+// Full column width, unlike .book-cover. The figure carries the vertical
+// spacing, so the img's own margin from the base rule is zeroed — otherwise the
+// two stack. Same specificity note as .diagram below.
+.photo {
+  margin: var(--space-xl) 0;
+  text-align: center;
+}
+
+.post .post-content .content .photo img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.photo figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
 // Diagrams in post bodies ----------------------------------------------------
 //
 // Exported diagrams are dark line art on a TRANSPARENT background, which is

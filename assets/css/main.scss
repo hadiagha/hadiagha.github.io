@@ -1700,12 +1700,26 @@ a {
   }
 }
 
-// A poster darkens behind the label so white text stays legible on any image.
-.video-embed-trigger[style*="background-image"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(17, 24, 39, 0.45);
+// With a poster, the image is the label. A video thumbnail carries its own title
+// art and the post's h1 sits directly above it, so drawing the title on top as
+// well collided with the artwork — and the 45% scrim that kept that text legible
+// dulled the thumbnail. So: the image at full brightness, a dark play button that
+// reads on any image, and the title kept for screen readers only. It must stay in
+// the accessibility tree rather than being display:none, because it is the
+// button's accessible name.
+.video-embed-trigger[style*="background-image"] {
+  .video-embed-play {
+    background-color: rgba(17, 24, 39, 0.72);
+  }
+
+  .video-embed-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 
 .video-embed-play,

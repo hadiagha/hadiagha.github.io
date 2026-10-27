@@ -159,11 +159,21 @@ for path in posts + drafts:
         elif not re.fullmatch(r"[A-Za-z0-9_-]{11}", yt):
             warnings.append(f"{rel}: youtube_id '{yt}' does not look like an 11-character video ID")
 
+    # The player is a facade so that no reader contacts YouTube until they press
+    # play. A remote poster (YouTube's own thumbnail, most likely) would put that
+    # request back on every page load. WRITING.md states the rule; this enforces it.
+    poster = fm.get("youtube_poster", "")
+    if poster and re.match(r"(https?:)?//", poster):
+        fail(f"{rel}: youtube_poster must be a local image, not a URL")
+
     if fm.get("image") and not fm.get("image_alt"):
         fail(f"{rel}: has an image but no image_alt")
 
-    # Track referenced media so unused files can be reported.
-    for match in re.finditer(r"/assets/posts/([^\s'\")]+)", fm.get("image", "") + "\n" + body):
+    # Track referenced media so unused files can be reported. youtube_poster is
+    # front matter rather than body, so it has to be named here or a poster in
+    # use would be reported as orphaned.
+    sources = "\n".join([fm.get("image", ""), poster, body])
+    for match in re.finditer(r"/assets/posts/([^\s'\")]+)", sources):
         referenced_media.add(match.group(1))
 
 # Series numbering should be contiguous from 1.
